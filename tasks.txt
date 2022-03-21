@@ -1,0 +1,31 @@
+/* tasks */
+
+colleges - admin r
+
+users - admin r
+
+posts - admin r - user c
+
+course
+
+user_info - user crud
+
+notifications
+
+followers - user : follow & unfollow
+
+black_list
+
+likes - user like and unlike using ajax
+
+photos
+
+files
+
+shares
+
+comments
+
+comments_likes
+
+lectures

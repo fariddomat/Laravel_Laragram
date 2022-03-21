@@ -1,0 +1,20 @@
+- Home
+    - add post with or without media
+        - using text editor for text
+    - show posts from following users
+        - use infinite scroll (JScroll) when fetch page bottom
+    - like posts using ajax
+    - suggestion users from the same college
+
+
+- user profile:
+    - show posts
+    - show info
+    - set user data
+    - set user info [location - dob - social media accounts - images]
+    - show user posts
+    - profile gender ?
+
+- other profile
+    - show posts
+    - show info
