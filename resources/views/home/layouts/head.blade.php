@@ -17,7 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/tailwind.min.css') }}">
-
+    <!--  Swiper's CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
         .social-link-li {
             display: flex !important;
@@ -354,6 +355,6 @@
 
         </style>
     @endif
-<!-- include summernote css/js -->
-<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <!-- include summernote css/js -->
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
 </head>

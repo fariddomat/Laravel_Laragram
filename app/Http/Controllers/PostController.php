@@ -65,7 +65,7 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->type);
+        // dd($request->type);
         $request->validate([
             'content' => 'required',
             'type' => 'required',
@@ -73,9 +73,9 @@ class PostController extends Controller
         ]);
         $allowedfileExtension = [];
         if ($request->type == "Post" || $request->type = "News") {
-            $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv'];
+            $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv','txt'];
         } elseif ($request->type = "Lecture" || $request->type = "Project") {
-            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx'];
+            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx','txt'];
         }
 
         // dd($request->all());

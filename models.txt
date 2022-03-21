@@ -1,0 +1,102 @@
+/*****/
+
+=> colleges
+	id
+	name
+
+[colleges have]
+=> users
+	id
+	name
+	email
+	password
+	college_id
+
+
+[users have]
+=> user_info
+	user_id
+	// optional
+	phone
+	dob
+	address
+	bio
+	profile_img
+	cover_img
+	website
+	facebook
+	twitter
+	linkedin
+	behance
+	pinterest
+	instagram
+	youtube
+
+=> notifications
+	id
+	title
+	link
+	user_id
+
+=> followers
+	id
+	user_id
+	target_id
+
+=> black_list
+	id
+	user_id
+	taget_id
+	
+=> posts
+	id
+	user_id
+	content
+	type [Project - news - lectures - other]
+	privacy [public - followers - onlyme]
+
+[posts have]
+=> likes
+	id
+	post_id
+	user_id
+=> photos
+	id
+	post_id
+	image
+=> files
+	id
+	post_id
+	file
+=> shares
+	id
+	post_id
+	user_id
+=> comments
+	id
+	user_id
+	parent_id
+	content
+	commentable_id
+	commentable_type
+
+[comments have]
+=> comments_likes
+	id
+	comment_id
+	user_id
+
+/*****/
+=> course
+	id
+	name
+	college_id
+
+[course have]
+=> lectures
+	id
+	title
+	course_id
+	post_id
+	
+

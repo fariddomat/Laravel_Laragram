@@ -218,9 +218,8 @@
                                                                 <h3>{{ $post->user->fname }} {{ $post->user->lname }}
                                                                 </h3>
                                                                 <span><img src="{{ asset('home/images/clock.png') }}"
-                                                                        alt="">3
-                                                                    min
-                                                                    ago</span>
+                                                                        alt="">{{ $post->created_at->diffforhumans() }}
+                                                                </span>
                                                             </div>
                                                         </div>
                                                         <div class="ed-opts">
@@ -249,13 +248,33 @@
                                                         </ul>
                                                     </div>
                                                     <div class="job_descp">
-                                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                                            luctus hendrerit metus, ut ullamcorper quam finibus at. Etiam id
-                                                            magna sit amet... <a href="#"
-                                                                title="">@lang('site.viewMore')</a>
+                                                        <p>{!! $post->content !!}
+
+                                                            {{-- <a href="#" title="">@lang('site.viewMore')</a> --}}
                                                         </p>
-                                                        <img class="post-img" src="http://via.placeholder.com/720x350"
-                                                            alt="">
+                                                        @if ($post->withImages())
+                                                            @if ($post->hasMoreThanOneImage())
+                                                                <div class="swiper mySwiper">
+                                                                    <div class="swiper-wrapper">
+                                                                        @foreach ($post->images_path as $item)
+                                                                            <div class="swiper-slide">
+                                                                                <img class="object-cover w-full h-96 post-img"
+                                                                                    src="{{ $item }}"
+                                                                                    alt="image" />
+                                                                            </div>
+                                                                        @endforeach
+                                                                    </div>
+                                                                    <div class="swiper-button-next"></div>
+                                                                    <div class="swiper-button-prev"></div>
+
+                                                                    <div class="swiper-pagination"></div>
+                                                                </div>
+                                                            @else
+                                                                <img class="post-img" src="{{ $post->image_path }}"
+                                                                    alt="">
+                                                            @endif
+                                                        @endif
+
 
 
                                                     </div>
@@ -598,7 +617,7 @@
         $(document).ready(function() {
             $('#type').on('change', function(e) {
                 var type = e.target.value;
-                    var element = document.getElementById("collegeCourse");
+                var element = document.getElementById("collegeCourse");
                 if (type == 'lecture') {
                     element.classList.remove("hidden");
                     var c = {!! $colleges->toJson() !!};
@@ -642,7 +661,7 @@
         $(document).ready(function() {
             $('#mediatype').on('change', function(e) {
                 var type = e.target.value;
-                    var element = document.getElementById("mediacollegeCourse");
+                var element = document.getElementById("mediacollegeCourse");
                 if (type == 'lecture') {
                     element.classList.remove("hidden");
                     var c = {!! $colleges->toJson() !!};
@@ -673,7 +692,8 @@
                         $('#mediasubcategory2').empty();
                         $.each(data.subcategories[0].courses, function(index,
                             subcategory) {
-                            $('#mediasubcategory2').append('<option value="' + subcategory
+                            $('#mediasubcategory2').append('<option value="' +
+                                subcategory
                                 .id + '">' + subcategory.name + '</option>');
                         })
                     }
