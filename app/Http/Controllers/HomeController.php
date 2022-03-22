@@ -47,7 +47,7 @@ class HomeController extends Controller
         // dd($user->following()->get()->pluck('id'));
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
-        $posts= \App\Post::whereIn('user_id', $userIds)->latest()->whereType('post')->paginate(5);
+        $posts= \App\Post::whereIn('user_id', $userIds)->whereType('post')->latest()->paginate(5);
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
 
         $colleges=College::all();

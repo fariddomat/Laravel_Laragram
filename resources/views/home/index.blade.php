@@ -489,13 +489,15 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select class="" id="subcategory" name="college">
+                                    <select class="" id="subcategory" name="college" >
+                                        <option value="">College</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select id="subcategory2" name="course">
+                                    <select id="subcategory2" name="course" >
+                                        <option value="">Course</option>
                                     </select>
                                 </div>
                             </div>
@@ -541,6 +543,9 @@
                     @method('POST')
                     <div class="row">
 
+                        <div class="col-lg-12">
+                            @include('home.layouts._error')
+                        </div>
                         <div class="col-lg-2">
                             <label for="">Type</label>
                         </div>
@@ -560,13 +565,15 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select class="" id="mediasubcategory" name="college">
+                                    <select class="" id="mediasubcategory" name="college" >
+                                        <option value="">College</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select id="mediasubcategory2" name="course">
+                                    <select id="mediasubcategory2" name="course" >
+                                        <option value="">Course</option>
                                     </select>
                                 </div>
                             </div>

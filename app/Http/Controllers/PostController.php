@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\File;
+use App\Lecture;
 use App\Like;
 use App\Post;
 use App\User;
@@ -66,19 +67,30 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->type);
-        $request->validate([
+        if ($request->type=='lecture') {
+            $request->validate([
             'content' => 'required',
             'type' => 'required',
             'privacy' => 'required',
+            'course' => 'required',
         ]);
+        } else {
+            $request->validate([
+                'content' => 'required',
+                'type' => 'required',
+                'privacy' => 'required',
+            ]);
+        }
+
         $allowedfileExtension = [];
-        if ($request->type == "Post" || $request->type = "News") {
+        if ($request->type == "post" || $request->type == "news") {
             $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv','txt'];
-        } elseif ($request->type = "Lecture" || $request->type = "Project") {
+        } elseif ($request->type == "lecture" || $request->type == "project") {
             $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx','txt'];
         }
 
         // dd($request->all());
+        $post="";
         if ($request->hasFile('files')) {
 
             $files = $request->file('files');
@@ -116,6 +128,17 @@ class PostController extends Controller
                 'content' => $request->content,
                 'type' => $request->type,
                 'privacy' => $request->privacy,
+
+            ]);
+        }
+
+        if($request->type=='lecture'){
+            $lectureCount=Lecture::where('course_id',$request->course)->count();
+            $lectureCount=$lectureCount+1;
+            $lecture=Lecture::create([
+                'title'=>'Lecture '.$lectureCount,
+                'course_id'=>$request->course,
+                'post_id'=>$post->id,
 
             ]);
         }
