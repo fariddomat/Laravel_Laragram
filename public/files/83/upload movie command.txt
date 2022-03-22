@@ -1,3 +1,0 @@
-// open new terminal in your path and writh
-
-php artisan queue:work --timeout=6000
