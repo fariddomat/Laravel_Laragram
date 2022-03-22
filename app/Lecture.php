@@ -16,11 +16,11 @@ class Lecture extends Model
         'title', 'course_id', 'post_id'
     ];
 
-    public function courses()
+    public function course()
     {
         return $this->belongsTo(Course::class);
     }
-    public function posts()
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }

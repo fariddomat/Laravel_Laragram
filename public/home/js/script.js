@@ -1,7 +1,7 @@
 $(window).on("load", function() {
     "use strict";
 
-    
+
 
     //  ============= POST PROJECT POPUP FUNCTION =========
 
@@ -19,12 +19,12 @@ $(window).on("load", function() {
     //  ============= POST JOB POPUP FUNCTION =========
 
     $(".post-jb").on("click", function(){
-        $(".post-popup.job_post").addClass("active");
+        $(".post-popup.post_post").addClass("active");
         $(".wrapper").addClass("overlay");
         return false;
     });
     $(".post-project > a").on("click", function(){
-        $(".post-popup.job_post").removeClass("active");
+        $(".post-popup.post_post").removeClass("active");
         $(".wrapper").removeClass("overlay");
         return false;
     });
@@ -187,7 +187,7 @@ $(window).on("load", function() {
     });
 
 
-    //  ============== ChatBox ============== 
+    //  ============== ChatBox ==============
 
 
     $(".chat-mg").on("click", function(){

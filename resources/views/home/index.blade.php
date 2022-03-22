@@ -210,111 +210,7 @@
 
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
-                                                <div class="post-bar">
-                                                    <div class="post_topbar">
-                                                        <div class="usy-dt">
-                                                            <img src="http://via.placeholder.com/50x50" alt="">
-                                                            <div class="usy-name">
-                                                                <h3>{{ $post->user->fname }} {{ $post->user->lname }}
-                                                                </h3>
-                                                                <span><img src="{{ asset('home/images/clock.png') }}"
-                                                                        alt="">{{ $post->created_at->diffforhumans() }}
-                                                                </span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="ed-opts">
-                                                            <a href="#" title="" class="ed-opts-open"><i
-                                                                    class="la la-ellipsis-v"></i></a>
-                                                            <ul class="ed-options">
-                                                                <li><a href="#" title="">Edit Post</a></li>
-                                                                <li><a href="#" title="">Unsaved</a></li>
-                                                                <li><a href="#" title="">Unbid</a></li>
-                                                                <li><a href="#" title="">Close</a></li>
-                                                                <li><a href="#" title="">Hide</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="epi-sec">
-                                                        <ul class="descp">
-                                                            <li><img src="{{ asset('home/images/icon8.png') }}"
-                                                                    alt=""><span>{{ $post->user->username }}</span></li>
-                                                            <li><img src="{{ asset('home/images/icon9.png') }}"
-                                                                    alt=""><span>{{ $post->user->college->name }}</span>
-                                                            </li>
-                                                        </ul>
-                                                        <ul class="bk-links">
-                                                            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="job_descp">
-                                                        <p>{!! $post->content !!}
-
-                                                            {{-- <a href="#" title="">@lang('site.viewMore')</a> --}}
-                                                        </p>
-                                                        @if ($post->withImages())
-                                                            @if ($post->hasMoreThanOneImage())
-                                                                <div class="swiper mySwiper">
-                                                                    <div class="swiper-wrapper">
-                                                                        @foreach ($post->images_path as $item)
-                                                                            <div class="swiper-slide">
-                                                                                <img class="object-cover w-full h-96 post-img"
-                                                                                    src="{{ $item }}"
-                                                                                    alt="image" />
-                                                                            </div>
-                                                                        @endforeach
-                                                                    </div>
-                                                                    <div class="swiper-button-next"></div>
-                                                                    <div class="swiper-button-prev"></div>
-
-                                                                    <div class="swiper-pagination"></div>
-                                                                </div>
-                                                            @else
-                                                                <img class="post-img" src="{{ $post->image_path }}"
-                                                                    alt="">
-                                                            @endif
-                                                        @endif
-
-
-
-                                                    </div>
-                                                    <div class="job-status-bar">
-                                                        <ul class="like-com">
-                                                            @if ($post->isAuthUserLikedPost())
-                                                                <li>
-                                                                    <a id="saveLike" data-type="dislike"
-                                                                        data-post="{{ $post->id }}"
-                                                                        class="active"><i
-                                                                            class="la la-heart"></i>
-                                                                        <p style="float: right;"
-                                                                            class="like{{ $post->id }}">unlike</p>
-                                                                    </a>
-                                                                    <img src="{{ asset('home/images/liked-img.png') }}"
-                                                                        alt="">
-                                                                    <span
-                                                                        class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
-                                                                </li>
-                                                            @else
-                                                                <li>
-                                                                    <a id="saveLike" data-type="like"
-                                                                        data-post="{{ $post->id }}"><i
-                                                                            class="la la-heart"></i>
-                                                                        <p style="float: right;"
-                                                                            class="like{{ $post->id }}">Like</p>
-                                                                    </a>
-                                                                    <img src="{{ asset('home/images/liked-img.png') }}"
-                                                                        alt="">
-                                                                    <span
-                                                                        class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
-                                                                </li>
-                                                            @endif
-                                                            <li><a href="#" title="" class="com"><img
-                                                                        src="{{ asset('home/images/com.png') }}" alt="">
-                                                                    Comment {{ $post->comments->count() }}</a></li>
-                                                        </ul>
-                                                        <a><i class="la la-eye"></i>Views 50</a>
-                                                    </div>
-                                                </div>
+                                               @include('home.layouts._post')
                                             @endforeach
 
                                             {{ $posts->links() }}
@@ -326,11 +222,6 @@
                                             </div>
                                         @endif
                                     </div>
-                                    <!--post-bar end-->
-
-                                    <!--posty end-->
-
-                                    <!--process-comm end-->
                                 </div>
                                 <!--posts-section end-->
                             </div>
@@ -345,14 +236,14 @@
 
                                 </div>
                                 <!--widget-about end-->
-                                <div class="widget widget-jobs">
+                                <div class="widget widget-posts">
                                     <div class="sd-title">
                                         <h3>@lang('site.projects')</h3>
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
-                                    <div class="jobs-list">
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                    <div class="posts-list">
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior Product Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -360,9 +251,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior UI / UX Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -370,9 +261,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Junior Seo Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -380,9 +271,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior PHP Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -390,9 +281,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior Developer Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -400,19 +291,19 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
+                                        <!--post-info end-->
                                     </div>
-                                    <!--jobs-list end-->
+                                    <!--posts-list end-->
                                 </div>
-                                <!--widget-jobs end-->
-                                <div class="widget widget-jobs">
+                                <!--widget-posts end-->
+                                <div class="widget widget-posts">
                                     <div class="sd-title">
                                         <h3>Most Viewed This Week</h3>
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
-                                    <div class="jobs-list">
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                    <div class="posts-list">
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior Product Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -420,9 +311,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Senior UI / UX Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -430,9 +321,9 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
-                                        <div class="job-info">
-                                            <div class="job-details">
+                                        <!--post-info end-->
+                                        <div class="post-info">
+                                            <div class="post-details">
                                                 <h3>Junior Seo Designer</h3>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
                                             </div>
@@ -440,11 +331,11 @@
                                                 <span></span>
                                             </div>
                                         </div>
-                                        <!--job-info end-->
+                                        <!--post-info end-->
                                     </div>
-                                    <!--jobs-list end-->
+                                    <!--posts-list end-->
                                 </div>
-                                <!--widget-jobs end-->
+                                <!--widget-posts end-->
 
                             </div>
                             <!--right-sidebar end-->
@@ -489,14 +380,14 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select class="" id="subcategory" name="college" >
+                                    <select class="" id="subcategory" name="college">
                                         <option value="">College</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select id="subcategory2" name="course" >
+                                    <select id="subcategory2" name="course">
                                         <option value="">Course</option>
                                     </select>
                                 </div>
@@ -534,7 +425,7 @@
     <!--post-project-popup end-->
 
     {{-- Post media --}}
-    <div class="post-popup job_post">
+    <div class="post-popup post_post">
         <div class="post-project">
             <h3>@lang('site.postmedia')</h3>
             <div class="post-project-fields">
@@ -565,14 +456,14 @@
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select class="" id="mediasubcategory" name="college" >
+                                    <select class="" id="mediasubcategory" name="college">
                                         <option value="">College</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
-                                    <select id="mediasubcategory2" name="course" >
+                                    <select id="mediasubcategory2" name="course">
                                         <option value="">Course</option>
                                     </select>
                                 </div>
@@ -646,7 +537,7 @@
             $('#subcategory').on('change', function(e) {
                 var cat_id = e.target.value;
                 $.ajax({
-                    url: "{{ route('courses') }}",
+                    url: "{{ route('coursesList') }}",
                     type: "POST",
                     data: {
                         cat_id: cat_id
@@ -690,7 +581,7 @@
             $('#mediasubcategory').on('change', function(e) {
                 var cat_id = e.target.value;
                 $.ajax({
-                    url: "{{ route('courses') }}",
+                    url: "{{ route('coursesList') }}",
                     type: "POST",
                     data: {
                         cat_id: cat_id

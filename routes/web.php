@@ -23,9 +23,12 @@ Route::group([
         return view('home.index');
     });
     Route::get('/','HomeController@home')->name('home');
-    Route::post('/courses','HomeController@courses')->name('courses');
+    Route::post('/coursesList','HomeController@coursesList')->name('coursesList');
     Route::get('/news','HomeController@news')->name('news');
     Route::get('/projects','HomeController@projects')->name('projects');
+    Route::get('/courses','HomeController@courses')->name('courses');
+    Route::get('/course/{name}','HomeController@course')->name('course');
+    Route::get('/lecture/{id}/{filename}','LectureController@getDownload')->name('getDownload');
     Route::get('/profile','ProfileController@show')->name('profile');
     Route::get('/editprofileinfo','ProfileController@edit')->name('editprofile');
     Route::post('editprofileinfo', 'ProfileController@savePersonalInfo')->name('editprofileinfo');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Follower;
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,12 +17,12 @@ class UserController extends Controller
         $user=User::whereUsername($username)->first();
         $follow=Follower::whereUser_id(Auth::user()->id)->whereTarget_id($user->id);
         // dd($user->info);
-
+        $posts = Post::where('user_id',$user->id)->orderByDesc('id')->paginate(5);
         $authuser=User::find(Auth::user()->id);
         $userIds = $authuser->following()->get()->pluck('id');
         $userIds[] = $user->id;
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
-        return view('home.user', compact('user','follow', 'suggestionsUsers'));
+        return view('home.user', compact('user','follow', 'suggestionsUsers', 'posts'));
     }
 
     public function follow($username)

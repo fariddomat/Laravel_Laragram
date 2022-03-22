@@ -34,13 +34,13 @@
                                         <ul class="flw-hr">
                                             <li>
                                                 @if ($follow->count() == 0)
-                                                    <a href="{{ route('user.follow', ['user'=>$user->username]) }}" title="" class="flww"><i
-                                                            class="la la-plus"></i>
+                                                    <a href="{{ route('user.follow', ['user' => $user->username]) }}"
+                                                        title="" class="flww"><i class="la la-plus"></i>
                                                         @lang('site.follow')</a>
                                                 @else
-                                                <a href="{{ route('user.unfollow', ['user'=>$user->username]) }}" title="" class="unflww"><i
-                                                    class="la la-minus"></i>
-                                                @lang('site.unfollow')</a>
+                                                    <a href="{{ route('user.unfollow', ['user' => $user->username]) }}"
+                                                        title="" class="unflww"><i class="la la-minus"></i>
+                                                        @lang('site.unfollow')</a>
                                                 @endif
 
 
@@ -103,8 +103,8 @@
                                             @endif
                                         @else
                                             <h3 style="text-align: center;
-                                                        margin: 15px 0;
-                                                        font-weight: bold;">No more details !!!</h3>
+                                                            margin: 15px 0;
+                                                            font-weight: bold;">No more details !!!</h3>
                                         @endif
                                     </ul>
                                 </div>
@@ -117,16 +117,16 @@
                                     <!--sd-title end-->
                                     <div class="suggestions-list">
                                         @foreach ($suggestionsUsers as $item)
-                                        <div class="suggestion-usd">
-                                            <img src="http://via.placeholder.com/35x35" alt="">
-                                            <div class="sgt-text">
-                                                <h4>{{ $item->fname }} {{ $item->lname }}</h4>
-                                                <span>{{ $item->username }}</span>
+                                            <div class="suggestion-usd">
+                                                <img src="http://via.placeholder.com/35x35" alt="">
+                                                <div class="sgt-text">
+                                                    <h4>{{ $item->fname }} {{ $item->lname }}</h4>
+                                                    <span>{{ $item->username }}</span>
+                                                </div>
+                                                <span><a href="{{ route('user.show', ['user' => $item->username]) }}"><i
+                                                            class="la la-link"></i></a></span>
                                             </div>
-                                            <span><a href="{{ route('user.show', ['user' => $item->username]) }}"><i
-                                                        class="la la-link"></i></a></span>
-                                        </div>
-                                    @endforeach
+                                        @endforeach
 
                                     </div>
                                     <!--suggestions-list end-->
@@ -142,9 +142,9 @@
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;
-                                                        font-size: 37px;
-                                                        font-weight: lighter;
-                                                        font-style: oblique;">{{ $user->info->bio }}</h4>
+                                                            font-size: 37px;
+                                                            font-weight: lighter;
+                                                            font-style: oblique;">{{ $user->info->bio }}</h4>
                                     </div>
                                     <!--star-descp end-->
                                     <div class="tab-feed st2">
@@ -173,105 +173,22 @@
                                 <!--user-tab-sec end-->
                                 <div class="product-feed-tab current" id="feed-dd">
                                     <div class="posts-section">
+                                        <div class="scrolling-pagination">
 
-                                        @if ($user->posts->count() > 0)
-                                            @foreach ($user->posts as $post)
+                                            @if ($posts->count() > 0)
+                                                @foreach ($posts as $post)
+                                                   @include('home.layouts._post')
+                                                @endforeach
+
+                                                {{ $posts->links() }}
+                                            @else
                                                 <div class="post-bar">
                                                     <div class="post_topbar">
-                                                        <div class="usy-dt">
-                                                            <img src="http://via.placeholder.com/50x50" alt="">
-                                                            <div class="usy-name">
-                                                                <h3>{{ $user->fname }}
-                                                                    {{ $user->lname }}
-                                                                </h3>
-                                                                <span><img src="{{ asset('home/images/clock.png') }}"
-                                                                        alt="">{{ $post->created_at->diffforhumans() }}</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="ed-opts">
-                                                            <a href="#" title="" class="ed-opts-open"><i
-                                                                    class="la la-ellipsis-v"></i></a>
-                                                            <ul class="ed-options">
-                                                                <li><a href="#" title="">Edit Post</a></li>
-                                                                <li><a href="#" title="">Unsaved</a></li>
-                                                                <li><a href="#" title="">Unbid</a></li>
-                                                                <li><a href="#" title="">Close</a></li>
-                                                                <li><a href="#" title="">Hide</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                    <div class="epi-sec">
-                                                        <ul class="descp">
-                                                            <li><img src="{{ asset('home/images/icon8.png') }}"
-                                                                    alt=""><span>{{$user->username}}r</span>
-                                                            </li>
-                                                            <li><img src="{{ asset('home/images/icon9.png') }}"
-                                                                    alt=""><span>{{$user->college->name}}</span></li>
-                                                        </ul>
-                                                        <ul class="bk-links">
-                                                            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-                                                            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
-                                                        </ul>
-                                                    </div>
-                                                    <div class="job_descp">
-
-                                                        <p>{{ $post->content }}
-                                                            {{-- <a href="#" title="">view more</a> --}}
-                                                        </p>
-                                                    </div>
-                                                    <div class="job-status-bar">
-                                                        <ul class="like-com">
-                                                            @if ($post->isAuthUserLikedPost())
-                                                                <li>
-                                                                    <a id="saveLike" data-type="dislike"
-                                                                        data-post="{{ $post->id }}"
-                                                                        class="active"><i
-                                                                            class="la la-heart"></i>
-                                                                        <p style="float: right;"
-                                                                            class="like{{ $post->id }}">unlike</p>
-                                                                    </a>
-                                                                    <img src="{{ asset('home/images/liked-img.png') }}"
-                                                                        alt="">
-                                                                    <span
-                                                                        class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
-                                                                </li>
-                                                            @else
-                                                                <li>
-                                                                    <a id="saveLike" data-type="like"
-                                                                        data-post="{{ $post->id }}"><i
-                                                                            class="la la-heart"></i>
-                                                                        <p style="float: right;"
-                                                                            class="like{{ $post->id }}">Like</p>
-                                                                    </a>
-                                                                    <img src="{{ asset('home/images/liked-img.png') }}"
-                                                                        alt="">
-                                                                    <span
-                                                                        class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
-                                                                </li>
-                                                            @endif
-                                                            <li><a href="#" title="" class="com"><img
-                                                                        src="{{ asset('home/images/com.png') }}" alt="">
-                                                                    Comment {{ $post->comments->count() }}</a></li>
-                                                        </ul>
-                                                        <a><i class="la la-eye"></i>Views 50</a>
+                                                        <h3>No posts to show</h3>
                                                     </div>
                                                 </div>
-                                                <!--post-bar end-->
-                                            @endforeach
-                                        @else
-                                            <div class="post-bar">
-                                                No Posts to show !!!
-                                            </div>
-                                            <!--post-bar end-->
-                                        @endif
-                                        <div class="process-comm">
-                                            <div class="spinner">
-                                                <div class="bounce1"></div>
-                                                <div class="bounce2"></div>
-                                                <div class="bounce3"></div>
-                                            </div>
+                                            @endif
                                         </div>
-                                        <!--process-comm end-->
                                     </div>
                                     <!--posts-section end-->
                                 </div>
@@ -345,7 +262,7 @@
                                     <!--user-profile-ov end-->
                                 </div>
                                 <!--product-feed-tab end-->
-                                <div class="product-feed-tab" id="saved-jobs">
+                                <div class="product-feed-tab" id="saved-posts">
                                     <div class="posts-section">
                                         <div class="post-bar">
                                             <div class="post_topbar">
@@ -378,9 +295,9 @@
                                                     <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Senior Wordpress Developer</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><a href="#" title="">Full Time</a></li>
                                                     <li><span>$30 / hr</span></li>
                                                 </ul>
@@ -395,7 +312,7 @@
                                                     <li><a href="#" title="">Wordpress</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -440,9 +357,9 @@
                                                     <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Senior Wordpress Developer</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><a href="#" title="">Full Time</a></li>
                                                     <li><span>$30 / hr</span></li>
                                                 </ul>
@@ -457,7 +374,7 @@
                                                     <li><a href="#" title="">Wordpress</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -502,9 +419,9 @@
                                                     <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Senior Wordpress Developer</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><a href="#" title="">Full Time</a></li>
                                                     <li><span>$30 / hr</span></li>
                                                 </ul>
@@ -519,7 +436,7 @@
                                                     <li><a href="#" title="">Wordpress</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -564,9 +481,9 @@
                                                     <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Senior Wordpress Developer</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><a href="#" title="">Full Time</a></li>
                                                     <li><span>$30 / hr</span></li>
                                                 </ul>
@@ -581,7 +498,7 @@
                                                     <li><a href="#" title="">Wordpress</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -638,9 +555,9 @@
                                                     <li><a href="#" title="" class="bid_now">Bid Now</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Simple Classified Site</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><span>$300 - $350</span></li>
                                                 </ul>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
@@ -657,7 +574,7 @@
                                                     <li><a href="#" title="">Corel Draw</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -704,9 +621,9 @@
                                                     <li><a href="#" title="" class="bid_now">Bid Now</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Ios Shopping mobile app</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><span>$300 - $350</span></li>
                                                 </ul>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
@@ -723,7 +640,7 @@
                                                     <li><a href="#" title="">Corel Draw</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -770,9 +687,9 @@
                                                     <li><a href="#" title="" class="bid_now">Bid Now</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Simple Classified Site</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><span>$300 - $350</span></li>
                                                 </ul>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
@@ -789,7 +706,7 @@
                                                     <li><a href="#" title="">Corel Draw</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>
@@ -836,9 +753,9 @@
                                                     <li><a href="#" title="" class="bid_now">Bid Now</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job_descp">
+                                            <div class="post_descp">
                                                 <h3>Ios Shopping mobile app</h3>
-                                                <ul class="job-dt">
+                                                <ul class="post-dt">
                                                     <li><span>$300 - $350</span></li>
                                                 </ul>
                                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam luctus
@@ -855,7 +772,7 @@
                                                     <li><a href="#" title="">Corel Draw</a></li>
                                                 </ul>
                                             </div>
-                                            <div class="job-status-bar">
+                                            <div class="post-status-bar">
                                                 <ul class="like-com">
                                                     <li>
                                                         <a href="#"><i class="la la-heart"></i> Like</a>

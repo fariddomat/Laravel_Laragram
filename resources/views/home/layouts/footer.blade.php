@@ -11,7 +11,7 @@
 <script type="text/javascript">
     $('ul.pagination').hide();
     $(window).scroll(function() {
-        if ($(window).scrollTop() + $(window).height() > ($(document).height() - 1)) {
+        // if ($(window).scrollTop() + $(window).height() > ($(document).height() - 1)) {
             $(function() {
                 $('.scrolling-pagination').jscroll({
                     autoTrigger: true,
@@ -25,7 +25,7 @@
                 });
             });
             $('ul.pagination').remove();
-        }
+        // }
     });
 </script>
 

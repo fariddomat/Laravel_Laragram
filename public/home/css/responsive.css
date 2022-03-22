@@ -11,8 +11,8 @@
 	.suggestion-usd {padding: 15px 5px;}
 	.cp-sec p {margin-top: 10px;float: none;}
 	.comment_box input {width: 281px;}
-	.job-details {width: 112px;}
-	.job-details h3 {line-height: 18px;}
+	.post-details {width: 112px;}
+	.post-details h3 {line-height: 18px;}
 	.sd-title h3 {font-size: 15px;}
 	.cp-sec > img {text-align: center;float: none;}
 	.cp-sec {text-align: center;}
@@ -48,7 +48,7 @@
 	main {padding: 20px 0 60px 0;}
 	.user-specs span {font-size: 13px;}
 	.comment_box input {width: 275px;}
-	.job-details {width: auto;}
+	.post-details {width: auto;}
 	.hr-rate {margin-top: 15px;}
 	.suggestion-usd {padding: 15px 20px;}
 	.right-sidebar {margin-top: 50px;}
@@ -126,7 +126,7 @@
 	.comment_box form button {float: none;}
 	.post-comment {text-align: center;}
 	.comment_box form button {padding: 0 15px;}
-	.job-details {width: 80%;}
+	.post-details {width: 80%;}
 	.cover-sec {height: 200px;}
 	.cover-sec img {height: 100%;object-fit: cover;}
 	.star-descp > ul {width: 100%;margin-top: 10px;}
@@ -136,7 +136,7 @@
 	.bk-links {margin-bottom: 10px;}
 	.star-descp {margin-bottom: 25px;}
 	.like-com li {float: left;width: 100%;margin-bottom: 15px;}
-	.job-status-bar > a {float: left;width: 100%;margin-top: -5px;}
+	.post-status-bar > a {float: left;width: 100%;margin-top: -5px;}
 	.lt-sec h4 {font-size: 14px;}
 	.cc-head ul {float: left;width: 100%;margin-top: 10px;}
 	.add-billing-method span {width: 85%;line-height: 18px;}
@@ -175,7 +175,7 @@
 @media (max-width: 410px) {
 	.post-st ul li a {font-size: 12px;padding: 0 6px;}
 	.like-com li a {font-size: 12px;}
-	.job_descp h3 {font-size: 16px;}
+	.post_descp h3 {font-size: 16px;}
 	.pf-gallery ul li {padding: 3px;}
 	.checky-sec > a {float: left;width: 100%;margin-top: 10px;padding-left: 20px;}
 	.checky-sec.st2 small {width: 85%;}

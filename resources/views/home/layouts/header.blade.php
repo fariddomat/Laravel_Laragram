@@ -27,7 +27,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="projects.html" title="">
+                        <a href="{{ route('projects') }}" title="">
                             <span><img src="{{ asset('home/images/icon3.png') }}" alt=""></span>
                             @lang('site.projects')
                         </a>
@@ -39,7 +39,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="courses.html" title="">
+                        <a href="{{ route('courses') }}" title="">
                             <span><img src="{{ asset('home/images/icon5.png') }}" alt=""></span>
                             @lang('site.courses')
                         </a>

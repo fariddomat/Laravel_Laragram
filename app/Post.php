@@ -113,6 +113,10 @@ class Post extends Model
         return $array;
     }
 
+    public function withFiles()
+    {
+        return $this->files()->exists();
+    }
     //relations -------------------------------------------
     public function photos()
     {

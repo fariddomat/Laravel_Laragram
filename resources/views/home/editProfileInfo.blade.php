@@ -128,7 +128,7 @@
                                                     <span>@lang('site.otherinfo')</span>
                                                 </a>
                                             </li>
-                                            <li data-tab="saved-jobs">
+                                            <li data-tab="saved-posts">
                                                 <a href="#" title="">
                                                     <img src="{{ asset('home/images/ic5.png') }}" alt="">
                                                     <span>@lang('site.socialinfo')</span>
@@ -228,7 +228,7 @@
                                     <!--user-profile-ov end-->
                                 </div>
                                 <!--product-feed-tab end-->
-                                <div class="product-feed-tab" id="saved-jobs">
+                                <div class="product-feed-tab" id="saved-posts">
                                     <div class="posts-section">
                                         <div class="user-profile-ov">
 
