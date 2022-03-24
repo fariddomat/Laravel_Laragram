@@ -52,8 +52,11 @@ class HomeController extends Controller
         $posts= \App\Post::whereIn('user_id', $userIds)->whereType('post')->latest()->paginate(5);
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
 
+        $news= $this->getNews();
+        $projects= $this->getProjects();
+
         $colleges=College::all();
-        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges'));
+        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges', 'news', 'projects'));
     }
 
     public function coursesList(Request $request)
@@ -80,7 +83,9 @@ class HomeController extends Controller
         })->whereType('news')->latest()->paginate(5);
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
-        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges'));
+        $news= $this->getNews();
+        $projects= $this->getProjects();
+        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges', 'news', 'projects'));
     }
 
     // Projects
@@ -94,7 +99,9 @@ class HomeController extends Controller
         })->whereType('project')->latest()->paginate(5);
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
-        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges'));
+        $news= $this->getNews();
+        $projects= $this->getProjects();
+        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges', 'news', 'projects'));
     }
 
     // courses
@@ -120,5 +127,25 @@ class HomeController extends Controller
         $courses=Course::where('name',$name)->first();
         $lectures=Lecture::where('course_id',$courses->id)->get();
         return view('home.course', compact('suggestionsUsers', 'colleges', 'courses', 'lectures'));
+    }
+
+    // get latest 5 news
+    public function getNews()
+    {
+        $user=User::find(Auth::user()->id);
+        $news= Post::whereHas('user', function($q) use ($user){
+            $q->where('college_id', $user->college_id);
+        })->whereType('news')->latest()->take(5)->get();
+        return $news;
+    }
+
+    // get latest 3 project
+    public function getProjects()
+    {
+        $user=User::find(Auth::user()->id);
+        $projects= Post::whereHas('user', function($q) use ($user){
+            $q->where('college_id', $user->college_id);
+        })->whereType('project')->latest()->take(3)->get();
+        return $projects;
     }
 }

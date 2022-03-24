@@ -210,7 +210,7 @@
 
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
-                                               @include('home.layouts._post')
+                                                @include('home.layouts._post')
                                             @endforeach
 
                                             {{ $posts->links() }}
@@ -236,101 +236,50 @@
 
                                 </div>
                                 <!--widget-about end-->
-                                <div class="widget widget-posts">
+                                <div class="widget widget-posts" style="margin-bottom: 15px;">
                                     <div class="sd-title">
-                                        <h3>@lang('site.projects')</h3>
+                                        <h3>@lang('site.news')</h3>
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="posts-list">
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior Product Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        @foreach ($news as $item)
+                                            <div class="post-info">
+                                                <div class="post-details">
+                                                    <a href="{{ route('posts.show', ['post' => $item->id]) }}">
+                                                        <h3>{{ $item->user->fullName() }}</h3>
+                                                        <p>{{ Str::of($item->content)->limit(25) }}</p>
+                                                    </a>
+                                                </div>
+                                                <div class="hr-rate">
+                                                    <span></span>
+                                                </div>
                                             </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior UI / UX Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Junior Seo Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior PHP Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior Developer Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
+                                        @endforeach
+
+
                                     </div>
                                     <!--posts-list end-->
                                 </div>
                                 <!--widget-posts end-->
                                 <div class="widget widget-posts">
                                     <div class="sd-title">
-                                        <h3>Most Viewed This Week</h3>
+                                        <h3>@lang('site.projects')</h3>
                                         <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="posts-list">
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior Product Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
+                                        @foreach ($projects as $project)
+                                            <div class="post-info">
+                                                <div class="post-details">
+                                                    <a href="{{ route('posts.show', ['post'=>$project->id]) }}">
+                                                        <h3>{{ $project->user->fullName() }}</h3>
+                                                        <p>{{ Str::of($project->content)->limit(25) }}</p>
+                                                    </a>
+                                                </div>
+                                                <div class="hr-rate">
+                                                    <span></span>
+                                                </div>
                                             </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Senior UI / UX Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
-                                        <!--post-info end-->
-                                        <div class="post-info">
-                                            <div class="post-details">
-                                                <h3>Junior Seo Designer</h3>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit..</p>
-                                            </div>
-                                            <div class="hr-rate">
-                                                <span></span>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                         <!--post-info end-->
                                     </div>
                                     <!--posts-list end-->
