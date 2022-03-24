@@ -12,6 +12,8 @@ class PostSeeder extends Seeder
     public function run()
     {
         factory('App\Post', 80)->create();
+        factory('App\Post', 20)->states('news')->create();
+        factory('App\Post', 20)->states('project')->create();
 
     }
 }
