@@ -48,6 +48,11 @@ class User extends Authenticatable
         return ucfirst($value);
     }
 
+    public function fullName()
+    {
+        return ucfirst($this->fname) ." " . ucfirst($this->lname);
+    }
+
     public function scopeWhereRole($query, $role_name)
     {
         return $query->whereHas('roles', function ($q) use ($role_name) {
@@ -137,5 +142,5 @@ class User extends Authenticatable
         return $this->hasMany(CommentLike::class);
     }
 
-    
+
 }

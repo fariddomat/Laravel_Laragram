@@ -42,6 +42,11 @@ Route::group([
     Route::resource('posts', 'PostController');
     Route::get('/user/lazyload',[ProfileController::class,'lazyload']);
 
+    Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+    Route::post('/comment/replyStore', 'CommentController@replyStore')->name('comment.reply');
+    Route::get('/comment/destroy/{id}', 'CommentController@destroy')->name('comment.destroy');
+    // Route::get('/comment/report/{id}', 'CommentController@report')->name('comment.report');
+
 
     // Like Or Dislike
 

@@ -13,10 +13,10 @@ class Comment extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'parent_id', 'content', 'commentable_id', 'commentable_type'
+        'post_id', 'parent_id', 'comment', 'commentable_id', 'commentable_type'
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

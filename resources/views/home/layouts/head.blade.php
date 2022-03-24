@@ -20,6 +20,11 @@
     <!--  Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>
+        .widget-feat {
+            padding: 25px 20px !important;
+            margin-bottom: 20px !important;
+        }
+
         .social-link-li {
             display: flex !important;
             padding: 8px 0 !important;
