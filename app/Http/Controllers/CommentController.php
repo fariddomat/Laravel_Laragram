@@ -10,9 +10,8 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
-        $comment =new Comment();
+        $comment = new Comment();
         // $comment = new Comment();
-
         $comment->comment = $request->comment;
 
         $comment->user()->associate($request->user());
@@ -20,7 +19,6 @@ class CommentController extends Controller
         $post = Post::find($request->post_id);
 
         $post->comments()->save($comment);
-
         return back();
     }
 
@@ -40,22 +38,18 @@ class CommentController extends Controller
         $post->comments()->save($reply);
 
         return back();
-
     }
 
     public function destroy($id)
     {
         $comment = Comment::find($id);
         if ($comment) {
-        // dd($comment);
+            // dd($comment);
             $comment->delete();
             return back();
-        }
-        else {
+        } else {
             return redirect()->route('404');
-
         }
-
     }
 
     /*

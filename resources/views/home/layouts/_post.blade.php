@@ -14,11 +14,10 @@
             <a href="#" title="" class="ed-opts-open"><i
                     class="la la-ellipsis-v"></i></a>
             <ul class="ed-options">
+                <li><a href="{{ route('posts.show', ['post'=>$post->id]) }}" title="">View Post</a></li>
                 <li><a href="#" title="">Edit Post</a></li>
-                <li><a href="#" title="">Unsaved</a></li>
-                <li><a href="#" title="">Unbid</a></li>
-                <li><a href="#" title="">Close</a></li>
                 <li><a href="#" title="">Hide</a></li>
+                <li><a href="#" title="">Report</a></li>
             </ul>
         </div>
     </div>
@@ -95,7 +94,7 @@
                         class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
                 </li>
             @endif
-            <li><a href="#" title="" class="com"><img
+            <li><a href="{{ route('posts.show', ['post'=>$post->id]) }}" title="" class="com"><img
                         src="{{ asset('home/images/com.png') }}" alt="">
                     Comment {{ $post->comments->count() }}</a></li>
         </ul>
