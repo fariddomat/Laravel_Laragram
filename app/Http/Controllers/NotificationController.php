@@ -19,8 +19,8 @@ class NotificationController extends Controller
 
         $details = [
             'greeting' => 'Hi Artisan',
-            'body' => 'This is my first notification from RajTechnologies.com',
-            'thanks' => 'Thank you for using RajTechnologies.com tuto!',
+            'body' => 'This is my first notification from ',
+            'thanks' => 'Thank you for using this!',
             'actionText' => 'View My Site',
             'actionURL' => url('/'),
             'order_id' => 101
