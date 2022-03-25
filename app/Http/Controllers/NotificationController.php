@@ -2,11 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Notification;
+// use Notification;
+use App\Notifications\UserNotification;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Notifications\Notification as NotificationsNotification;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 
 class NotificationController extends Controller
 {
+
+    public function sendNotification()
+    {
+        $user = Auth::user();
+
+        $details = [
+            'greeting' => 'Hi Artisan',
+            'body' => 'This is my first notification from RajTechnologies.com',
+            'thanks' => 'Thank you for using RajTechnologies.com tuto!',
+            'actionText' => 'View My Site',
+            'actionURL' => url('/'),
+            'order_id' => 101
+        ];
+
+        Notification::send($user, new UserNotification($details));
+
+        dd('done');
+    }
     /**
      * Display a listing of the resource.
      *

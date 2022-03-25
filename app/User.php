@@ -99,11 +99,7 @@ class User extends Authenticatable
         return $this->belongsTo(College::class);
     }
 
-    //user notification -------------------------------------------
-    public function notifiy()
-    {
-        return $this->hasMany(Notification::class);
-    }
+    
 
     //relations -------------------------------------------
     public function following()

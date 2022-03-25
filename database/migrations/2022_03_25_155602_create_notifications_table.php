@@ -14,18 +14,13 @@ class CreateNotificationsTable extends Migration
     public function up()
     {
         Schema::create('notifications', function (Blueprint $table) {
-            $table->engine = "InnoDB";
-            $table->bigIncrements('id');
-            $table->string('title');
-            $table->string('link')->nullable();
-            $table->unsignedBigInteger('user_id');
+            $table->uuid('id')->primary();
+            $table->string('type');
+            $table->morphs('notifiable');
+            $table->text('data');
+            $table->timestamp('read_at')->nullable();
             $table->timestamps();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
         });
-
-
-
     }
 
     /**

@@ -99,54 +99,31 @@
                         </a>
                         <div class="notification-box">
                             <div class="nt-title">
-                                <h4>Setting</h4>
-                                <a href="#" title="">Clear all</a>
+                                <h4>You have <strong class="text-primary">{{auth()->user()->unreadNotifications->count()}}</strong> notifications.
+                                    @if (auth()->user()->unreadNotifications->count())
+                                      <a class="text-primary" href="{{ route('databasenotifications.markasread') }}">Mark All as Read</a>
+                                    @endif</h4>
                             </div>
                             <div class="nott-list">
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img1.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                    <!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img2.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                    <!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img3.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                    <!--notification-info -->
-                                </div>
-                                <div class="notfication-details">
-                                    <div class="noty-user-img">
-                                        <img src="images/resources/ny-img2.png" alt="">
-                                    </div>
-                                    <div class="notification-info">
-                                        <h3><a href="#" title="">Jassica William</a> Comment on your project.
-                                        </h3>
-                                        <span>2 min ago</span>
-                                    </div>
-                                    <!--notification-info -->
-                                </div>
+
+
+                                @foreach (auth()->user()->notifications->take(5) as $notification)
+                                <a href="#" class="list-group-item">
+                                      <div class="d-flex justify-content-between align-items-center">
+                                        <div class="text-right text-muted">
+                                          <small>
+                                            @if (is_null($notification->read_at))
+                                              <i class="fa fa-info-circle text-primary" aria-hidden="true"></i>
+                                            @else
+                                              <i class="fa fa-check text-success" aria-hidden="true"></i>
+                                            @endif
+                                          </small>
+                                          <small>{{$notification->created_at->diffforhumans()}} ago</small>
+                                        </div>
+                                      </div>
+                                      <p class="text-sm mb-0">{{$notification->data['body']}}</p>
+                                </a>
+                                @endforeach
                                 <div class="view-all-nots">
                                     <a href="#" title="">View All Notification</a>
                                 </div>
