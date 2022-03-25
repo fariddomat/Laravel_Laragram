@@ -17,6 +17,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/tailwind.min.css') }}">
+    <link type="text/css" href="{{ asset('admin/theme-assets/fonts/flag-icon-css/css/flag-icon.min.css') }}"
+    rel="stylesheet">
     <!--  Swiper's CSS -->
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
     <style>

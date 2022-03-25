@@ -2,7 +2,8 @@
     <div class="container">
         <div class="header-data">
             <div class="logo">
-                <a href="/" title=""><img  style="max-width: 35px !important" src="{{ asset('home/images/logo.png') }}" alt=""></a>
+                <a href="/" title=""><img style="max-width: 35px !important" src="{{ asset('home/images/logo.png') }}"
+                        alt=""></a>
             </div>
             <!--logo end-->
             <div class="search-bar">
@@ -30,12 +31,6 @@
                         <a href="{{ route('projects') }}" title="">
                             <span><img src="{{ asset('home/images/icon3.png') }}" alt=""></span>
                             @lang('site.projects')
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{ route('profile') }}" title="">
-                            <span><img src="{{ asset('home/images/icon4.png') }}" alt=""></span>
-                            @lang('site.profile')
                         </a>
                     </li>
                     <li>
@@ -160,6 +155,25 @@
                         </div>
                         <!--notification-box end-->
                     </li>
+                    <li><a class="not-box-open" id="dropdown-flag" href="#" data-toggle="dropdown"
+                            aria-haspopup="true" aria-expanded="false">
+                            @if (app()->getLocale() == 'ar')
+                                <i class="flag-icon flag-icon-sy"></i>
+                            @else
+                                <i class="flag-icon flag-icon-us"></i>
+                            @endif
+                            <span class="selected-language"></span>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown-flag">
+                            <div class="arrow_box"><a class="dropdown-item"
+                                    href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}"><i
+                                        class="flag-icon flag-icon-us"></i> @lang('site.English')</a><a
+                                    class="dropdown-item"
+                                    href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}"><i
+                                        class="flag-icon flag-icon-sy"></i>
+                                    @lang('site.Arabic')</a></div>
+                        </div>
+                    </li>
                 </ul>
             </nav>
             <!--nav end-->
@@ -170,47 +184,27 @@
             <div class="user-account" style="width: 125px !important;">
                 <div class="user-info">
                     <img src="http://via.placeholder.com/30x30" alt="">
-                    <a href="#" title="">{{Auth::user()->fname}}</a>
+                    <a href="#" title="">{{ Auth::user()->fname }}</a>
                     <i class="la la-sort-down"></i>
                 </div>
                 <div class="user-account-settingss">
-                    <h3>Online Status</h3>
-                    <ul class="on-off-status">
-                        <li>
-                            <div class="fgt-sec">
-                                <input type="radio" name="cc" id="c5">
-                                <label for="c5">
-                                    <span></span>
-                                </label>
-                                <small>Online</small>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="fgt-sec">
-                                <input type="radio" name="cc" id="c6">
-                                <label for="c6">
-                                    <span></span>
-                                </label>
-                                <small>Offline</small>
-                            </div>
-                        </li>
-                    </ul>
-                    <h3>Custom Status</h3>
-                    <div class="search_form">
-                        <form>
-                            <input type="text" name="search">
-                            <button type="submit">Ok</button>
-                        </form>
-                    </div>
-                    <!--search_form end-->
-                    <h3>Setting</h3>
+                    <h3>{{ Auth::user()->fullName() }}</h3>
+
                     <ul class="us-links">
-                        <li><a href="profile-account-setting.html" title="">Account Setting</a></li>
-                        <li><a href="#" title="">Privacy</a></li>
-                        <li><a href="#" title="">Faqs</a></li>
-                        <li><a href="#" title="">Terms & Conditions</a></li>
+                        <li><a href="{{ route('profile') }}" title=""><i class="fa fa-user"></i>
+                                @lang('site.viewProfile')</a></li>
+                        <li><a href="#" title=""><i class="fa fa-cog"></i> Account Setting</a></li>
+                        <li><a href="#" title=""><i class="fa fa-book"></i> Terms & Conditions</a></li>
                     </ul>
-                    <h3 class="tc"><a href="sign-in.html" title="">Logout</a></h3>
+                    <h3 class="tc"><a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                            <i class="ft-power"></i> @lang('site.logout')
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </h3>
                 </div>
                 <!--user-account-settingss end-->
             </div>
