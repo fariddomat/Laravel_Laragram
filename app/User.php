@@ -99,7 +99,7 @@ class User extends Authenticatable
         return $this->belongsTo(College::class);
     }
 
-    
+
 
     //relations -------------------------------------------
     public function following()
@@ -138,5 +138,10 @@ class User extends Authenticatable
         return $this->hasMany(CommentLike::class);
     }
 
+    // pusher message
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
+    }    
 
 }

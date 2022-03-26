@@ -56,13 +56,16 @@ Route::group([
         auth()->user()->unreadNotifications->markAsRead();
         return redirect()->back();
     })->name('databasenotifications.markasread');
-    
+
     Route::get('send', 'NotificationController@sendNotification');
     //mark as read
     Route::get('DatabaseNotificationsMarkasRead', function () {
         auth()->user()->unreadNotifications->markAsRead();
         return redirect()->back();
     })->name('databasenotifications.markasread');
+
+
+
 
     // Like Or Dislike
 
@@ -78,3 +81,8 @@ Route::group(['middleware' => 'auth'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+   // pusher message
+   Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
+   Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+   Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
