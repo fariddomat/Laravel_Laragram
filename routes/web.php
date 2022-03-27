@@ -82,7 +82,19 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-   // pusher message
-   Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
-   Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
-   Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+Route::group([
+    'middleware' => 'auth'
+], function () {
+    // pusher message
+    Route::get('/chat', [App\Http\Controllers\ChatsController::class, 'index']);
+    Route::get('/messages', [App\Http\Controllers\ChatsController::class, 'fetchMessages']);
+    Route::post('/messages', [App\Http\Controllers\ChatsController::class, 'sendMessage']);
+
+    Route::get('/private', 'MessageController@private')->name('private');
+    Route::get('/users', 'MessageController@users')->name('users');
+
+    Route::get('messages', 'MessageController@fetchMessages');
+    Route::post('messages', 'MessageController@sendMessage');
+    Route::get('/private-messages/{user}', 'MessageController@privateMessages')->name('privateMessages');
+    Route::post('/private-messages/{user}', 'MessageController@sendPrivateMessage')->name('privateMessages.store');
+});
