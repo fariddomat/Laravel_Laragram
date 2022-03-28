@@ -2,7 +2,7 @@
  <v-app>
   <v-layout row>
     <v-flex class="online-users" xs3>
-      <v-list>
+      <v-list style="width:100%">
         <v-list-item
           v-for="friend in friends"
           :color="friend.id == activeFriend ? 'green' : ''"
