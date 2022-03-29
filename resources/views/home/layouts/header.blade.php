@@ -44,7 +44,7 @@
                             <span><img src="{{ asset('home/images/icon6.png') }}" alt=""></span>
                             @lang('site.messages')
                         </a>
-                       
+
                         <!--notification-box end-->
                     </li>
                     <li>
@@ -123,6 +123,10 @@
                     <h3>{{ Auth::user()->fullName() }}</h3>
 
                     <ul class="us-links">
+                        @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
+                        <li><a href="{{ route('admin.dashboard') }}" title=""><i class="fa fa-dashboard"></i>
+                            @lang('site.dashboard')</a></li>
+                        @endif
                         <li><a href="{{ route('profile') }}" title=""><i class="fa fa-user"></i>
                                 @lang('site.viewProfile')</a></li>
                         <li><a href="#" title=""><i class="fa fa-cog"></i> Account Setting</a></li>

@@ -12,16 +12,27 @@ return [
     'truncate_tables' => true,
 
     'roles_structure' => [
+        'super_admin' => [
+            'settings' => 'c,r,u,d',
+            'users' => 'c,r,u,d',
+            'posts' => 'c,r,u,d',
+            'profile' => 'r,u',
+            'roles' => 'c,r,u,d',
+        ],
         'admin' => [
             'settings' => 'c,r,u,d',
             'users' => 'c,r,u,d',
             'posts' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
+        'teacher' => [
+            'posts' => 'c,r,u,d',
+            'profile' => 'r,u',
+        ],
         'user' => [
             'posts' => 'c,r,u,d',
             'profile' => 'r,u',
-        ]
+        ], 
     ],
 
     'permissions_map' => [

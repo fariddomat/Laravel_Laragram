@@ -21,12 +21,20 @@ class UsersDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">'.\Lang::get('site.show').'</a> ';
-                        $btn = $btn."<a href='javascript:void(0)' class='edit btn btn-primary btn-sm'>".\Lang::get('site.edit')."</a> ";
-                        $btn = $btn.'<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">'.\Lang::get('site.delete').'</a>';
+
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', $btn);
+            ->addColumn('action',function ($row) { $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
+                $btn = $btn . "<a href='users/$row->id/edit' class='edit btn btn-primary btn-sm'>" . \Lang::get('site.edit') . "</a> ";
+                $btn = $btn . '
+                <form action=" users/'.$row->id.'" method="POST">
+                '.csrf_field().'
+                '.method_field("DELETE").'
+                <button type="submit" class="edit btn btn-danger btn-sm">' . \Lang::get('site.delete') .
+                '</button>
+                </form>';
+            return $btn;
+            });
     }
 
     /**
@@ -81,7 +89,7 @@ class UsersDataTable extends DataTable
             Column::make("id")->title(\Lang::get('site.id')),
             Column::make('username')->title(\Lang::get('site.name')),
             Column::make('email')->title(\Lang::get('site.email')),
-            Column::make('posts_count')->title(\Lang::get('site.posts')),
+            Column::make('posts_count')->title(\Lang::get('site.posts'))->searchable(false),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

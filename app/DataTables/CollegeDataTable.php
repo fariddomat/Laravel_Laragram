@@ -87,7 +87,7 @@ class CollegeDataTable extends DataTable
         return [
             Column::make("id")->title(\Lang::get('site.id')),
             Column::make('name')->title(\Lang::get('site.name')),
-            Column::make('users_count')->title(\Lang::get('site.users')),
+            Column::make('users_count')->title(\Lang::get('site.users'))->searchable(false),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

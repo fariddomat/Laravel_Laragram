@@ -270,7 +270,7 @@
                                         @foreach ($projects as $project)
                                             <div class="post-info">
                                                 <div class="post-details">
-                                                    <a href="{{ route('posts.show', ['post'=>$project->id]) }}">
+                                                    <a href="{{ route('posts.show', ['post' => $project->id]) }}">
                                                         <h3>{{ $project->user->fullName() }}</h3>
                                                         <p>{{ Str::of($project->content)->limit(25) }}</p>
                                                     </a>
@@ -318,7 +318,9 @@
                                 <select name="type" id="type">
                                     <option selected value="post">Post</option>
                                     <option value="news">News</option>
-                                    <option value="lecture">Lecutre</option>
+                                    @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
+                                        <option value="lecture">Lecutre</option>
+                                    @endif
                                     <option value="project">Project</option>
                                 </select>
                             </div>
@@ -394,7 +396,9 @@
                                 <select name="type" id="mediatype">
                                     <option selected value="post">Post</option>
                                     <option value="news">News</option>
-                                    <option value="lecture">Lecutre</option>
+                                    @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
+                                        <option value="lecture">Lecutre</option>
+                                    @endif
                                     <option value="project">Project</option>
                                 </select>
                             </div>
