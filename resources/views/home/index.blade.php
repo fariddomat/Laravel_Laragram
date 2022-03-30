@@ -317,7 +317,9 @@
                             <div class="inp-field">
                                 <select name="type" id="type">
                                     <option selected value="post">Post</option>
-                                    <option value="news">News</option>
+                                    @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
+                                        <option value="news">News</option>
+                                    @endif
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
                                         <option value="lecture">Lecutre</option>
                                     @endif
@@ -395,7 +397,9 @@
                             <div class="inp-field">
                                 <select name="type" id="mediatype">
                                     <option selected value="post">Post</option>
-                                    <option value="news">News</option>
+                                    @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
+                                        <option value="news">News</option>
+                                    @endif
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
                                         <option value="lecture">Lecutre</option>
                                     @endif
