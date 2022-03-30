@@ -216,6 +216,10 @@
         <link rel="stylesheet" href="{{ asset('admin/assets/css/rtl.css') }}">
         {{-- <link rel="stylesheet" href="{{ asset('dist/css/rtl.css') }}"> --}}
         <style>
+
+            .sd-title h3{
+                width: 100%
+            }
             .main-menu {
                 direction: rtl;
                 text-align: right;

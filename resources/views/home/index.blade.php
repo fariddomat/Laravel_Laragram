@@ -145,7 +145,6 @@
                                 <div class="suggestions full-width">
                                     <div class="sd-title">
                                         <h3>@lang('site.suggestions')</h3>
-                                        <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <!--sd-title end-->
                                     <div class="suggestions-list">
@@ -203,8 +202,11 @@
                                     <!--post-st end-->
                                 </div>
                                 <!--post-topbar end-->
-
-
+                                @if ($errors->any())
+                                <div class="post-topbar">
+                                    @include('home.layouts._error')
+                                </div>
+                                @endif
                                 <div class="posts-section">
                                     <div class="scrolling-pagination">
 
@@ -239,7 +241,6 @@
                                 <div class="widget widget-posts" style="margin-bottom: 15px;">
                                     <div class="sd-title">
                                         <h3>@lang('site.news')</h3>
-                                        <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="posts-list">
                                         @foreach ($news as $item)
@@ -264,7 +265,6 @@
                                 <div class="widget widget-posts">
                                     <div class="sd-title">
                                         <h3>@lang('site.projects')</h3>
-                                        <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <div class="posts-list">
                                         @foreach ($projects as $project)

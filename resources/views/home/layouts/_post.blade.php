@@ -3,7 +3,7 @@
         <div class="usy-dt">
             <img src="http://via.placeholder.com/50x50" alt="">
             <div class="usy-name">
-                <h3>{{ $post->user->fname }} {{ $post->user->lname }}
+                <h3><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a>
                 </h3>
                 <span><img src="{{ asset('home/images/clock.png') }}"
                         alt="">{{ $post->created_at->diffforhumans() }}
@@ -24,14 +24,14 @@
     <div class="epi-sec">
         <ul class="descp">
             <li><img src="{{ asset('home/images/icon8.png') }}"
-                    alt=""><span>{{ $post->user->username }}</span></li>
+                    alt=""><span><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->username }}</a></span></li>
             <li><img src="{{ asset('home/images/icon9.png') }}"
                     alt=""><span>{{ $post->user->college->name }}</span>
             </li>
         </ul>
         <ul class="bk-links">
             <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
-            <li><a href="#" title=""><i class="la la-envelope"></i></a></li>
+            {{-- <li><a href="#" title=""><i class="la la-envelope"></i></a></li> --}}
         </ul>
     </div>
     <div class="post_descp">

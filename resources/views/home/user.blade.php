@@ -45,7 +45,6 @@
 
 
                                             </li>
-                                            <li><a href="#" title="" class="hre">@lang('site.hire')</a></li>
                                         </ul>
                                         <ul class="flw-status">
                                             <li>
@@ -120,7 +119,7 @@
                                             <div class="suggestion-usd">
                                                 <img src="http://via.placeholder.com/35x35" alt="">
                                                 <div class="sgt-text">
-                                                    <h4>{{ $item->fname }} {{ $item->lname }}</h4>
+                                                    <h4>{{ $item->fullName() }}</h4>
                                                     <span>{{ $item->username }}</span>
                                                 </div>
                                                 <span><a href="{{ route('user.show', ['user' => $item->username]) }}"><i
@@ -138,7 +137,7 @@
                         <div class="col-lg-6">
                             <div class="main-ws-sec">
                                 <div class="user-tab-sec">
-                                    <h3>{{ $user->fname }} {{ $user->lname }} </h3>
+                                    <h3>{{ $user->fullName() }}</h3>
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;
