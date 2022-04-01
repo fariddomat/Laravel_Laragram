@@ -3,6 +3,8 @@
 
 @section('content')
 
+    <main>
+        <div class="main-section">
     <section class="forum-page">
         <div class="container">
             <div class="forum-questions-sec">
@@ -70,7 +72,9 @@
                                             @endif
 
                                         </ul>
-                                        <a><i class="la la-share"></i>shares
+                                        <a
+                                        data-id="{{ $post->id }}"
+                                        data-content="{{ $post->content }}" href="#" class="share-post-btn"><i class="la la-share"></i>shares
                                             {{ $post->shares->count() }}</a>
                                     </div>
                                     <div class="comment-section">
@@ -173,6 +177,11 @@
             <!--forum-questions-sec end-->
         </div>
     </section>
+        </div>
+    </main>
     <!--forum-page end-->
+
+    {{-- shares --}}
+    @include('home.layouts._share')
 
 @endsection

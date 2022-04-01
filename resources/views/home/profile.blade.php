@@ -563,5 +563,8 @@
     </div>
     <!--theme-layout end-->
 
+    {{-- Share post --}}
+    @include('home.layouts._share')
+
 
 @endsection

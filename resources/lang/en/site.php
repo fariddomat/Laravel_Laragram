@@ -148,6 +148,9 @@ return [
 
     'save'=> 'Save',
     'cancel'=> 'Cancel',
+    'share'=> 'Share',
+    'comment'=> 'Comment',
+    'comments'=> 'Comments',
 
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',

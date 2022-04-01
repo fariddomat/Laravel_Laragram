@@ -12,7 +12,7 @@ class Share extends Model
      * @var array
      */
     protected $fillable = [
-        'post_id', 'user_id'
+        'post_id', 'user_id', 'content'
     ];
 
     //relations -------------------------------------------

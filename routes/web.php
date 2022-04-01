@@ -45,6 +45,8 @@ Route::group([
     Route::post('/comment/store', 'CommentController@store')->name('comment.add');
     Route::post('/comment/replyStore', 'CommentController@replyStore')->name('comment.reply');
     Route::get('/comment/destroy/{id}', 'CommentController@destroy')->name('comment.destroy');
+
+    Route::post('share', 'PostController@share')->name('posts.share');
     // Route::get('/comment/report/{id}', 'CommentController@report')->name('comment.report');
 
 

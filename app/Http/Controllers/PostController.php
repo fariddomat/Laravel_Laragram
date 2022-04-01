@@ -6,6 +6,7 @@ use App\File;
 use App\Lecture;
 use App\Like;
 use App\Post;
+use App\Share;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,25 @@ class PostController extends Controller
         ]);
     }
 
+
+    // Share Post
+    public function share(Request $request)
+    {
+        $request->validate([
+            // 'content' => 'required',
+            'post_id'=>'required'
+        ]);
+
+        Share::create([
+            'content'=>$request->content,
+            'post_id'=>$request->post_id,
+            'user_id'=>Auth::id()
+        ]);
+
+        Session::flash('success', 'Successfully share !');
+        return redirect()->back();
+
+    }
     /**
      * Display a listing of the resource.
      *

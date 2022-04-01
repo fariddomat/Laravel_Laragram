@@ -96,9 +96,11 @@
             @endif
             <li><a href="{{ route('posts.show', ['post'=>$post->id]) }}" title="" class="com"><img
                         src="{{ asset('home/images/com.png') }}" alt="">
-                    Comment {{ $post->comments->count() }}</a></li>
+                    @lang('site.comment') {{ $post->comments->count() }}</a></li>
         </ul>
-        <a><i class="la la-share"></i>shares
+        <a
+        data-id="{{ $post->id }}"
+        data-content="{{ $post->content }}" href="#" class="share-post-btn"><i class="la la-share"></i>shares
             {{ $post->shares->count() }}</a>
     </div>
 </div>

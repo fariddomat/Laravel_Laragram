@@ -152,7 +152,9 @@ return [
 
     'save'=> 'حفظ',
     'cancel'=> 'إلغاء',
-
+    'share'=> 'مشاركة',
+    'comment'=> 'تعليق',
+    'comments'=> 'التعليقات',
 
     'personalinfo'=> 'المعلومات الشخصية',
     'otherinfo'=> 'تفاصيل أخرى',

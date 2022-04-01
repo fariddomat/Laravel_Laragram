@@ -120,6 +120,28 @@
   </script>
 
 @stack('lecture-scripts')
+<script>
+     // Share Post
+     $(".share-post-btn").on("click", function(){
+        $(".post-popup.share-post").addClass("active");
+        $(".wrapper").addClass("overlay");
+        return false;
+    });
 
+    $(".post-project > a").on("click", function(){
+        $(".post-popup.share-post").removeClass("active");
+        $(".wrapper").removeClass("overlay");
+        return false;
+    });
+
+    $('.share-post-btn').on('click', function(e) {
+
+       var content    = $(this).data('content');
+       var post_id    = $(this).data('id');
+        $(".pcontent").text(content);
+        document.getElementById("post_id").value=post_id;
+        console.log(post_id);
+});
+</script>
 {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
 

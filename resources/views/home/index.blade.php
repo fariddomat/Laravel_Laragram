@@ -458,11 +458,18 @@
         </div>
         <!--post-project end-->
     </div>
+
     <!--post-project-popup end-->
+
+    {{-- Share post --}}
+    @include('home.layouts._share')
+
 @endsection
 
 
 @push('lecture-scripts')
+
+
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -556,4 +563,8 @@
             });
         });
     </script>
+
+
+
+
 @endpush
