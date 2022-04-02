@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class UserNotification extends Notification
+class UserNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $details;
@@ -30,9 +30,16 @@ class UserNotification extends Notification
     public function via($notifiable)
     {
         // return ['mail', 'database'];
-        return ['database'];
+        return ['database', 'broadcast'];
     }
 
+    public function toDatabase($notifiable)
+    {
+        return [
+            'user_id' => $this->details['user_id'],
+            'body' => $this->details['body'],
+        ];
+    }
     /**
      * Get the mail representation of the notification.
      *
@@ -68,9 +75,12 @@ class UserNotification extends Notification
     {
         return [
             //'data' => 'this is my notification',
-            'data' => "Confirm Order Id:- " . $this->details['order_id'],
-            'body' => $this->details['body'],
-
+            'id' => $this->id,
+            'read_at' => null,
+            'data' => [
+                'follower_id' => $this->details['user_id'],
+                'data' => $this->details['data'],
+            ],
         ];
     }
 }

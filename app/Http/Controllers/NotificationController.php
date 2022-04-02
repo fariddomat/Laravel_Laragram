@@ -23,7 +23,9 @@ class NotificationController extends Controller
             'thanks' => 'Thank you for using this!',
             'actionText' => 'View My Site',
             'actionURL' => url('/'),
-            'order_id' => 101
+            'order_id' => 101,
+            'user_id'=>1,
+            'followe_name'=>'farid'
         ];
 
         Notification::send($user, new UserNotification($details));

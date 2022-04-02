@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
+use App\Notifications\UserNotification;
 use App\Post;
+use App\User;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -19,6 +21,17 @@ class CommentController extends Controller
         $post = Post::find($request->post_id);
 
         $post->comments()->save($comment);
+
+        $user=User::find($post->user_id);
+
+
+        $details = [
+            'body' =>  $request->user()->fullName(). ' has commented on your post',
+            'data' => "",
+            'actionURL' => url("/posts/".$post->id),
+            'user_id'=>$post->user_id,
+        ];
+        $user->notify(new UserNotification($details));
         return back();
     }
 

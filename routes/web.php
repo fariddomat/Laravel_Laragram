@@ -52,6 +52,7 @@ Route::group([
 
 
     // notification
+    Route::get('/notifications', 'UserController@notifications');
     Route::get('send', 'NotificationController@sendNotification');
     //mark as read
     Route::get('DatabaseNotificationsMarkasRead', function () {
@@ -99,4 +100,9 @@ Route::group([
     Route::post('messages', 'MessageController@sendMessage');
     Route::get('/private-messages/{user}', 'MessageController@privateMessages')->name('privateMessages');
     Route::post('/private-messages/{user}', 'MessageController@sendPrivateMessage')->name('privateMessages.store');
+});
+
+Route::get('test', function () {
+    event(new App\Events\PostLiked('Someone'));
+    return "Event has been sent!";
 });

@@ -49,7 +49,13 @@
                     </li>
                     <li>
                         <a href="#" title="" class="not-box-open">
-                            <span><img src="{{ asset('home/images/icon7.png') }}" alt=""></span>
+                            <span><img src="{{ asset('home/images/icon7.png') }}" alt="">
+                                @if (auth()->user()->unreadNotifications->count())
+                                <i class="badge badge-warning" style="position: relative;
+                                top: -17px;
+                                left: -10px;
+                                color: blue;">{{auth()->user()->unreadNotifications->count()}}</i>
+                              @endif</span>
                             @lang('site.notifications')
                         </a>
                         <div class="notification-box">
