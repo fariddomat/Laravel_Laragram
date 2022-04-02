@@ -133,7 +133,7 @@
                     </div>
                     <div class="usy-info">
                         <h3>John Doe</h3>
-                        <span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
+                        <span>Lorem ipsum dolor <img src="{{ asset('home/images/smley.png') }}" alt=""></span>
                     </div>
                     <div class="ct-time">
                         <span>11:39 PM</span>
@@ -145,7 +145,7 @@
                     </div>
                     <div class="usy-info">
                         <h3>John Doe</h3>
-                        <span>Lorem ipsum dolor <img src="images/smley.png" alt=""></span>
+                        <span>Lorem ipsum dolor <img src="{{ asset('home/images/smley.png') }}" alt=""></span>
                     </div>
                     <div class="ct-time">
                         <span>0.28 AM</span>

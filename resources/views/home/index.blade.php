@@ -232,7 +232,7 @@
                         <div class="col-lg-3 pd-right-none no-pd">
                             <div class="right-sidebar">
                                 <div class="widget widget-about" style="margin-bottom: 15px;">
-                                    <img src="images/wd-logo.png" alt="">
+                                    
                                     <h3>@lang('site.title')</h3>
                                     <span>@lang('site.about')</span>
 
