@@ -69,7 +69,7 @@
 
 
                                 @foreach (auth()->user()->notifications->take(5) as $notification)
-                                <a href="#" class="list-group-item">
+                                <a href="{{$notification->data['actionURL']}}" class="list-group-item">
                                       <div class="d-flex justify-content-between align-items-center">
                                         <div class="text-right text-muted">
                                           <small>

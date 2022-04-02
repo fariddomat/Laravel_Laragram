@@ -50,6 +50,16 @@ class CommentController extends Controller
 
         $post->comments()->save($reply);
 
+        $user=User::find($post->user_id);
+
+
+        $details = [
+            'body' =>  $request->user()->fullName(). ' has repled on comment on your post',
+            'data' => "",
+            'actionURL' => url("/posts/".$post->id),
+            'user_id'=>$post->user_id,
+        ];
+        $user->notify(new UserNotification($details));
         return back();
     }
 

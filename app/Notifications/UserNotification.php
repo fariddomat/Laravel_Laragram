@@ -38,6 +38,7 @@ class UserNotification extends Notification implements ShouldQueue
         return [
             'user_id' => $this->details['user_id'],
             'body' => $this->details['body'],
+            'actionURL' => $this->details['actionURL'],
         ];
     }
     /**
@@ -77,6 +78,9 @@ class UserNotification extends Notification implements ShouldQueue
             //'data' => 'this is my notification',
             'id' => $this->id,
             'read_at' => null,
+
+            'actionURL' => $this->details['actionURL'],
+            'user_id' => $this->details['user_id'],
             'data' => [
                 'follower_id' => $this->details['user_id'],
                 'data' => $this->details['data'],

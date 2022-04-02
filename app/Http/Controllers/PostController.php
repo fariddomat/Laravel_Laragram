@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\File;
 use App\Lecture;
 use App\Like;
+use App\Notifications\UserNotification;
 use App\Post;
 use App\Share;
 use App\User;
@@ -21,15 +22,37 @@ class PostController extends Controller
         $data = new Like;
         $data->post_id = $request->post;
         $data->user_id = Auth::user()->id;
-        $like = Like::where('post_id',$data->post_id)->count();
-        if ($like==0) {
+        $like = Like::where('post_id', $data->post_id)->count();
+        if ($like == 0) {
             $data->save();
+            $user = User::find($data->user_id);
+            $details = [
+                'body' =>  $user->fullName() . ' has liked your post',
+                'data' => "",
+                'actionURL' => url("/posts/" . $data->post_id),
+                'user_id' => $data->user_id,
+            ];
+
+            $post = Post::find($data->post_id);
+            $user2 = User::find($post->user_id);
+            $user2->notify(new UserNotification($details));
             return response()->json([
                 'bool' => 'like'
             ]);
         } else {
             $like = Like::where('post_id', $data->post_id)->where('user_id', $data->user_id);
             $like->delete();
+            $user = User::find($data->user_id);
+            $details = [
+                'body' =>  $user->fullName() . ' has liked your post',
+                'data' => "",
+                'actionURL' => url("/posts/" . $data->post_id),
+                'user_id' => $data->user_id,
+            ];
+
+            $post = Post::find($data->post_id);
+            $user2 = User::find($post->user_id);
+            $user2->notify(new UserNotification($details));
             return response()->json([
                 'bool' => 'dislike'
             ]);
@@ -45,18 +68,17 @@ class PostController extends Controller
     {
         $request->validate([
             // 'content' => 'required',
-            'post_id'=>'required'
+            'post_id' => 'required'
         ]);
 
         Share::create([
-            'content'=>$request->content,
-            'post_id'=>$request->post_id,
-            'user_id'=>Auth::id()
+            'content' => $request->content,
+            'post_id' => $request->post_id,
+            'user_id' => Auth::id()
         ]);
 
         Session::flash('success', 'Successfully share !');
         return redirect()->back();
-
     }
     /**
      * Display a listing of the resource.
@@ -87,13 +109,13 @@ class PostController extends Controller
     public function store(Request $request)
     {
         // dd($request->type);
-        if ($request->type=='lecture') {
+        if ($request->type == 'lecture') {
             $request->validate([
-            'content' => 'required',
-            'type' => 'required',
-            'privacy' => 'required',
-            'course' => 'required',
-        ]);
+                'content' => 'required',
+                'type' => 'required',
+                'privacy' => 'required',
+                'course' => 'required',
+            ]);
         } else {
             $request->validate([
                 'content' => 'required',
@@ -104,13 +126,13 @@ class PostController extends Controller
 
         $allowedfileExtension = [];
         if ($request->type == "post" || $request->type == "news") {
-            $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv','txt'];
+            $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv', 'txt'];
         } elseif ($request->type == "lecture" || $request->type == "project") {
-            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx','txt'];
+            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx', 'txt'];
         }
 
         // dd($request->all());
-        $post="";
+        $post = "";
         if ($request->hasFile('files')) {
 
             $files = $request->file('files');
@@ -152,13 +174,13 @@ class PostController extends Controller
             ]);
         }
 
-        if($request->type=='lecture'){
-            $lectureCount=Lecture::where('course_id',$request->course)->count();
-            $lectureCount=$lectureCount+1;
-            $lecture=Lecture::create([
-                'title'=>'Lecture '.$lectureCount,
-                'course_id'=>$request->course,
-                'post_id'=>$post->id,
+        if ($request->type == 'lecture') {
+            $lectureCount = Lecture::where('course_id', $request->course)->count();
+            $lectureCount = $lectureCount + 1;
+            $lecture = Lecture::create([
+                'title' => 'Lecture ' . $lectureCount,
+                'course_id' => $request->course,
+                'post_id' => $post->id,
 
             ]);
         }
@@ -177,7 +199,7 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        $post=Post::find($id);
+        $post = Post::find($id);
         // dd($post);
         return view('home.singlePost', compact('post'));
     }
