@@ -13,7 +13,7 @@
                             <div class="cmp-info">
                                 <div class="cm-logo">
                                     <img src="" alt="">
-                                    <p>Laragram, is a global freelancing platform and social networking where studensts
+                                    <p>Laragram, is a global platform and social networking where studensts
                                         and professors connect and collaborate remotely</p>
                                 </div>
                                 <!--cm-logo end-->
@@ -63,10 +63,10 @@
                                                     </span>
                                                 @enderror
                                             </div>
-                                            <div class="col-lg-12 no-pdd">
+                                            {{-- <div class="col-lg-12 no-pdd">
                                                 <div class="checky-sec">
                                                     <div class="fgt-sec">
-                                                        <input type="checkbox" name="cc" id="c1">
+                                                        <input type="checkbox" name="remember_me" id="c1">
                                                         <label for="c1">
                                                             <span></span>
                                                         </label>
@@ -75,21 +75,13 @@
                                                     <!--fgt-sec end-->
                                                     <a href="#" title="">Forgot Password?</a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
                                             <div class="col-lg-12 no-pdd">
                                                 <button type="submit" value="submit">Sign in</button>
                                             </div>
                                         </div>
                                     </form>
-                                    <div class="login-resources">
-                                        <h4>Login Via Social Account</h4>
-                                        <ul>
-                                            <li><a href="#" title="" class="fb"><i
-                                                        class="fa fa-facebook"></i>Login Via Facebook</a></li>
-                                            <li><a href="#" title="" class="tw"><i
-                                                        class="fa fa-twitter"></i>Login Via Twitter</a></li>
-                                        </ul>
-                                    </div>
+
                                     <!--login-resources end-->
                                 </div>
                                 <!--sign_in_sec end-->
@@ -141,19 +133,7 @@
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="checky-sec st2">
-                                                        <div class="fgt-sec">
-                                                            <input type="checkbox" name="cc" id="c2">
-                                                            <label for="c2">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Yes, I understand and agree to the workwise Terms &
-                                                                Conditions.</small>
-                                                        </div>
-                                                        <!--fgt-sec end-->
-                                                    </div>
-                                                </div>
+
                                                 <div class="col-lg-12 no-pdd">
                                                     <button type="submit" value="submit">Get Started</button>
                                                 </div>
@@ -190,19 +170,7 @@
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="checky-sec st2">
-                                                        <div class="fgt-sec">
-                                                            <input type="checkbox" name="cc" id="c3">
-                                                            <label for="c3">
-                                                                <span></span>
-                                                            </label>
-                                                            <small>Yes, I understand and agree to the workwise Terms &
-                                                                Conditions.</small>
-                                                        </div>
-                                                        <!--fgt-sec end-->
-                                                    </div>
-                                                </div>
+
                                                 <div class="col-lg-12 no-pdd">
                                                     <button type="submit" value="submit">Get Started</button>
                                                 </div>
