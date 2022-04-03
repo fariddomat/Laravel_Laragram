@@ -12,7 +12,8 @@
                                 @foreach ($courses as $course)
                                     <div class="usr-question">
                                         <div class="usr_quest">
-                                            <h3><i class="fa fa-book"></i> {{ $course->name }}</h3>
+                                            <h3><i class="fa fa-book"></i><a href="{{ route('course', $course->name) }}
+                                                ">{{ $course->name }}</a> </h3>
 
                                         </div>
                                         <!--usr_quest end-->
@@ -27,7 +28,6 @@
                                             </ul>
                                             <ul class="bk-links">
                                                 <li><a href="{{ route('course', $course->name) }}" title=""><i class="la la-link"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-share"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>

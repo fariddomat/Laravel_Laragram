@@ -23,7 +23,7 @@ class PostsDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action',function ($row) { $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
+            ->addColumn('action',function ($row) { $btn = "<a href='/posts/$row->id' class='edit btn btn-info btn-sm'>" . \Lang::get('site.show') . '</a> ';
                 $btn = $btn . '
                 <form action=" posts/'.$row->id.'" method="POST">
                 '.csrf_field().'

@@ -24,8 +24,7 @@ class CollegeDataTable extends DataTable
 
         return datatables()
             ->eloquent($query)
-            ->addColumn('action',function ($row) { $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
-                $btn = $btn . "<a href='colleges/$row->id/edit' class='edit btn btn-primary btn-sm'>" . \Lang::get('site.edit') . "</a> ";
+            ->addColumn('action',function ($row) { $btn =  "<a href='colleges/$row->id/edit' class='edit btn btn-primary btn-sm'>" . \Lang::get('site.edit') . "</a> ";
                 $btn = $btn . '
                 <form action=" colleges/'.$row->id.'" method="POST">
                 '.csrf_field().'
@@ -72,7 +71,7 @@ class CollegeDataTable extends DataTable
                 // 'buttons'      => ['excel', 'csv', 'print'],
             ])->parameters([
                 'language' => [
-                    'url' => url('/admin/' . config('app.locale') . '/Arabic.json'), //<--here
+                    'url' => url('/admin/'.config('app.locale').'/Arabic.json'), //<--here
                 ]
             ]);
     }

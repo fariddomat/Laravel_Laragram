@@ -73,6 +73,34 @@
                 text-align: right;
             }
 
+            #collegedatatable-table {
+                direction: rtl;
+                text-align: right;
+            }
+
+            #collegedatatable-table_filter {
+                direction: rtl !important;
+                text-align: right;
+            }
+            #coursedatatable-table {
+                direction: rtl;
+                text-align: right;
+            }
+
+            #coursedatatable-table_filter {
+                direction: rtl !important;
+                text-align: right;
+            }
+            #postsdatatable-table {
+                direction: rtl;
+                text-align: right;
+            }
+
+            #postsdatatable-table_filter {
+                direction: rtl !important;
+                text-align: right;
+            }
+
             h1 {
                 text-align: right
             }

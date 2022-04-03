@@ -22,7 +22,7 @@ class CourseDataTable extends DataTable
     {
         return datatables()
             ->eloquent($query)
-            ->addColumn('action',function ($row) { $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
+            ->addColumn('action',function ($row) { $btn = "<a href='/course/$row->name' class='edit btn btn-info btn-sm'>" . \Lang::get('site.show') . '</a> ';
                 $btn = $btn . "<a href='courses/$row->id/edit' class='edit btn btn-primary btn-sm'>" . \Lang::get('site.edit') . "</a> ";
                 $btn = $btn . '
                 <form action=" courses/'.$row->id.'" method="POST">

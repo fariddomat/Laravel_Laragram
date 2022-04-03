@@ -22,13 +22,8 @@
                                             <ul class="descp">
                                                 <li><img src="{{ asset('home/images/icon8.png') }}"
                                                         alt=""><span>Lectures</span></li>
-                                                <li><img src="{{ asset('home/images/icon9.png') }}" alt=""><span></span>
-                                                </li>
                                             </ul>
-                                            <ul class="bk-links">
-                                                <li><a href="" title=""><i class="la la-link"></i></a></li>
-                                                <li><a href="#" title=""><i class="la la-share"></i></a></li>
-                                            </ul>
+
 
                                             <div class="react-links">
                                                 {!! $lecture->post->content !!}
