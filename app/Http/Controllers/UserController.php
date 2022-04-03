@@ -16,6 +16,9 @@ class UserController extends Controller
 
     public function show($username)
     {
+        if (Auth::user()->username ==$username) {
+            return redirect()->route('profile');
+        }
         $user=User::whereUsername($username)->first();
         $follow=Follower::whereUser_id(Auth::user()->id)->whereTarget_id($user->id);
         // dd($user->info);

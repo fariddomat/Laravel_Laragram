@@ -16,7 +16,7 @@
             <nav>
                 <ul>
                     <li>
-                        <a href="/" title="">
+                        <a href="{{ route('homePage') }}" title="">
                             <span><img src="{{ asset('home/images/icon1.png') }}" alt=""></span>
                             @lang('site.home')
                         </a>
@@ -112,7 +112,7 @@
                                     @lang('site.Arabic')</a></div>
                         </div>
                     </li>
-                    
+
                 </ul>
             </nav>
             <!--nav end-->
@@ -136,8 +136,8 @@
                         @endif
                         <li><a href="{{ route('profile') }}" title=""><i class="fa fa-user"></i>
                                 @lang('site.viewProfile')</a></li>
-                        <li><a href="#" title=""><i class="fa fa-cog"></i> Account Setting</a></li>
-                        <li><a href="#" title=""><i class="fa fa-book"></i> Terms & Conditions</a></li>
+                        <li><a href="{{ route('editprofileinfo') }}" title=""><i class="fa fa-cog"></i> @lang('site.accountSetting')</a></li>
+                        <li><a href="#" title=""><i class="fa fa-book"></i> @lang('site.terms')</a></li>
                     </ul>
                     <h3 class="tc"><a class="" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">

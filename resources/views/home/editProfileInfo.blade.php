@@ -4,11 +4,10 @@
 @section('content')
     <section class="cover-sec" style="width: 100%;height: 400px;">
         @if ($user->info->cover_image)
-        <img src="{{ asset('storage/cover/'.$user->info->cover_image) }}" alt="">
+            <img src="{{ asset('storage/cover/' . $user->info->cover_image) }}" alt="">
         @else
-        <img src="http://via.placeholder.com/1600x400" alt="">
+            <img src="http://via.placeholder.com/1600x400" alt="">
         @endif
-        <a href="#" title=""><i class="fa fa-camera"></i> @lang('site.changeimage')</a>
     </section>
 
 
@@ -22,11 +21,11 @@
                                 <div class="user_profile">
                                     <div class="user-pro-img">
                                         @if ($user->info->profile_img)
-                                        <img src="{{ asset('storage/profile/'.$user->info->profile_img.'?p=small') }}" alt="">
+                                            <img src="{{ asset('storage/profile/' . $user->info->profile_img . '?p=small') }}"
+                                                alt="">
                                         @else
-                                        <img src="http://via.placeholder.com/170x170" alt="">
+                                            <img src="http://via.placeholder.com/170x170" alt="">
                                         @endif
-                                        <a href="#" title=""><i class="fa fa-camera"></i></a>
                                     </div>
                                     <!--user-pro-img end-->
                                     <div class="user_pro_status">
@@ -91,8 +90,8 @@
                                             @endif
                                         @else
                                             <h3 style="text-align: center;
-                                                margin: 15px 0;
-                                                font-weight: bold;">No more details !!!</h3>
+                                                    margin: 15px 0;
+                                                    font-weight: bold;">No more details !!!</h3>
                                         @endif
                                     </ul>
                                 </div>
@@ -108,9 +107,9 @@
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;
-                                                                                    font-size: 37px;
-                                                                                    font-weight: lighter;
-                                                                                    font-style: oblique;">
+                                                                                        font-size: 37px;
+                                                                                        font-weight: lighter;
+                                                                                        font-style: oblique;">
                                             {{ $user->info->bio }}</h4>
                                     </div>
                                     <!--star-descp end-->
@@ -163,8 +162,8 @@
                                                 <ul class="social_links">
                                                     <li class="social-link-li"><i class="fa fa-user"></i><input
                                                             name="username"
-                                                            value="{{ old('username', $user->username) }}"
-                                                            type="text" class="form-control" placeholder="Username"></li>
+                                                            value="{{ old('username', $user->username) }}" type="text"
+                                                            class="form-control" placeholder="Username"></li>
                                                     <li class="social-link-li"><i class="fa fa-user"></i><input
                                                             name="fname" value="{{ old('fname', $user->fname) }}"
                                                             type="text" class="form-control" placeholder="First name">
@@ -200,21 +199,18 @@
                                             @csrf
                                             @method('POST')
                                             <ul class="social_links">
-                                                <li class="social-link-li"><i class="fa fa-book"></i><textarea
-                                                        class="form-control" placeholder="Bio..."
-                                                        name="bio">{{ old('bio', $user->info->bio) }}</textarea>
+                                                <li class="social-link-li"><i class="fa fa-book"></i>
+                                                    <textarea class="form-control" placeholder="Bio..." name="bio">{{ old('bio', $user->info->bio) }}</textarea>
                                                 </li>
                                                 <li class="social-link-li"><i class="fa fa-map"></i><input type="text"
-                                                        name="address"
-                                                        value="{{ old('address', $user->info->address) }}"
+                                                        name="address" value="{{ old('address', $user->info->address) }}"
                                                         class="form-control" placeholder="Syria, Damas"></li>
                                                 <li class="social-link-li"><i class="fa fa-calendar"></i><input name="dob"
                                                         value="{{ old('dob', $user->info->dob) }}" type="date"
                                                         class="form-control" placeholder="1-1-1995"></li>
 
                                                 <li class="social-link-li"><i class="fa fa-phone"></i><input type="text"
-                                                        name="phone"
-                                                        value="{{ old('phone', $user->info->phone) }}"
+                                                        name="phone" value="{{ old('phone', $user->info->phone) }}"
                                                         class="form-control" placeholder="0999999999"></li>
                                                 <li class="social-link-li">
                                                     <button type="submit" class="btn btn-success"
@@ -284,7 +280,7 @@
                                                         <button type="submit" class="btn btn-success"
                                                             style="margin: 0 40px;">@lang('site.save')</button>
                                                         <a href="#" class="btn btn-warning" style="width: auto;
-                                                                                color: #fff;">@lang('site.cancel')</a>
+                                                                                    color: #fff;">@lang('site.cancel')</a>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -293,9 +289,43 @@
                                     <!--posts-section end-->
                                 </div>
                                 <!--product-feed-tab end-->
-                                <div class="product-feed-tab" id="portfolio-dd">
+                                <div  class="product-feed-tab" id="portfolio-dd">
                                     <div class="portfolio-gallery-sec">
-
+                                        <form action="{{ route('change.password') }}" method="POST">
+                                            @csrf
+                                            @method('POST')
+                                            @foreach ($errors->all() as $error)
+                                                <p class="text-danger">{{ $error }}</p>
+                                            @endforeach
+                                            <div class="form-group row" style="margin-bottom: 15px;">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.currentpassword')</label>
+                                                <div class="col-md-6">
+                                                    <input id="password" type="password" class="form-control"
+                                                        name="current_password" autocomplete="current-password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" style="margin-bottom: 15px;">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.newpassword')</label>
+                                                <div class="col-md-6">
+                                                    <input id="new_password" type="password" class="form-control"
+                                                        name="new_password" autocomplete="current-password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row" style="margin-bottom: 15px;">
+                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.confirmpassword')</label>
+                                                <div class="col-md-6">
+                                                    <input id="new_confirm_password" type="password" class="form-control"
+                                                        name="new_confirm_password" autocomplete="current-password">
+                                                </div>
+                                            </div>
+                                            <div class="form-group row mb-0">
+                                                <div class="col-md-8 offset-md-4">
+                                                    <button type="submit" class="btn btn-primary">
+                                                        @lang('site.update')
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
                                     </div>
                                     <!--portfolio-gallery-sec end-->
                                 </div>
@@ -306,18 +336,18 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('POST')
-                                            <label for="cover"><i style="color: #219F94;" class="fa fa-camera"></i>
+                                            <label for="cover"><i style="color: #00AFC1;" class="fa fa-camera"></i>
                                                 @lang('site.changecoverimage')</label>
                                             <input class="form-controll" type="file" name="cover_image" id="">
-                                            <label for="cover"><i style="color: #219F94;" class="fa fa-camera"></i>
+                                            <label for="cover"><i style="color: #00AFC1;" class="fa fa-camera"></i>
                                                 @lang('site.changeprofileimage')</label>
                                             <input class="form-controll" type="file" name="profile_img" id="">
                                             <div class="lt-sec">
                                                 <button type="submit" style="display: inline-block;
-                                                color: #ffffff;
-                                                font-size: 16px;
-                                                background-color: #219F94;
-                                                padding: 10px 25px;"> Save </button>
+                                                    color: #ffffff;
+                                                    font-size: 16px;
+                                                    background-color: #00AFC1;
+                                                    padding: 10px 25px;"> Save </button>
                                             </div>
                                         </form>
 
@@ -331,9 +361,7 @@
                         </div>
                         <div class="col-lg-3">
                             <div class="right-sidebar">
-                                <div class="message-btn">
-                                    <a href="#" title=""><i class="fa fa-envelope"></i> @lang('site.message')</a>
-                                </div>
+
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
                                         <h3>@lang('site.portfolio')</h3>

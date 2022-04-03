@@ -231,7 +231,7 @@
                         </div>
                         <div class="col-lg-3 pd-right-none no-pd">
                             <div class="right-sidebar">
-                                <div class="widget widget-about" style="margin-bottom: 15px;">
+                                <div class="widget widget-about" style="margin-bottom: 15px;padding-top: 25px;">
 
                                     <h3>@lang('site.title')</h3>
                                     <span>@lang('site.about')</span>

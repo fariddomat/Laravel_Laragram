@@ -22,6 +22,9 @@ return [
     'last_name' => 'Last_name',
     'email' => 'Email',
     'password' => 'Password',
+    'currentpassword' => 'Current Password',
+    'newpassword' => 'New Password',
+    'confirmpassword' => 'ConfirmPassword',
     'password_c' => 'Eepeat password',
     'no_data_found'=>'No data found',
     'action' => 'Action',
@@ -155,7 +158,8 @@ return [
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',
     'socialinfo'=> 'Social',
-
+    'accountSetting'=>'Account Setting',
+    'terms'=>'Terms & Conditions',
     'title' => 'Time to share your thought',
     'about' => 'Stay connected with the world!',
 

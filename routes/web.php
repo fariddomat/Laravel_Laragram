@@ -23,6 +23,7 @@ Route::group([
         return view('home.index');
     });
     Route::get('/', 'HomeController@home')->name('home');
+    Route::get('/homePage', 'HomeController@home')->name('homePage');
     Route::post('/coursesList', 'HomeController@coursesList')->name('coursesList');
     Route::get('/news', 'HomeController@news')->name('news');
     Route::get('/projects', 'HomeController@projects')->name('projects');
@@ -49,7 +50,7 @@ Route::group([
     Route::post('share', 'PostController@share')->name('posts.share');
     // Route::get('/comment/report/{id}', 'CommentController@report')->name('comment.report');
 
-
+    Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
     // notification
     Route::get('/notifications', 'UserController@notifications');

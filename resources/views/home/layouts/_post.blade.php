@@ -35,7 +35,7 @@
         </ul>
     </div>
     <div class="post_descp">
-        <p>{!! $post->content !!}
+        <p dir='auto'>{!! $post->content !!}
             {{-- <a href="#" title="">@lang('site.viewMore')</a> --}}
         </p>
         @if ($post->withImages())

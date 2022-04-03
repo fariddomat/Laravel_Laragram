@@ -45,7 +45,7 @@
 
 
         .sign-in {
-            background-color: #219F94;
+            background-color: #00AFC1;
         }
 
         .invalid-feedback {

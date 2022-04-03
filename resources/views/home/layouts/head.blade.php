@@ -18,7 +18,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/tailwind.min.css') }}">
     <link type="text/css" href="{{ asset('admin/theme-assets/fonts/flag-icon-css/css/flag-icon.min.css') }}"
-    rel="stylesheet">
+        rel="stylesheet">
     <!--  Swiper's CSS -->
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> --}}
     <link rel="stylesheet" href="{{ asset('home/css/swiper-bundle.min.css') }}" />
@@ -41,7 +41,7 @@
 
 
         .sign-in {
-            background-color: #219F94;
+            background-color: #00AFC1;
         }
 
         .invalid-feedback {
@@ -218,9 +218,13 @@
         {{-- <link rel="stylesheet" href="{{ asset('dist/css/rtl.css') }}"> --}}
         <style>
 
-            .sd-title h3{
+            .usr_quest i{
+                padding: 0 25px 0 5px !important;
+            }
+            .sd-title h3 {
                 width: 100%
             }
+
             .main-menu {
                 direction: rtl;
                 text-align: right;
@@ -369,9 +373,18 @@
     @endif
 
     <style>
-        a{
+        a {
             cursor: pointer !important;
+            color: #A63EC5
         }
+
+        h3 {
+            color: #A63EC5 !important;
+        }
+        h4 {
+            color: #A63EC5 !important;
+        }
+
     </style>
     <!-- include summernote css/js -->
     <link href="{{ asset('home/summernote-0.8.18-dist/summernote-bs4.min.css') }}" rel="stylesheet">

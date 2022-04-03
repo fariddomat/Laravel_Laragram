@@ -19,7 +19,7 @@
                                     <h3>{{ $post->user->fullName() }}</h3>
                                     <span><i class="fa fa-clock-o"></i>{{ $post->created_at->diffforhumans() }}</span>
 
-                                    <p>{!! $post->content !!}</p>
+                                    <p dir='auto'>{!! $post->content !!}</p>
                                     @if ($post->withImages())
                                         @if ($post->hasMoreThanOneImage())
                                             <div class="swiper mySwiper">

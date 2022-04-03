@@ -988,7 +988,7 @@
                         <div class="col-lg-3">
                             <div class="right-sidebar">
                                 <div class="message-btn">
-                                    <a href="#" title=""><i class="fa fa-envelope"></i> @lang('site.message')</a>
+                                    <a href="{{ route('private') }}" title=""><i class="fa fa-envelope"></i> @lang('site.message')</a>
                                 </div>
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
