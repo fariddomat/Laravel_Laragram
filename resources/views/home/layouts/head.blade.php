@@ -20,7 +20,8 @@
     <link type="text/css" href="{{ asset('admin/theme-assets/fonts/flag-icon-css/css/flag-icon.min.css') }}"
     rel="stylesheet">
     <!--  Swiper's CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('home/css/swiper-bundle.min.css') }}" />
     <style>
         .widget-feat {
             padding: 25px 20px !important;
@@ -366,6 +367,13 @@
 
         </style>
     @endif
+
+    <style>
+        a{
+            cursor: pointer !important;
+        }
+    </style>
     <!-- include summernote css/js -->
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.css" rel="stylesheet">
+    <link href="{{ asset('home/summernote-0.8.18-dist/summernote-bs4.min.css') }}" rel="stylesheet">
+    {{-- <link href="{{ asset('home/css/summernote-bs4.min.css') }}" rel="stylesheet"> --}}
 </head>

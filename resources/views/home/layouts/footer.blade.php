@@ -12,25 +12,25 @@
     $('ul.pagination').hide();
     $(window).scroll(function() {
         // if ($(window).scrollTop() + $(window).height() > ($(document).height() - 1)) {
-            $(function() {
-                $('.scrolling-pagination').jscroll({
-                    autoTrigger: true,
-                    loadingHtml: '<div class="process-comm"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>',
-                    padding: 0,
-                    nextSelector: '.pagination li.active + li a',
-                    contentSelector: 'div.scrolling-pagination',
-                    callback: function() {
-                        $('ul.pagination').remove();
-                    }
-                });
+        $(function() {
+            $('.scrolling-pagination').jscroll({
+                autoTrigger: true,
+                loadingHtml: '<div class="process-comm"><div class="spinner"><div class="bounce1"></div><div class="bounce2"></div><div class="bounce3"></div></div></div>',
+                padding: 0,
+                nextSelector: '.pagination li.active + li a',
+                contentSelector: 'div.scrolling-pagination',
+                callback: function() {
+                    $('ul.pagination').remove();
+                }
             });
-            $('ul.pagination').remove();
+        });
+        $('ul.pagination').remove();
         // }
     });
 </script>
 
 
-<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-bs4.min.js"></script>
+<script src="{{ asset('home/summernote-0.8.18-dist/summernote-bs4.min.js') }}"></script>
 <script>
     $(document).ready(function() {
         $('.summernote').summernote({
@@ -103,32 +103,33 @@
 </script>
 
 <!-- Swiper JS -->
-<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+{{-- <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script> --}}
+<script src="{{ asset('home/js/swiper-bundle.min.js') }}"></script>
 <script>
     var swiper = new Swiper(".mySwiper", {
-      cssMode: true,
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev",
-      },
-      pagination: {
-        el: ".swiper-pagination",
-      },
-      mousewheel: true,
-      keyboard: true,
+        cssMode: true,
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+            el: ".swiper-pagination",
+        },
+        mousewheel: true,
+        keyboard: true,
     });
-  </script>
+</script>
 
 @stack('lecture-scripts')
 <script>
-     // Share Post
-     $(".share-post-btn").on("click", function(){
+    // Share Post
+    $(".share-post-btn").on("click", function() {
         $(".post-popup.share-post").addClass("active");
         $(".wrapper").addClass("overlay");
         return false;
     });
 
-    $(".post-project > a").on("click", function(){
+    $(".post-project > a").on("click", function() {
         $(".post-popup.share-post").removeClass("active");
         $(".wrapper").removeClass("overlay");
         return false;
@@ -136,12 +137,11 @@
 
     $('.share-post-btn').on('click', function(e) {
 
-       var content    = $(this).data('content');
-       var post_id    = $(this).data('id');
+        var content = $(this).data('content');
+        var post_id = $(this).data('id');
         $(".pcontent").text(content);
-        document.getElementById("post_id").value=post_id;
+        document.getElementById("post_id").value = post_id;
         console.log(post_id);
-});
+    });
 </script>
 {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
-

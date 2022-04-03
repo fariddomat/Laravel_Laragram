@@ -31,7 +31,7 @@
                                 </div>
                                 <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
                                     <div id="progress-stats-bar-chart">
-                                        <h3 style="padding: 40px 15px;">50</h3>
+                                        <h3 style="padding: 40px 15px;">{{$users}}</h3>
                                     </div>
 
                                 </div>
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
                                     <div id="progress-stats-bar-chart">
-                                        <h3 style="padding: 40px 15px;">50</h3>
+                                        <h3 style="padding: 40px 15px;">{{$colleges}}</h3>
                                     </div>
 
                                 </div>
@@ -63,7 +63,7 @@
                                 </div>
                                 <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
                                     <div id="progress-stats-bar-chart">
-                                        <h3 style="padding: 40px 15px;">50</h3>
+                                        <h3 style="padding: 40px 15px;">{{$courses}}</h3>
                                     </div>
 
                                 </div>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="progress-stats-container ct-golden-section height-75 position-relative pt-3  ">
                                     <div id="progress-stats-bar-chart">
-                                        <h3 style="padding: 40px 15px;">50</h3>
+                                        <h3 style="padding: 40px 15px;">{{$posts}}</h3>
                                     </div>
 
                                 </div>

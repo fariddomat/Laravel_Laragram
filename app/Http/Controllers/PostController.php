@@ -77,6 +77,19 @@ class PostController extends Controller
             'user_id' => Auth::id()
         ]);
 
+        $post=Post::find($request->post_id);
+
+        $user=User::find(Auth::id());
+
+        $details = [
+            'body' =>  $request->user()->fullName(). ' has shared your post',
+            'data' => "",
+            'actionURL' => url("/posts/".$post->id),
+            'user_id'=>$post->user_id,
+        ];
+        $user2=User::find($post->user_id);
+        $user2->notify(new UserNotification($details));
+
         Session::flash('success', 'Successfully share !');
         return redirect()->back();
     }

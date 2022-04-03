@@ -21,12 +21,18 @@ class PostsDataTable extends DataTable
      */
     public function dataTable($query)
     {
-        $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
-        $btn = $btn . "<a href='javascript:void(0)' class='edit btn btn-primary btn-sm'>" . \Lang::get('site.edit') . "</a> ";
-        $btn = $btn . '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">' . \Lang::get('site.delete') . '</a>';
         return datatables()
             ->eloquent($query)
-            ->addColumn('action', $btn);
+            ->addColumn('action',function ($row) { $btn = '<a href="javascript:void(0)" class="edit btn btn-info btn-sm">' . \Lang::get('site.show') . '</a> ';
+                $btn = $btn . '
+                <form action=" posts/'.$row->id.'" method="POST">
+                '.csrf_field().'
+                '.method_field("DELETE").'
+                <button type="submit" class="edit btn btn-danger btn-sm">' . \Lang::get('site.delete') .
+                '</button>
+                </form>';
+            return $btn;
+            });
     }
 
     /**
@@ -52,7 +58,7 @@ class PostsDataTable extends DataTable
                     ->columns($this->getColumns())
                     ->minifiedAjax()
                     ->dom('Bfrtip')
-                    ->orderBy(1)
+                    ->orderBy(0, 'asc')
                     ->buttons(
                         Button::make('create'),
                         Button::make('export'),

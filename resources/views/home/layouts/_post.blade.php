@@ -100,7 +100,7 @@
         </ul>
         <a
         data-id="{{ $post->id }}"
-        data-content="{{ $post->content }}" href="#" class="share-post-btn"><i class="la la-share"></i>shares
+        data-content="{{ $post->content }}"  class="share-post-btn"><i class="la la-share"></i>shares
             {{ $post->shares->count() }}</a>
     </div>
 </div>

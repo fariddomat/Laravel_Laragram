@@ -48,7 +48,7 @@
                         <!--notification-box end-->
                     </li>
                     <li>
-                        <a href="#" title="" class="not-box-open">
+                        <a title="" class="not-box-open">
                             <span><img src="{{ asset('home/images/icon7.png') }}" alt="">
                                 @if (auth()->user()->unreadNotifications->count())
                                 <i class="badge badge-warning" style="position: relative;
@@ -112,17 +112,18 @@
                                     @lang('site.Arabic')</a></div>
                         </div>
                     </li>
+                    
                 </ul>
             </nav>
             <!--nav end-->
             <div class="menu-btn">
-                <a href="#" title=""><i class="fa fa-bars"></i></a>
+                <a  title=""><i class="fa fa-bars"></i></a>
             </div>
             <!--menu-btn end-->
             <div class="user-account" style="width: 125px !important;">
                 <div class="user-info">
                     <img src="http://via.placeholder.com/30x30" alt="">
-                    <a href="#" title="">{{ Auth::user()->fname }}</a>
+                    <a title="">{{ Auth::user()->fname }}</a>
                     <i class="la la-sort-down"></i>
                 </div>
                 <div class="user-account-settingss">

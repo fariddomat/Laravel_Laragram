@@ -12,9 +12,7 @@ Route::group(
         'as' => 'admin.'
     ],
     function () {
-        Route::get('dashboard', function () {
-            return view('admin.index');
-        })->name('dashboard');
+        Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::resource('users', 'UserController');
     Route::post('ban/{id}', 'UserController@ban')->name('users.ban');
@@ -23,6 +21,6 @@ Route::group(
     Route::resource('colleges', 'CollegeController');
     Route::resource('courses', 'CourseController');
     // Route::get('colleges', 'CollegeController@index')->name('college.index');
-    Route::get('posts', 'PostController@index')->name('posts.index');
+    Route::resource('posts', 'PostController');
     }
 );

@@ -232,7 +232,7 @@
                         <div class="col-lg-3 pd-right-none no-pd">
                             <div class="right-sidebar">
                                 <div class="widget widget-about" style="margin-bottom: 15px;">
-                                    
+
                                     <h3>@lang('site.title')</h3>
                                     <span>@lang('site.about')</span>
 
@@ -364,7 +364,7 @@
                         <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="#" title="">Cancel</a></li>
+                                <li><a href="{{url()->previous()}}" title="">Cancel</a></li>
                             </ul>
                         </div>
                     </div>
@@ -447,7 +447,7 @@
                         <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="#" title="">Cancel</a></li>
+                                <li><a href="{{url()->previous()}}" title="">Cancel</a></li>
                             </ul>
                         </div>
                     </div>

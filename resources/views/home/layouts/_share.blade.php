@@ -22,7 +22,7 @@
                     <div class="col-lg-12">
                         <ul>
                             <li><button class="active" type="submit" value="post">@lang('site.share')</button></li>
-                            <li><a href="#" title="">Cancel</a></li>
+                            <li><a href="{{url()->previous()}}" title="">Cancel</a></li>
                         </ul>
                     </div>
                 </div>
