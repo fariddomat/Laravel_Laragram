@@ -132,6 +132,10 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="widget widget-feat">
+                            <h3 style="margin-bottom: 15px;
+                            font-style: oblique;
+                            font-weight: bold;
+                            color: rebeccapurple;">Type of this Post : {{$post->type}}</h3>
                             <ul>
                                 <li>
                                     <i class="fa fa-heart"></i>
@@ -153,7 +157,7 @@
                         </div>
                         <!--widget-feat end-->
                         <div class="widget widget-user">
-                            <h3 class="title-wd">User post's</h3>
+                            <h3 class="title-wd">User post's count</h3>
                             <ul>
                                 <li>
                                     <div class="usr-msg-details">
