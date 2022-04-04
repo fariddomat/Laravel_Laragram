@@ -40,10 +40,6 @@
         }
 
 
-        .sign-in {
-            background-color: #00AFC1;
-        }
-
         .invalid-feedback {
             display: contents
         }

@@ -262,6 +262,20 @@ nav ul li:hover > ul,
 	z-index: 99;
 }
 
+
+.sign-in {
+    background-color: #00AFC1 !important;
+}
+
+.fa-camera{
+    color: #00AFC1 !important;
+}
+
+
+.sign-in {
+    background-color: #00AFC1;
+}
+
 header {
 	float: left;
 	width: 100%;

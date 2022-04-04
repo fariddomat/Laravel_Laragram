@@ -77,7 +77,7 @@
                     _prevCount++;
                     // console.log(".like-count" + _post);
                     $(".like-count" + _post).text(_prevCount);
-                    $(".like" + _post).text("unlike");
+                    $(".like" + _post).text(@json( __('site.unlike') ));
 
                     _type = 'dislike';
                     document.getElementById("saveLike").setAttribute('data-type', 'dislike');
@@ -88,7 +88,7 @@
                     _prevCount--;
                     // console.log(".like-count" + _post);
                     $(".like-count" + _post).text(_prevCount);
-                    $(".like" + _post).text("like");
+                    $(".like" + _post).text(@json( __('site.like') ));
 
                     _type = 'like';
                     document.getElementById("saveLike").setAttribute('data-type', 'like');

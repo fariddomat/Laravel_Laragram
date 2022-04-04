@@ -16,13 +16,13 @@ class Share extends Model
     ];
 
     //relations -------------------------------------------
-    public function posts()
+    public function post()
     {
         return $this->belongsTo(Post::class);
     }
 
     //relations -------------------------------------------
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

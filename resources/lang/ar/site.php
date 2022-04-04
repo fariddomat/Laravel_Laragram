@@ -156,9 +156,12 @@ return [
     'save'=> 'حفظ',
     'cancel'=> 'إلغاء',
     'share'=> 'مشاركة',
+    'sharedBy'=> 'مُشارك من قِبل',
     'comment'=> 'تعليق',
     'comments'=> 'التعليقات',
 
+    'like'=> 'إعجاب',
+    'unlike'=> 'الغاء الإعجاب',
     'personalinfo'=> 'المعلومات الشخصية',
     'otherinfo'=> 'تفاصيل أخرى',
     'socialinfo'=> 'التواصل الاجماعي',

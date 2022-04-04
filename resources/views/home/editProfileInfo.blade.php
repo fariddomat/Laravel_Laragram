@@ -32,7 +32,6 @@
                                         <ul class="flw-hr">
                                             <li><a href="#" title="" class="flww"><i class="la la-plus"></i>
                                                     @lang('site.follow')</a></li>
-                                            <li><a href="#" title="" class="hre">@lang('site.hire')</a></li>
                                         </ul>
                                         <ul class="flw-status">
                                             <li>
@@ -336,17 +335,17 @@
                                             enctype="multipart/form-data">
                                             @csrf
                                             @method('POST')
-                                            <label for="cover"><i style="color: #00AFC1;" class="fa fa-camera"></i>
+                                            <label for="cover"><i style="" class="fa fa-camera"></i>
                                                 @lang('site.changecoverimage')</label>
                                             <input class="form-controll" type="file" name="cover_image" id="">
-                                            <label for="cover"><i style="color: #00AFC1;" class="fa fa-camera"></i>
+                                            <label for="cover"><i class="fa fa-camera"></i>
                                                 @lang('site.changeprofileimage')</label>
                                             <input class="form-controll" type="file" name="profile_img" id="">
                                             <div class="lt-sec">
                                                 <button type="submit" style="display: inline-block;
                                                     color: #ffffff;
                                                     font-size: 16px;
-                                                    background-color: #00AFC1;
+                                                    background-color: #00ADC1;
                                                     padding: 10px 25px;"> Save </button>
                                             </div>
                                         </form>

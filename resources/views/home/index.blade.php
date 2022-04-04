@@ -203,13 +203,17 @@
                                 </div>
                                 <!--post-topbar end-->
                                 @if ($errors->any())
-                                <div class="post-topbar">
-                                    @include('home.layouts._error')
-                                </div>
+                                    <div class="post-topbar">
+                                        @include('home.layouts._error')
+                                    </div>
                                 @endif
                                 <div class="posts-section">
                                     <div class="scrolling-pagination">
-
+                                        @if ($shares->count() > 0)
+                                            @foreach ($shares as $share)
+                                                @include('home.layouts._sharePost')
+                                            @endforeach
+                                        @endif
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
                                                 @include('home.layouts._post')
@@ -242,7 +246,7 @@
                                     <div class="sd-title">
                                         <h3>@lang('site.news')</h3>
                                     </div>
-                                    <div class="posts-list">
+                                    <div class="posts-list" dir="auto">
                                         @foreach ($news as $item)
                                             <div class="post-info">
                                                 <div class="post-details">
@@ -266,7 +270,7 @@
                                     <div class="sd-title">
                                         <h3>@lang('site.projects')</h3>
                                     </div>
-                                    <div class="posts-list">
+                                    <div class="posts-list" dir="auto">
                                         @foreach ($projects as $project)
                                             <div class="post-info">
                                                 <div class="post-details">
@@ -364,7 +368,7 @@
                         <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="{{url()->previous()}}" title="">Cancel</a></li>
+                                <li><a href="{{ url()->previous() }}" title="">Cancel</a></li>
                             </ul>
                         </div>
                     </div>
@@ -447,7 +451,7 @@
                         <div class="col-lg-12">
                             <ul>
                                 <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="{{url()->previous()}}" title="">Cancel</a></li>
+                                <li><a href="{{ url()->previous() }}" title="">Cancel</a></li>
                             </ul>
                         </div>
                     </div>
@@ -468,8 +472,6 @@
 
 
 @push('lecture-scripts')
-
-
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -563,8 +565,4 @@
             });
         });
     </script>
-
-
-
-
 @endpush

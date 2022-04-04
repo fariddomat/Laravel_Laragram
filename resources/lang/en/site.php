@@ -152,8 +152,11 @@ return [
     'save'=> 'Save',
     'cancel'=> 'Cancel',
     'share'=> 'Share',
+    'sharedBy'=> 'Shared By',
     'comment'=> 'Comment',
     'comments'=> 'Comments',
+    'like'=> 'Like',
+    'unlike'=> 'Unlike',
 
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',

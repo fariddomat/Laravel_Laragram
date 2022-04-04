@@ -27,11 +27,11 @@
                                         @else
                                             <img src="http://via.placeholder.com/170x170" alt="">
                                         @endif
-                                        <a href="{{ route('editprofile') }}" title=""><i class="fa fa-camera"></i></a>
+                                        <a href="{{ route('editprofile') }}" title=""><i style="color: white !important;" class="fa fa-camera"></i></a>
                                     </div>
                                     <!--user-pro-img end-->
                                     <div class="user_pro_status">
-                                        
+
                                         <ul class="flw-status">
                                             <li>
                                                 <span>@lang('site.following')</span>

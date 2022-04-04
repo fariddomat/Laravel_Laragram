@@ -6,6 +6,7 @@ use App\College;
 use App\Course;
 use App\Lecture;
 use App\Post;
+use App\Share;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -50,13 +51,16 @@ class HomeController extends Controller
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
         $posts= \App\Post::whereIn('user_id', $userIds)->whereType('post')->latest()->paginate(5);
+        $shares=Share::whereIn('user_id', $userIds)->latest()->take(3)->get();
+        // dd($shares);
+        
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
 
         $news= $this->getNews();
         $projects= $this->getProjects();
 
         $colleges=College::all();
-        return view('home.index', compact('posts', 'suggestionsUsers', 'colleges', 'news', 'projects'));
+        return view('home.index', compact('posts', 'shares', 'suggestionsUsers', 'colleges', 'news', 'projects'));
     }
 
     public function coursesList(Request $request)
