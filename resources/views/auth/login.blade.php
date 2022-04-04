@@ -16,6 +16,8 @@
                                     <p>Laragram, is a global platform and social networking where studensts
                                         and professors connect and collaborate remotely</p>
                                 </div>
+
+
                                 <!--cm-logo end-->
                                 <img src="{{ asset('home/images/cm-main-img.png') }}" alt="">
                             </div>
@@ -27,6 +29,14 @@
                                     <li data-tab="tab-1" class="current"><a href="#" title="">Sign in</a></li>
                                     <li data-tab="tab-2"><a href="#" title="">Sign up</a></li>
                                 </ul>
+                                <div style="padding-top: 75px;">@include('home.layouts._error')</div>
+                                @isset($message)
+                                <div class="header bg-danger text-white p-10" style="margin-top: 15px; padding: 10px; border-radius: 15px">
+
+                                    {{$message}}
+                                </div>
+                                @endisset
+
                                 <div class="sign_in_sec current" id="tab-1">
 
                                     <h3>Sign in</h3>
@@ -35,33 +45,23 @@
                                         <div class="row">
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input class="form-control @error('email') is-invalid @enderror"
-                                                        type="text" name="email" placeholder="Username"
-                                                        value="{{ old('email') }}">
-                                                    <i class="la la-user"></i>
+                                                    <input class="form-control" type="text" name="email"
+                                                        placeholder="Email" value="{{ old('email') }}">
+                                                    <i class="fa fa-envelope"></i>
 
                                                 </div>
-                                                @error('email')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
+
+
                                                 <!--sn-field end-->
                                             </div>
 
                                             <div class="col-lg-12 no-pdd">
                                                 <div class="sn-field">
-                                                    <input class="form-control @error('password') is-invalid @enderror"
-                                                        type="password" name="password" placeholder="Password"
-                                                        autocomplete="current-password">
+                                                    <input class="form-control" type="password" name="password"
+                                                        placeholder="Password" autocomplete="current-password">
                                                     <i class="la la-lock"></i>
 
                                                 </div>
-                                                @error('password')
-                                                    <span class="invalid-feedback" role="alert">
-                                                        <strong>{{ $message }}</strong>
-                                                    </span>
-                                                @enderror
                                             </div>
                                             {{-- <div class="col-lg-12 no-pdd">
                                                 <div class="checky-sec">
@@ -86,35 +86,45 @@
                                 </div>
                                 <!--sign_in_sec end-->
                                 <div class="sign_in_sec" id="tab-2">
-                                    <div class="signup-tab">
-                                        <i class="fa fa-long-arrow-left"></i>
-                                        <h2>johndoe@example.com</h2>
-                                        <ul>
-                                            <li data-tab="tab-3" class="current"><a href="#" title="">Student</a>
-                                            </li>
-                                            <li data-tab="tab-4"><a href="#" title="">Teacher</a></li>
-                                        </ul>
-                                    </div>
+
                                     <!--signup-tab end-->
                                     <div class="dff-tab current" id="tab-3">
-                                        <form>
+                                        <form method="POST" action="{{ route('registerStudent') }}">
+                                            @csrf
+                                            @method('POST')
                                             <div class="row">
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="name" placeholder="Full Name">
+                                                        <input type="text" name="uid" placeholder="University id">
+                                                        <i class="la la-user"></i>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <input type="text" name="fname" placeholder="First name">
                                                         <i class="la la-user"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <input type="text" name="country" placeholder="Country">
-                                                        <i class="la la-globe"></i>
+                                                        <input type="text" name="lname" placeholder="Last name">
+                                                        <i class="la la-user"></i>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12 no-pdd">
                                                     <div class="sn-field">
-                                                        <select>
-                                                            <option>Category</option>
+                                                        <input type="text" name="email" placeholder="Email">
+                                                        <i class="fa fa-envelope"></i>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-12 no-pdd">
+                                                    <div class="sn-field">
+                                                        <select name="college_id">
+                                                            @foreach ($colleges as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->name }}
+                                                                </option>
+                                                            @endforeach
                                                         </select>
                                                         <i class="la la-dropbox"></i>
                                                         <span><i class="fa fa-ellipsis-h"></i></span>
@@ -126,13 +136,6 @@
                                                         <i class="la la-lock"></i>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
-                                                        <input type="password" name="repeat-password"
-                                                            placeholder="Repeat Password">
-                                                        <i class="la la-lock"></i>
-                                                    </div>
-                                                </div>
 
                                                 <div class="col-lg-12 no-pdd">
                                                     <button type="submit" value="submit">Get Started</button>
@@ -140,43 +143,7 @@
                                             </div>
                                         </form>
                                     </div>
-                                    <!--dff-tab end-->
-                                    <div class="dff-tab" id="tab-4">
-                                        <form>
-                                            <div class="row">
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
-                                                        <input type="text" name="college-name"
-                                                            placeholder="College Name">
-                                                        <i class="la la-building"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
-                                                        <input type="text" name="country" placeholder="Country">
-                                                        <i class="la la-globe"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
-                                                        <input type="password" name="password" placeholder="Password">
-                                                        <i class="la la-lock"></i>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-12 no-pdd">
-                                                    <div class="sn-field">
-                                                        <input type="password" name="repeat-password"
-                                                            placeholder="Repeat Password">
-                                                        <i class="la la-lock"></i>
-                                                    </div>
-                                                </div>
 
-                                                <div class="col-lg-12 no-pdd">
-                                                    <button type="submit" value="submit">Get Started</button>
-                                                </div>
-                                            </div>
-                                        </form>
-                                    </div>
                                     <!--dff-tab end-->
                                 </div>
                             </div>
@@ -190,14 +157,7 @@
             <div class="footy-sec">
                 <div class="container">
                     <ul>
-                        <li><a href="#" title="">Help Center</a></li>
-                        <li><a href="#" title="">Privacy Policy</a></li>
-                        <li><a href="#" title="">Community Guidelines</a></li>
-                        <li><a href="#" title="">Cookies Policy</a></li>
-                        <li><a href="#" title="">Career</a></li>
-                        <li><a href="#" title="">Forum</a></li>
-                        <li><a href="#" title="">Language</a></li>
-                        <li><a href="#" title="">Copyright Policy</a></li>
+                        <li><a href="#" title="">Laragram</a></li>
                     </ul>
                     <p><img src="images/copy-icon.png" alt="">Copyright 2022</p>
                 </div>
@@ -206,7 +166,7 @@
         </div>
         <!--sign-in-page end-->
 
-
+    </div>
 
         @include('home.layouts.footer')
 </body>

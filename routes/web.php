@@ -107,3 +107,6 @@ Route::get('test', function () {
     event(new App\Events\PostLiked('Someone'));
     return "Event has been sent!";
 });
+
+Route::post('/registerStudent', 'RegisterController@register')->name('registerStudent');
+
