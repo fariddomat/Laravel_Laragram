@@ -20,6 +20,9 @@ class UserController extends Controller
             return redirect()->route('profile');
         }
         $user=User::whereUsername($username)->first();
+        if (empty($user)) {
+            abort(403);
+        }
         $follow=Follower::whereUser_id(Auth::user()->id)->whereTarget_id($user->id);
         // dd($user->info);
         $posts = Post::where('user_id',$user->id)->orderByDesc('id')->paginate(5);

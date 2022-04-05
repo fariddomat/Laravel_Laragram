@@ -53,7 +53,7 @@ class HomeController extends Controller
         $posts= \App\Post::whereIn('user_id', $userIds)->whereType('post')->latest()->paginate(5);
         $shares=Share::whereIn('user_id', $userIds)->latest()->take(3)->get();
         // dd($shares);
-        
+
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
 
         $news= $this->getNews();
@@ -129,6 +129,9 @@ class HomeController extends Controller
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
         $courses=Course::where('name',$name)->first();
+        if (empty($courses)) {
+            abort(403);
+        }
         $lectures=Lecture::where('course_id',$courses->id)->get();
         return view('home.course', compact('suggestionsUsers', 'colleges', 'courses', 'lectures'));
     }

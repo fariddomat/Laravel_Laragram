@@ -18,6 +18,9 @@ class ProfileController extends Controller
     public function show(Request $request)
     {
         $user = User::find(Auth::user()->id);
+        if (empty($user)) {
+            abort(403);
+        }
         $posts = Post::where('user_id', Auth::user()->id)->orderByDesc('id')->paginate(5);
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;

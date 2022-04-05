@@ -213,6 +213,9 @@ class PostController extends Controller
     public function show($id)
     {
         $post = Post::find($id);
+        if (empty($post)) {
+            abort(403);
+        }
         // dd($post);
         return view('home.singlePost', compact('post'));
     }
