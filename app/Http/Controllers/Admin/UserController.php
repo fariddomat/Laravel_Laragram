@@ -135,12 +135,14 @@ class UserController extends Controller
     public function ban($id)
     {
 
+
         $user = User::find($id);
+
         if ($user) {
             $user->update([
                 'status'=>'ban'
             ]);
-
+// dd($user);
             return redirect()->route('admin.users.index');
         } else
             return response()->json(['message' => 'error'], 404);

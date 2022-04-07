@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'fname', 'lname', 'email', 'password', 'college_id'
+        'username', 'fname', 'lname', 'email', 'password', 'college_id', 'status'
     ];
 
     protected $withCount = ['posts'];
@@ -150,5 +150,5 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-    
+
 }

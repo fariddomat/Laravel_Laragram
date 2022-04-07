@@ -6,7 +6,9 @@ use App\College;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     /*
@@ -38,6 +40,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+    protected function authenticated(Request $request, $user)
+    {
+        if ($user->status == "ban") {
+            Auth::logout();
+            return Redirect::back()->withErrors(['email'=>'Looks Like Your account is Banned']);
+        }
+    }
+
     public function showLoginForm()
 {
     $colleges = College::all();

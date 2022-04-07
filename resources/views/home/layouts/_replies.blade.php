@@ -13,7 +13,7 @@
         <div class="row">
             <div class="col-md-1 center">
 
-                <img src="{{$post->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px; margin-right: 25px;margin-left: -10px;" alt="">
+                <img src="{{$comment->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px; margin-right: 25px;margin-left: -10px;" alt="">
             </div>
             <div class="col-md-11">
                 <strong class="upper">{{ $comment->user->fullName() }}</strong>

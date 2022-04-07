@@ -33,6 +33,27 @@ class UsersDataTable extends DataTable
                 <button type="submit" class="edit btn btn-danger btn-sm">' . \Lang::get('site.delete') .
                 '</button>
                 </form>';
+
+                if ($row->status=='active'){
+                    $btn=$btn .'<form action="users/ban/'.$row->id.'" method="POST"
+                    style="display: inline-block">
+                    '.csrf_field().'
+                    '.method_field("POST").'
+                    <button type="submit" class="btn btn-outline-info  btn-sm"
+                        style="display: inline-block"><i class="fa fa-ban"
+                            aria-hidden="true"></i> Ban</button>
+                </form>';
+            }
+                else{
+                    $btn=$btn .'<form action="users/unban/'.$row->id.'" method="POST"
+                    style="display: inline-block">
+                    '.csrf_field().'
+                    '.method_field("POST").'
+                    <button type="submit" class="btn btn-outline-success  btn-sm"
+                        style="display: inline-block"><i class="fa fa-ban"
+                            aria-hidden="true"></i> unBan</button>
+                </form>';
+                }
             return $btn;
             });
     }

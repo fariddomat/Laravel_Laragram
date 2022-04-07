@@ -15,8 +15,8 @@ Route::group(
         Route::get('dashboard', 'DashboardController@index')->name('dashboard');
 
     Route::resource('users', 'UserController');
-    Route::post('ban/{id}', 'UserController@ban')->name('users.ban');
-    Route::post('unban/{id}', 'UserController@unban')->name('users.unban');
+    Route::post('users/ban/{id}', 'UserController@ban')->name('users.ban');
+    Route::post('users/unban/{id}', 'UserController@unban')->name('users.unban');
 
     Route::resource('colleges', 'CollegeController');
     Route::resource('courses', 'CourseController');
