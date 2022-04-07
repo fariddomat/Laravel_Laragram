@@ -141,7 +141,7 @@
                                             {{ $user->info->bio }}
                                         </h4>
                                     </div>
-                                   
+
                                 </div>
                                 <!--user-tab-sec end-->
                                 <div class="product-feed-tab current " id="feed-dd">
@@ -175,35 +175,24 @@
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
                                         <h3>@lang('site.portfolio')</h3>
-                                        <img src="images/photo-icon.png" alt="">
+                                        <img src="{{ asset('home/images/photo-icon.png') }}" alt="">
                                     </div>
-                                    <div class="pf-gallery">
-                                        <ul>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                        </ul>
+
+                                    <div class="posts-list" dir="auto">
+                                        @foreach ($projects as $project)
+                                            <div class="post-info">
+                                                <div class="post-details">
+                                                    <a href="{{ route('posts.show', ['post' => $project->id]) }}">
+                                                        <h3>{{ $project->user->fullName() }}</h3>
+                                                        <p>{!! Str::of($project->content)->limit(25) !!}</p>
+                                                    </a>
+                                                </div>
+                                                <div class="hr-rate">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <!--post-info end-->
                                     </div>
                                     <!--pf-gallery end-->
                                 </div>

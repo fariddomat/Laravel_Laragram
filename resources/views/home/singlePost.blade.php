@@ -16,7 +16,7 @@
                                             <img src="{{$post->user->info->profile_img_path}}" style="max-width: 60px;max-height: 60px" alt="">
                                         </div>
                                         <div class="usr_quest">
-                                            <h3>{{ $post->user->fullName() }}</h3>
+                                            <a href="{{ route('user.show', $post->user->username) }}"><h3>{{ $post->user->fullName() }}</h3></a>
                                             <span><i
                                                     class="fa fa-clock-o"></i>{{ $post->created_at->diffforhumans() }}</span>
 

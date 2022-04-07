@@ -22,8 +22,7 @@
                                 <div class="user_profile">
                                     <div class="user-pro-img">
 
-                                            <img src="{{$user->info->profile_img_path}}"
-                                                alt="">
+                                        <img src="{{ $user->info->profile_img_path }}" alt="">
 
 
                                     </div>
@@ -100,8 +99,8 @@
                                             @endif
                                         @else
                                             <h3 style="text-align: center;
-                                                            margin: 15px 0;
-                                                            font-weight: bold;">No more details !!!</h3>
+                                                                margin: 15px 0;
+                                                                font-weight: bold;">No more details !!!</h3>
                                         @endif
                                     </ul>
                                 </div>
@@ -109,13 +108,13 @@
                                 <div class="suggestions full-width">
                                     <div class="sd-title">
                                         <h3>@lang('site.suggestions')</h3>
-                                        <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <!--sd-title end-->
                                     <div class="suggestions-list">
                                         @foreach ($suggestionsUsers as $item)
                                             <div class="suggestion-usd">
-                                                <img  src="{{$item->info->profile_img_path}}" style="max-width: 35px;max-height: 35px;" alt="">
+                                                <img src="{{ $item->info->profile_img_path }}"
+                                                    style="max-width: 35px;max-height: 35px;" alt="">
                                                 <div class="sgt-text">
                                                     <h4>{{ $item->fullName() }}</h4>
                                                     <span>{{ $item->username }}</span>
@@ -139,9 +138,9 @@
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;
-                                                            font-size: 37px;
-                                                            font-weight: lighter;
-                                                            font-style: oblique;">{{ $user->info->bio }}</h4>
+                                                                font-size: 37px;
+                                                                font-weight: lighter;
+                                                                font-style: oblique;">{{ $user->info->bio }}</h4>
                                     </div>
                                     <!--star-descp end-->
                                     <div class="tab-feed st2">
@@ -169,7 +168,7 @@
 
                                             @if ($posts->count() > 0)
                                                 @foreach ($posts as $post)
-                                                   @include('home.layouts._post')
+                                                    @include('home.layouts._post')
                                                 @endforeach
 
                                                 {{ $posts->links() }}
@@ -186,71 +185,78 @@
                                 </div>
                                 <!--product-feed-tab end-->
                                 <div class="product-feed-tab" id="info-dd">
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="overview-open">Overview</a> <a href="#" title=""
-                                                class="overview-open"><i class="fa fa-pencil"></i></a></h3>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam
-                                            felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna
-                                            efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. Nunc eu
-                                            augue nec arcu efficitur faucibus. Aliquam accumsan ac magna convallis bibendum.
-                                            Quisque laoreet augue eget augue fermentum scelerisque. Vivamus dignissim mollis
-                                            est dictum blandit. Nam porta auctor neque sed congue. Nullam rutrum eget ex at
-                                            maximus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget
-                                            vestibulum lorem.</p>
-                                    </div>
+
                                     <!--user-profile-ov end-->
                                     <div class="user-profile-ov st2">
-                                        <h3><a href="#" title="" class="exp-bx-open">Experience </a><a href="#" title=""
-                                                class="exp-bx-open"><i class="fa fa-pencil"></i></a> <a href="#"
-                                                title="" class="exp-bx-open"><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>Web designer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam
-                                            felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna
-                                            efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                        <h4>UI / UX Designer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam
-                                            felis, nec condimentum ipsum commodo id.</p>
-                                        <h4>PHP developer <a href="#" title=""><i class="fa fa-pencil"></i></a></h4>
-                                        <p class="no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                            Quisque tempor aliquam felis, nec condimentum ipsum commodo id. Vivamus sit amet
-                                            augue nec urna efficitur tincidunt. Vivamus consectetur aliquam lectus commodo
-                                            viverra. </p>
+                                        <h3><a href="#" title="" class="exp-bx-open">@lang('site.publicinfo') </a></h3>
+                                        <h4>@lang('site.email')</h4>
+                                            <p>{{ $user->email }}</p>
+                                            @isset($user->info->phone)
+                                                <h4>@lang('site.phone')</h4>
+                                                <p>{{ $user->info->phone }}</p>
+                                            @endisset
+                                        @isset($user->info->address)
+                                            <h4>@lang('site.address')</h4>
+                                            <p>{{ $user->info->address }}</p>
+                                        @endisset
+                                        @isset($user->info->dob)
+                                            <h4>@lang('site.dob')</h4>
+                                            <p>{{ $user->info->dob }}</p>
+                                        @endisset
                                     </div>
-                                    <!--user-profile-ov end-->
                                     <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="ed-box-open">Education</a> <a href="#" title=""
-                                                class="ed-box-open"><i class="fa fa-pencil"></i></a> <a href="#"
-                                                title=""><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>Master of Computer Science</h4>
-                                        <span>2015 - 2018</span>
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tempor aliquam
-                                            felis, nec condimentum ipsum commodo id. Vivamus sit amet augue nec urna
-                                            efficitur tincidunt. Vivamus consectetur aliquam lectus commodo viverra. </p>
-                                    </div>
-                                    <!--user-profile-ov end-->
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="lct-box-open">Location</a> <a href="#" title=""
-                                                class="lct-box-open"><i class="fa fa-pencil"></i></a> <a href="#"
-                                                title=""><i class="fa fa-plus-square"></i></a></h3>
-                                        <h4>India</h4>
-                                        <p>151/4 BT Chownk, Delhi </p>
-                                    </div>
-                                    <!--user-profile-ov end-->
-                                    <div class="user-profile-ov">
-                                        <h3><a href="#" title="" class="skills-open">Skills</a> <a href="#" title=""
-                                                class="skills-open"><i class="fa fa-pencil"></i></a> <a href="#"><i
-                                                    class="fa fa-plus-square"></i></a></h3>
-                                        <ul>
-                                            <li><a href="#" title="">HTML</a></li>
-                                            <li><a href="#" title="">PHP</a></li>
-                                            <li><a href="#" title="">CSS</a></li>
-                                            <li><a href="#" title="">Javascript</a></li>
-                                            <li><a href="#" title="">Wordpress</a></li>
-                                            <li><a href="#" title="">Photoshop</a></li>
-                                            <li><a href="#" title="">Illustrator</a></li>
-                                            <li><a href="#" title="">Corel Draw</a></li>
+                                        <h3><a title="" class="overview-open">@lang('site.socialinfo')</a> </h3>
+                                        <ul class="social_links">
+                                            @if ($user->info)
+                                                @if ($user->info->website)
+                                                    <li><a href="{{ $user->info->website }}" title=""><i
+                                                                class="la la-globe"></i>
+                                                            {{ $user->info->website }}</a></li>
+                                                @endif
+                                                @if ($user->info->facebook)
+                                                    <li><a href="{{ $user->info->facebook }}" title=""><i
+                                                                class="fa fa-facebook-square"></i>{{ $user->info->facebook }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->twitter)
+                                                    <li><a href="{{ $user->info->twitter }}" title=""><i
+                                                                class="fa fa-twitter"></i>{{ $user->info->twitter }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->linkedin)
+                                                    <li><a href="{{ $user->info->linkedin }}" title=""><i
+                                                                class="fa fa-linkedin-square"></i>{{ $user->info->linkedin }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->behance)
+                                                    <li><a href="{{ $user->info->behance }}" title=""><i
+                                                                class="fa fa-behance-square"></i>{{ $user->info->behance }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->pinterest)
+                                                    <li><a href="{{ $user->info->pinterest }}" title=""><i
+                                                                class="fa fa-pinterest"></i>{{ $user->info->pinterest }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->instagram)
+                                                    <li><a href="{{ $user->info->instagram }}" title=""><i
+                                                                class="fa fa-instagram"></i>{{ $user->info->instagram }}</a>
+                                                    </li>
+                                                @endif
+                                                @if ($user->info->youtube)
+                                                    <li><a href="{{ $user->info->youtube }}" title=""><i
+                                                                class="fa fa-youtube"></i>{{ $user->info->youtube }}</a>
+                                                    </li>
+                                                @endif
+                                            @else
+                                                <h3 style="text-align: center;
+                                                                            margin: 15px 0;
+                                                                            font-weight: bold;">No more details !!!</h3>
+                                            @endif
                                         </ul>
                                     </div>
+
+
                                     <!--user-profile-ov end-->
                                 </div>
                                 <!--product-feed-tab end-->
@@ -262,40 +268,30 @@
                         <div class="col-lg-3">
                             <div class="right-sidebar">
                                 <div class="message-btn">
-                                    <a href="{{ route('private') }}" title=""><i class="fa fa-envelope"></i> @lang('site.message')</a>
+                                    <a href="{{ route('private') }}" title=""><i class="fa fa-envelope"></i>
+                                        @lang('site.message')</a>
                                 </div>
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
                                         <h3>@lang('site.portfolio')</h3>
-                                        <img src="images/photo-icon.png" alt="">
+                                        <img src="{{ asset('home/images/photo-icon.png') }}" alt="">
                                     </div>
-                                    <div class="pf-gallery">
-                                        <ul>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                        </ul>
+
+                                    <div class="posts-list" dir="auto">
+                                        @foreach ($projects as $project)
+                                            <div class="post-info">
+                                                <div class="post-details">
+                                                    <a href="{{ route('posts.show', ['post' => $project->id]) }}">
+                                                        <h3>{{ $project->user->fullName() }}</h3>
+                                                        <p>{!! Str::of($project->content)->limit(25) !!}</p>
+                                                    </a>
+                                                </div>
+                                                <div class="hr-rate">
+                                                    <span></span>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                        <!--post-info end-->
                                     </div>
                                     <!--pf-gallery end-->
                                 </div>

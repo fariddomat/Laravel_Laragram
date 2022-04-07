@@ -30,7 +30,9 @@ class UserController extends Controller
         $userIds = $authuser->following()->get()->pluck('id');
         $userIds[] = $user->id;
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
-        return view('home.user', compact('user','follow', 'suggestionsUsers', 'posts'));
+        $projects=Post::where('user_id', $user->id)->where('type','project')->orderByDesc('id')->take(5)->get();
+
+        return view('home.user', compact('user','follow', 'suggestionsUsers', 'posts', 'projects'));
     }
 
     public function follow($username)

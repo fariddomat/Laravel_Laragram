@@ -41,54 +41,7 @@
                                         </ul>
                                     </div>
                                     <!--user_pro_status end-->
-                                    <ul class="social_links">
-                                        @if ($user->info)
-                                            @if ($user->info->website)
-                                                <li><a href="{{ $user->info->website }}" title=""><i
-                                                            class="la la-globe"></i>
-                                                        {{ $user->info->website }}</a></li>
-                                            @endif
-                                            @if ($user->info->facebook)
-                                                <li><a href="{{ $user->info->facebook }}" title=""><i
-                                                            class="fa fa-facebook-square"></i>{{ $user->info->facebook }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->twitter)
-                                                <li><a href="{{ $user->info->twitter }}" title=""><i
-                                                            class="fa fa-twitter"></i>{{ $user->info->twitter }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->linkedin)
-                                                <li><a href="{{ $user->info->linkedin }}" title=""><i
-                                                            class="fa fa-linkedin-square"></i>{{ $user->info->linkedin }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->behance)
-                                                <li><a href="{{ $user->info->behance }}" title=""><i
-                                                            class="fa fa-behance-square"></i>{{ $user->info->behance }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->pinterest)
-                                                <li><a href="{{ $user->info->pinterest }}" title=""><i
-                                                            class="fa fa-pinterest"></i>{{ $user->info->pinterest }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->instagram)
-                                                <li><a href="{{ $user->info->instagram }}" title=""><i
-                                                            class="fa fa-instagram"></i>{{ $user->info->instagram }}</a>
-                                                </li>
-                                            @endif
-                                            @if ($user->info->youtube)
-                                                <li><a href="{{ $user->info->youtube }}" title=""><i
-                                                            class="fa fa-youtube"></i>{{ $user->info->youtube }}</a>
-                                                </li>
-                                            @endif
-                                        @else
-                                            <h3 style="text-align: center;
-                                                        margin: 15px 0;
-                                                        font-weight: bold;">No more details !!!</h3>
-                                        @endif
-                                    </ul>
+                                   
                                 </div>
                                 <!--user_profile end-->
 
@@ -363,37 +316,56 @@
 
                                 <div class="widget widget-portfolio">
                                     <div class="wd-heady">
-                                        <h3>@lang('site.portfolio')</h3>
-                                        <img src="images/photo-icon.png" alt="">
+                                        <h3>@lang('site.socialinfo')</h3>
                                     </div>
-                                    <div class="pf-gallery">
-                                        <ul>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                            <li><a href="#" title=""><img src="http://via.placeholder.com/70x70" alt=""></a>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <ul class="social_links">
+                                        @if ($user->info)
+                                            @if ($user->info->website)
+                                                <li><a href="{{ $user->info->website }}" title=""><i
+                                                            class="la la-globe"></i>
+                                                        {{ $user->info->website }}</a></li>
+                                            @endif
+                                            @if ($user->info->facebook)
+                                                <li><a href="{{ $user->info->facebook }}" title=""><i
+                                                            class="fa fa-facebook-square"></i>{{ $user->info->facebook }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->twitter)
+                                                <li><a href="{{ $user->info->twitter }}" title=""><i
+                                                            class="fa fa-twitter"></i>{{ $user->info->twitter }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->linkedin)
+                                                <li><a href="{{ $user->info->linkedin }}" title=""><i
+                                                            class="fa fa-linkedin-square"></i>{{ $user->info->linkedin }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->behance)
+                                                <li><a href="{{ $user->info->behance }}" title=""><i
+                                                            class="fa fa-behance-square"></i>{{ $user->info->behance }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->pinterest)
+                                                <li><a href="{{ $user->info->pinterest }}" title=""><i
+                                                            class="fa fa-pinterest"></i>{{ $user->info->pinterest }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->instagram)
+                                                <li><a href="{{ $user->info->instagram }}" title=""><i
+                                                            class="fa fa-instagram"></i>{{ $user->info->instagram }}</a>
+                                                </li>
+                                            @endif
+                                            @if ($user->info->youtube)
+                                                <li><a href="{{ $user->info->youtube }}" title=""><i
+                                                            class="fa fa-youtube"></i>{{ $user->info->youtube }}</a>
+                                                </li>
+                                            @endif
+                                        @else
+                                            <h3 style="text-align: center;
+                                                        margin: 15px 0;
+                                                        font-weight: bold;">No more details !!!</h3>
+                                        @endif
+                                    </ul>
                                     <!--pf-gallery end-->
                                 </div>
                                 <!--widget-portfolio end-->

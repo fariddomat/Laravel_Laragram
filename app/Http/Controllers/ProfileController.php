@@ -25,7 +25,8 @@ class ProfileController extends Controller
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
         $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
-        return view('home.profile', compact('user', 'posts', 'suggestionsUsers'));
+        $projects=Post::where('user_id', Auth::user()->id)->where('type','project')->orderByDesc('id')->take(5)->get();
+        return view('home.profile', compact('user', 'posts', 'suggestionsUsers', 'projects'));
     }
 
     public function lazyload(Request $request)

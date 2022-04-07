@@ -94,7 +94,7 @@
                     @lang('site.comment') {{ $share->post->comments->count() }}</a></li>
         </ul>
         <a data-id="{{ $share->post->id }}" data-content="{{ $share->post->content }}" class="share-post-btn"><i
-                class="la la-share"></i>shares
+                class="la la-share"></i>@lang('site.shares')
             {{ $share->post->shares->count() }}</a>
     </div>
 </div>

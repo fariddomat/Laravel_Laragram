@@ -191,7 +191,7 @@
 
                                 <div class="post-topbar">
                                     <div class="user-picy">
-                                        <img src="http://via.placeholder.com/100x100" alt="">
+                                        <img src="{{Auth::user()->info->profile_img_path}}" style="max-height: 100px;max-width: 100px" alt="">
                                     </div>
                                     <div class="post-st">
                                         <ul>
@@ -257,7 +257,7 @@
                                                 <div class="post-details">
                                                     <a href="{{ route('posts.show', ['post' => $item->id]) }}">
                                                         <h3>{{ $item->user->fullName() }}</h3>
-                                                        <p>{{ Str::of($item->content)->limit(25) }}</p>
+                                                        <p>{!! Str::of($item->content)->limit(25) !!}</p>
                                                     </a>
                                                 </div>
                                                 <div class="hr-rate">
@@ -281,7 +281,7 @@
                                                 <div class="post-details">
                                                     <a href="{{ route('posts.show', ['post' => $project->id]) }}">
                                                         <h3>{{ $project->user->fullName() }}</h3>
-                                                        <p>{{ Str::of($project->content)->limit(25) }}</p>
+                                                        <p>{!! Str::of($project->content)->limit(25) !!}</p>
                                                     </a>
                                                 </div>
                                                 <div class="hr-rate">
@@ -325,14 +325,14 @@
                         <div class="col-lg-10">
                             <div class="inp-field">
                                 <select name="type" id="type">
-                                    <option selected value="post">Post</option>
+                                    <option selected value="post">@lang('site.post')</option>
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
-                                        <option value="news">News</option>
+                                        <option value="news">@lang('site.news')</option>
                                     @endif
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
-                                        <option value="lecture">Lecutre</option>
+                                        <option value="lecture">@lang('site.lecture')</option>
                                     @endif
-                                    <option value="project">Project</option>
+                                    <option value="project">@lang('site.project')</option>
                                 </select>
                             </div>
                         </div>
@@ -343,14 +343,14 @@
                             <div class="col-lg-5">
                                 <div class="inp-field">
                                     <select class="" id="subcategory" name="college">
-                                        <option value="">College</option>
+                                        <option value="">@lang('site.college')</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
                                     <select id="subcategory2" name="course">
-                                        <option value="">Course</option>
+                                        <option value="">@lang('site.course')</option>
                                     </select>
                                 </div>
                             </div>
@@ -372,8 +372,8 @@
                         </div>
                         <div class="col-lg-12">
                             <ul>
-                                <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="{{ url()->previous() }}" title="">Cancel</a></li>
+                                <li><button class="active" type="submit" value="post">@lang('site.post')</button></li>
+                                <li><a href="{{ url()->previous() }}" title="">@lang('site.cancel')</a></li>
                             </ul>
                         </div>
                     </div>
@@ -405,14 +405,14 @@
                         <div class="col-lg-10">
                             <div class="inp-field">
                                 <select name="type" id="mediatype">
-                                    <option selected value="post">Post</option>
+                                    <option selected value="post">@lang('site.post')</option>
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
-                                        <option value="news">News</option>
+                                        <option value="news">@lang('site.news')</option>
                                     @endif
                                     @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::user()->hasRole('teacher'))
-                                        <option value="lecture">Lecutre</option>
+                                        <option value="lecture">@lang('site.lecture')</option>
                                     @endif
-                                    <option value="project">Project</option>
+                                    <option value="project">@lang('site.project')</option>
                                 </select>
                             </div>
                         </div>
@@ -423,14 +423,14 @@
                             <div class="col-lg-5">
                                 <div class="inp-field">
                                     <select class="" id="mediasubcategory" name="college">
-                                        <option value="">College</option>
+                                        <option value="">@lang('site.college')</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="col-lg-5">
                                 <div class="inp-field">
                                     <select id="mediasubcategory2" name="course">
-                                        <option value="">Course</option>
+                                        <option value="">@lang('site.course')</option>
                                     </select>
                                 </div>
                             </div>
@@ -455,8 +455,8 @@
                         </div>
                         <div class="col-lg-12">
                             <ul>
-                                <li><button class="active" type="submit" value="post">Post</button></li>
-                                <li><a href="{{ url()->previous() }}" title="">Cancel</a></li>
+                                <li><button class="active" type="submit" value="post">@lang('site.post')</button></li>
+                                <li><a href="{{ url()->previous() }}" title="">@lang('site.cancel')</a></li>
                             </ul>
                         </div>
                     </div>

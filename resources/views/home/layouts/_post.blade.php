@@ -1,7 +1,7 @@
 <div class="post-bar">
     <div class="post_topbar">
         <div class="usy-dt">
-            <img src="{{$post->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px" alt="">
+            <img src="{{ $post->user->info->profile_img_path }}" style="max-width: 50px;max-height: 50px" alt="">
             <div class="usy-name">
                 <h3><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a>
                 </h3>
@@ -13,10 +13,14 @@
         <div class="ed-opts">
             <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
             <ul class="ed-options">
-                <li><a href="{{ route('posts.show', ['post' => $post->id]) }}" title="">View Post</a></li>
-                <li><a href="#" title="">Edit Post</a></li>
-                <li><a href="#" title="">Hide</a></li>
-                <li><a href="#" title="">Report</a></li>
+                <li><a href="{{ route('posts.show', ['post' => $post->id]) }}" title="">@lang('site.viewPost')</a>
+                </li>
+                @if ($post->user_id == Auth::id())
+                    <li><a href="#" title="">@lang('site.editPost')</a></li>
+                @endif
+                @if ($post->user_id != Auth::id())
+                    <li><a href="#" title="">@lang('site.report')</a></li>
+                @endif
             </ul>
         </div>
     </div>
@@ -25,7 +29,8 @@
             <li><img src="{{ asset('home/images/icon8.png') }}" alt=""><span><a
                         href="{{ route('user.show', $post->user->username) }}">{{ $post->user->username }}</a></span>
             </li>
-            <li><img src="{{ asset('home/images/icon9.png') }}" alt=""><span>{{ $post->user->college->name }}</span>
+            <li><img src="{{ asset('home/images/icon9.png') }}"
+                    alt=""><span>{{ $post->user->college->name }}</span>
             </li>
         </ul>
         <ul class="bk-links">
@@ -62,7 +67,7 @@
     </div>
     <div class="post-status-bar">
         <ul class="like-com">
-            @if ($post->isFollower($post->user->id) || $post->type !='post')
+            @if ($post->isFollower($post->user->id) || $post->type != 'post')
                 @if ($post->isAuthUserLikedPost())
                     <li>
                         <a id="saveLike" data-type="dislike" data-post="{{ $post->id }}" class="active"><i
@@ -85,9 +90,9 @@
             @else
                 <li><a><i class="la la-heart"></i>
 
-                </a>
-                <img src="{{ asset('home/images/liked-img.png') }}" alt="">
-                <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
+                    </a>
+                    <img src="{{ asset('home/images/liked-img.png') }}" alt="">
+                    <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
                 </li>
             @endif
 
@@ -95,14 +100,13 @@
                         src="{{ asset('home/images/com.png') }}" alt="">
                     @lang('site.comment') {{ $post->comments->count() }}</a></li>
         </ul>
-        @if ($post->isFollower($post->user->id)  || $post->type !='post')
- <a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="share-post-btn"><i
-                class="la la-share"></i>@lang('site.shares')
-            {{ $post->shares->count() }}</a>
+        @if ($post->isFollower($post->user->id) || $post->type != 'post')
+            <a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="share-post-btn"><i
+                    class="la la-share"></i>@lang('site.shares')
+                {{ $post->shares->count() }}</a>
         @else
-        <a class="disabled"><i
-            class="la la-share"></i>@lang('site.shares')
-        {{ $post->shares->count() }}</a>
+            <a class="disabled"><i class="la la-share"></i>@lang('site.shares')
+                {{ $post->shares->count() }}</a>
         @endif
 
     </div>

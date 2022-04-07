@@ -160,6 +160,12 @@ return [
     'reply'=>'Reply',
     'like'=> 'Like',
     'unlike'=> 'Unlike',
+    'lecture'=>'Lecutre',
+    'publicinfo'=>'Public Info',
+    'dob'=>'Date of Birth',
+    'viewPost'=>'View Post',
+    'editPost'=>'Edit Post',
+    'report'=>'Report',
 
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',
