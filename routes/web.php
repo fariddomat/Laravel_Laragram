@@ -24,6 +24,8 @@ Route::group([
     });
     Route::get('/', 'HomeController@home')->name('home');
     Route::get('/homePage', 'HomeController@home')->name('homePage');
+    Route::get('/search', 'HomeController@search')->name('search');
+
     Route::post('/coursesList', 'HomeController@coursesList')->name('coursesList');
     Route::get('/news', 'HomeController@news')->name('news');
     Route::get('/projects', 'HomeController@projects')->name('projects');
@@ -109,4 +111,3 @@ Route::get('test', function () {
 });
 
 Route::post('/registerStudent', 'RegisterController@register')->name('registerStudent');
-

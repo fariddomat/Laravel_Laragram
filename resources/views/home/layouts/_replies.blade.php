@@ -34,8 +34,8 @@
                 @include('home.layouts._replies', ['comments' => $comment->replies])
             </div>
         @endif
-
-        @if ($comment->parent_id == null)
+@if ($post->isFollower($post->user->id) || $post->user_id==Auth::id()  || $post->type !='post')
+ @if ($comment->parent_id == null)
             <div style="margin-left: 75px">
                 <a href="" id="reply"></a>
                 @auth
@@ -54,6 +54,8 @@
                 @endauth
             </div>
         @endif
+@endif
+
         {{-- <hr> --}}
 
     </div>

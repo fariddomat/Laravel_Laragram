@@ -77,7 +77,7 @@
                     _prevCount++;
                     // console.log(".like-count" + _post);
                     $(".like-count" + _post).text(_prevCount);
-                    $(".like" + _post).text(@json( __('site.unlike') ));
+                    $(".like" + _post).text(@json(__('site.unlike')));
 
                     _type = 'dislike';
                     document.getElementById("saveLike").setAttribute('data-type', 'dislike');
@@ -88,7 +88,7 @@
                     _prevCount--;
                     // console.log(".like-count" + _post);
                     $(".like-count" + _post).text(_prevCount);
-                    $(".like" + _post).text(@json( __('site.like') ));
+                    $(".like" + _post).text(@json(__('site.like')));
 
                     _type = 'like';
                     document.getElementById("saveLike").setAttribute('data-type', 'like');
@@ -145,3 +145,35 @@
     });
 </script>
 {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
+
+<link href="{{ asset('home/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all">
+<script src="{{ asset('home/js/owl.carousel.js') }}"></script>
+<script src="{{ asset('plugins/easyautocomplete/jquery.easy-autocomplete.min.js') }}"></script>
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    var options = {
+
+        url: function(search) {
+
+            return "/search/?search=" + search;
+        },
+        getValue: function(element) {
+            return element.fname+ " "+element.lname;
+        },
+        list: {
+            onChooseEvent: function() {
+                var value = $('.form-control[type="search"]').getSelectedItemData();
+                var url = window.location.origin + "/user/" + value
+                    .username;
+                window.location.replace(url);
+            }
+        },
+    };
+    $('.form-control[type="search"]').easyAutocomplete(options);
+</script>

@@ -155,4 +155,17 @@ class HomeController extends Controller
         })->whereType('project')->latest()->take(3)->get();
         return $projects;
     }
+
+
+    public function search()
+    {
+        if (request()->ajax()) {
+
+            $values = User::whenSearch(request()->search)->get();
+
+            return $values;
+        }
+        return redirect()->back();
+
+    }
 }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable
@@ -50,7 +51,7 @@ class User extends Authenticatable
 
     public function fullName()
     {
-        return ucfirst($this->fname) ." " . ucfirst($this->lname);
+        return ucfirst($this->fname) . " " . ucfirst($this->lname);
     }
 
     public function scopeWhereRole($query, $role_name)
@@ -70,7 +71,7 @@ class User extends Authenticatable
     public function scopeWhenSearch($query, $search)
     {
         return $query->when($search, function ($q) use ($search) {
-            return $q->where('name', 'like', "%$search%");
+            return $q->where('fname', 'like', "%$search%")->orWhere('lname', 'like', "%$search%");
         });
     }
 
@@ -104,14 +105,19 @@ class User extends Authenticatable
     //relations -------------------------------------------
     public function following()
     {
-        return $this->belongsToMany('App\User','followers','user_id','target_id');
+        return $this->belongsToMany('App\User', 'followers', 'user_id', 'target_id');
     }
     //relations -------------------------------------------
     public function followers()
-{
-    return $this->belongsToMany('App\User','followers','target_id','user_id');
-}
+    {
+        return $this->belongsToMany('App\User', 'followers', 'target_id', 'user_id');
+    }
 
+    // Follower::whereUser_id(Auth::user()->id)->whereTarget_id($user->id)
+    public function isFollower($id)
+    {
+        return $this->whereUser_id(Auth::user()->id)->whereTarget_id($id);
+    }
     //relations -------------------------------------------
     public function blacklists()
     {
@@ -143,6 +149,4 @@ class User extends Authenticatable
     {
         return $this->hasMany(Message::class);
     }
-
-
 }

@@ -62,30 +62,48 @@
     </div>
     <div class="post-status-bar">
         <ul class="like-com">
-            @if ($post->isAuthUserLikedPost())
-                <li>
-                    <a id="saveLike" data-type="dislike" data-post="{{ $post->id }}" class="active"><i
-                            class="la la-heart"></i>
-                        <p style="float: right;" class="like{{ $post->id }}">@lang('site.unlike')</p>
-                    </a>
-                    <img src="{{ asset('home/images/liked-img.png') }}" alt="">
-                    <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
-                </li>
+            @if ($post->isFollower($post->user->id) || $post->type !='post')
+                @if ($post->isAuthUserLikedPost())
+                    <li>
+                        <a id="saveLike" data-type="dislike" data-post="{{ $post->id }}" class="active"><i
+                                class="la la-heart"></i>
+                            <p style="float: right;" class="like{{ $post->id }}">@lang('site.unlike')</p>
+                        </a>
+                        <img src="{{ asset('home/images/liked-img.png') }}" alt="">
+                        <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
+                    </li>
+                @else
+                    <li>
+                        <a id="saveLike" data-type="like" data-post="{{ $post->id }}"><i
+                                class="la la-heart"></i>
+                            <p style="float: right;" class="like{{ $post->id }}">@lang('site.like')</p>
+                        </a>
+                        <img src="{{ asset('home/images/liked-img.png') }}" alt="">
+                        <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
+                    </li>
+                @endif
             @else
-                <li>
-                    <a id="saveLike" data-type="like" data-post="{{ $post->id }}"><i class="la la-heart"></i>
-                        <p style="float: right;" class="like{{ $post->id }}">@lang('site.like')</p>
-                    </a>
-                    <img src="{{ asset('home/images/liked-img.png') }}" alt="">
-                    <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
+                <li><a><i class="la la-heart"></i>
+
+                </a>
+                <img src="{{ asset('home/images/liked-img.png') }}" alt="">
+                <span class="like-count{{ $post->id }}">{{ $post->likes->count() }}</span>
                 </li>
             @endif
+
             <li><a href="{{ route('posts.show', ['post' => $post->id]) }}" title="" class="com"><img
                         src="{{ asset('home/images/com.png') }}" alt="">
                     @lang('site.comment') {{ $post->comments->count() }}</a></li>
         </ul>
-        <a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="share-post-btn"><i
-                class="la la-share"></i>shares
+        @if ($post->isFollower($post->user->id)  || $post->type !='post')
+ <a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="share-post-btn"><i
+                class="la la-share"></i>@lang('site.shares')
             {{ $post->shares->count() }}</a>
+        @else
+        <a class="disabled"><i
+            class="la la-share"></i>@lang('site.shares')
+        {{ $post->shares->count() }}</a>
+        @endif
+
     </div>
 </div>

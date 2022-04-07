@@ -22,6 +22,9 @@
     <!--  Swiper's CSS -->
     {{-- <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" /> --}}
     <link rel="stylesheet" href="{{ asset('home/css/swiper-bundle.min.css') }}" />
+
+    <link href="{{ asset('plugins/easyautocomplete/easy-autocomplete.min.css') }}" rel="stylesheet">
+
     <style>
         .widget-feat {
             padding: 25px 20px !important;

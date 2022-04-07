@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Post extends Model
 {
@@ -32,6 +33,13 @@ class Post extends Model
     public function isAuthUserLikedPost()
     {
         return $this->likes()->where('user_id',  auth()->id())->exists();
+    }
+
+    // Follower::whereUser_id(Auth::user()->id)->whereTarget_id($user->id)
+    public function isFollower($id)
+    {
+        return Follower::whereUser_id(Auth::user()->id)->whereTarget_id($id)->exists();
+
     }
 
     // check if post has a file

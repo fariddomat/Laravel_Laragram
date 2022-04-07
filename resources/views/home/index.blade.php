@@ -209,11 +209,16 @@
                                 @endif
                                 <div class="posts-section">
                                     <div class="scrolling-pagination">
-                                        @if ($shares->count() > 0)
-                                            @foreach ($shares as $share)
-                                                @include('home.layouts._sharePost')
-                                            @endforeach
-                                        @endif
+                                        @isset($shares)
+                                            @if ($shares->count() > 0)
+                                                @foreach ($shares as $share)
+                                                    @include('home.layouts._sharePost')
+                                                @endforeach
+                                            @endif
+                                        @endisset
+
+
+
                                         @if ($posts->count() > 0)
                                             @foreach ($posts as $post)
                                                 @include('home.layouts._post')
@@ -350,7 +355,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        {{-- <div class="col-lg-2">
                             <label for="">Privacy</label>
                         </div>
                         <div class="col-lg-6">
@@ -361,7 +366,7 @@
                                     <option>Only me</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>
@@ -430,7 +435,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-2">
+                        {{-- <div class="col-lg-2">
                             <label for="">Privacy</label>
                         </div>
                         <div class="col-lg-6">
@@ -441,7 +446,7 @@
                                     <option>Only me</option>
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>
