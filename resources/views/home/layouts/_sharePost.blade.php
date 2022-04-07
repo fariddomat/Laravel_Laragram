@@ -10,7 +10,7 @@
     </p></div>
         <div class="usy-dt">
 
-            <img src="http://via.placeholder.com/50x50" alt="">
+            <img src="{{$share->post->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px" alt="">
             <div class="usy-name">
                 <h3><a href="{{ route('user.show', $share->post->user->username) }}">{{ $share->post->user->fullName() }}</a>
                 </h3>

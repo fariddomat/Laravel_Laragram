@@ -21,12 +21,10 @@
                             <div class="main-left-sidebar">
                                 <div class="user_profile">
                                     <div class="user-pro-img">
-                                        @if ($user->info->profile_img)
-                                            <img src="{{ asset('storage/profile/' . $user->info->profile_img . '?p=small') }}"
-                                                alt="">
-                                        @else
-                                            <img src="http://via.placeholder.com/170x170" alt="">
-                                        @endif
+
+                                            <img src="{{$user->info->profile_img_path}}"
+                                                alt="" style="">
+
                                         <a href="{{ route('editprofile') }}" title=""><i style="color: white !important;" class="fa fa-camera"></i></a>
                                     </div>
                                     <!--user-pro-img end-->
@@ -113,7 +111,7 @@
                                     <div class="suggestions-list">
                                         @foreach ($suggestionsUsers as $item)
                                             <div class="suggestion-usd">
-                                                <img src="http://via.placeholder.com/35x35" alt="">
+                                                <img src="{{$item->info->profile_img_path}}" style="max-width: 35px;max-height: 35px;" alt="">
                                                 <div class="sgt-text">
                                                     <h4>{{ $item->fullName() }}</h4>
                                                     <span>{{ $item->username }}</span>
@@ -143,17 +141,7 @@
                                             {{ $user->info->bio }}
                                         </h4>
                                     </div>
-                                    <!--star-descp end-->
-                                    <div class="tab-feed st2">
-                                        <ul>
-                                            <li data-tab="feed-dd" class="active">
-                                                <a href="#" title="">
-                                                    <img src="{{ asset('home/images/ic1.png') }}" alt="">
-                                                    <span>@lang('site.feed')</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div><!-- tab-feed end-->
+                                   
                                 </div>
                                 <!--user-tab-sec end-->
                                 <div class="product-feed-tab current " id="feed-dd">

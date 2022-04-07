@@ -20,18 +20,14 @@
                             <div class="main-left-sidebar">
                                 <div class="user_profile">
                                     <div class="user-pro-img">
-                                        @if ($user->info->profile_img)
-                                            <img src="{{ asset('storage/profile/' . $user->info->profile_img . '?p=small') }}"
-                                                alt="">
-                                        @else
-                                            <img src="http://via.placeholder.com/170x170" alt="">
-                                        @endif
+                                        <img src="{{ $user->info->profile_img_path }}"
+                                            alt="">
                                     </div>
                                     <!--user-pro-img end-->
                                     <div class="user_pro_status">
                                         <ul class="flw-hr">
-                                            <li><a href="#" title="" class="flww"><i class="la la-plus"></i>
-                                                    @lang('site.follow')</a></li>
+                                            <li><a href="{{ route('profile') }}" title="" class="flww"><i class="la la-user"></i>
+                                                    @lang('site.profile')</a></li>
                                         </ul>
                                         <ul class="flw-status">
                                             <li>
@@ -89,8 +85,8 @@
                                             @endif
                                         @else
                                             <h3 style="text-align: center;
-                                                    margin: 15px 0;
-                                                    font-weight: bold;">No more details !!!</h3>
+                                                        margin: 15px 0;
+                                                        font-weight: bold;">No more details !!!</h3>
                                         @endif
                                     </ul>
                                 </div>
@@ -106,9 +102,9 @@
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;
-                                                                                        font-size: 37px;
-                                                                                        font-weight: lighter;
-                                                                                        font-style: oblique;">
+                                                                                            font-size: 37px;
+                                                                                            font-weight: lighter;
+                                                                                            font-style: oblique;">
                                             {{ $user->info->bio }}</h4>
                                     </div>
                                     <!--star-descp end-->
@@ -278,8 +274,9 @@
                                                     <li class="social-link-li">
                                                         <button type="submit" class="btn btn-success"
                                                             style="margin: 0 40px;">@lang('site.save')</button>
-                                                        <a href="#" class="btn btn-warning" style="width: auto;
-                                                                                    color: #fff;">@lang('site.cancel')</a>
+                                                        <a href="#" class="btn btn-warning"
+                                                            style="width: auto;
+                                                                                        color: #fff;">@lang('site.cancel')</a>
                                                     </li>
                                                 </ul>
                                             </form>
@@ -288,7 +285,7 @@
                                     <!--posts-section end-->
                                 </div>
                                 <!--product-feed-tab end-->
-                                <div  class="product-feed-tab" id="portfolio-dd">
+                                <div class="product-feed-tab" id="portfolio-dd">
                                     <div class="portfolio-gallery-sec">
                                         <form action="{{ route('change.password') }}" method="POST">
                                             @csrf
@@ -297,21 +294,24 @@
                                                 <p class="text-danger">{{ $error }}</p>
                                             @endforeach
                                             <div class="form-group row" style="margin-bottom: 15px;">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.currentpassword')</label>
+                                                <label for="password"
+                                                    class="col-md-4 col-form-label text-md-right">@lang('site.currentpassword')</label>
                                                 <div class="col-md-6">
                                                     <input id="password" type="password" class="form-control"
                                                         name="current_password" autocomplete="current-password">
                                                 </div>
                                             </div>
                                             <div class="form-group row" style="margin-bottom: 15px;">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.newpassword')</label>
+                                                <label for="password"
+                                                    class="col-md-4 col-form-label text-md-right">@lang('site.newpassword')</label>
                                                 <div class="col-md-6">
                                                     <input id="new_password" type="password" class="form-control"
                                                         name="new_password" autocomplete="current-password">
                                                 </div>
                                             </div>
                                             <div class="form-group row" style="margin-bottom: 15px;">
-                                                <label for="password" class="col-md-4 col-form-label text-md-right">@lang('site.confirmpassword')</label>
+                                                <label for="password"
+                                                    class="col-md-4 col-form-label text-md-right">@lang('site.confirmpassword')</label>
                                                 <div class="col-md-6">
                                                     <input id="new_confirm_password" type="password" class="form-control"
                                                         name="new_confirm_password" autocomplete="current-password">
@@ -343,10 +343,10 @@
                                             <input class="form-controll" type="file" name="profile_img" id="">
                                             <div class="lt-sec">
                                                 <button type="submit" style="display: inline-block;
-                                                    color: #ffffff;
-                                                    font-size: 16px;
-                                                    background-color: #00ADC1;
-                                                    padding: 10px 25px;"> Save </button>
+                                                        color: #ffffff;
+                                                        font-size: 16px;
+                                                        background-color: #00ADC1;
+                                                        padding: 10px 25px;"> Save </button>
                                             </div>
                                         </form>
 

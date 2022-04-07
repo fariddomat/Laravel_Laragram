@@ -126,14 +126,14 @@ class PostController extends Controller
             $request->validate([
                 'content' => 'required',
                 'type' => 'required',
-                'privacy' => 'required',
+                // 'privacy' => 'required',
                 'course' => 'required',
             ]);
         } else {
             $request->validate([
                 'content' => 'required',
                 'type' => 'required',
-                'privacy' => 'required',
+                // 'privacy' => 'required',
             ]);
         }
 
@@ -161,7 +161,7 @@ class PostController extends Controller
                     'user_id' => Auth::user()->id,
                     'content' => $request->content,
                     'type' => $request->type,
-                    'privacy' => $request->privacy,
+                    'privacy' => 'public',
 
                 ]);
                 foreach ($request->file('files') as $file) {
@@ -182,7 +182,7 @@ class PostController extends Controller
                 'user_id' => Auth::user()->id,
                 'content' => $request->content,
                 'type' => $request->type,
-                'privacy' => $request->privacy,
+                'privacy' => 'public',
 
             ]);
         }

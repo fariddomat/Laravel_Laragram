@@ -156,6 +156,8 @@ return [
     'sharedBy'=> 'Shared By',
     'comment'=> 'Comment',
     'comments'=> 'Comments',
+    'replies'=>'Replies',
+    'reply'=>'Reply',
     'like'=> 'Like',
     'unlike'=> 'Unlike',
 

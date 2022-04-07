@@ -117,7 +117,7 @@
                                     <div class="user-profile">
                                         <div class="username-dt">
                                             <div class="usr-pic">
-                                                <img src="http://via.placeholder.com/100x100" alt="">
+                                                <img src="{{Auth::user()->info->profile_img_path}}" alt="">
                                             </div>
                                         </div>
                                         <!--username-dt end-->
@@ -150,7 +150,7 @@
                                     <div class="suggestions-list">
                                         @foreach ($suggestionsUsers as $item)
                                             <div class="suggestion-usd">
-                                                <img src="http://via.placeholder.com/35x35" alt="">
+                                                <img src="{{$item->info->profile_img_path}}" style="max-width: 35px;max-height: 35px" alt="">
                                                 <div class="sgt-text">
                                                     <h4>{{ $item->fname }} {{ $item->lname }}</h4>
                                                     <span>{{ $item->username }}</span>

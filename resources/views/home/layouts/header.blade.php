@@ -122,7 +122,7 @@
             <!--menu-btn end-->
             <div class="user-account" style="width: 125px !important;">
                 <div class="user-info">
-                    <img src="http://via.placeholder.com/30x30" alt="">
+                    <img src="{{Auth::user()->info->profile_img_path}}" style="max-height: 30px;max-width: 30px" alt="">
                     <a title="">{{ Auth::user()->fname }}</a>
                     <i class="la la-sort-down"></i>
                 </div>

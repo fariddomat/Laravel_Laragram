@@ -1,7 +1,7 @@
 <div class="post-bar">
     <div class="post_topbar">
         <div class="usy-dt">
-            <img src="http://via.placeholder.com/50x50" alt="">
+            <img src="{{$post->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px" alt="">
             <div class="usy-name">
                 <h3><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a>
                 </h3>

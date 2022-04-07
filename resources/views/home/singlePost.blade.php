@@ -13,7 +13,7 @@
                                 <div class="forum-post-view">
                                     <div class="usr-question">
                                         <div class="usr_img">
-                                            <img src="http://via.placeholder.com/60x60" alt="">
+                                            <img src="{{$post->user->info->profile_img_path}}" style="max-width: 60px;max-height: 60px" alt="">
                                         </div>
                                         <div class="usr_quest">
                                             <h3>{{ $post->user->fullName() }}</h3>
@@ -50,7 +50,7 @@
                                                                     data-post="{{ $post->id }}"
                                                                     class="active"><i class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">unlike</p>
+                                                                        class="like{{ $post->id }}">@lang('site.unlike')</p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
                                                                     alt="">
@@ -63,7 +63,7 @@
                                                                     data-post="{{ $post->id }}"><i
                                                                         class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">Like</p>
+                                                                        class="like{{ $post->id }}">@lang('site.like')</p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
                                                                     alt="">
@@ -84,11 +84,11 @@
 
                                                 </ul>
                                                 <a data-id="{{ $post->id }}" data-content="{{ $post->content }}"
-                                                    class="share-post-btn"><i class="la la-share"></i>shares
+                                                    class="share-post-btn"><i class="la la-share"></i>@lang('site.shares')
                                                     {{ $post->shares->count() }}</a>
                                             </div>
                                             <div class="comment-section">
-                                                <h3>{{ $post->comments->count() }} Comments</h3>
+                                                <h3>{{ $post->comments->count() }} @lang('site.comments')</h3>
                                                 <div class="comment-sec">
                                                     {{-- <ul>
                                                 @foreach ($post->comments as $comment)
@@ -127,7 +127,7 @@
                                         {{-- <h3>{{$post->comments->count()}} Comments</h3> --}}
                                         <div class="user-poster">
                                             <div class="usr-post-img">
-                                                <img src="http://via.placeholder.com/40x40" alt="">
+                                                <img src="{{Auth::user()->info->profile_img_path}}" style="max-width: 40px;max-height: 40px"" alt="">
                                             </div>
                                             <div class="post_comment_sec">
                                                 <form method="post" action="{{ route('comment.add') }}">
@@ -135,7 +135,7 @@
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
 
                                                     <textarea placeholder="Your Answer" name="comment"></textarea>
-                                                    <button type="submit">Post Comment</button>
+                                                    <button type="submit">@lang('site.comment')</button>
                                                 </form>
                                             </div>
                                             <!--post_comment_sec end-->
@@ -178,7 +178,7 @@
                                         <li>
                                             <div class="usr-msg-details">
                                                 <div class="usr-ms-img">
-                                                    <img src="http://via.placeholder.com/50x50" alt="">
+                                                    <img src="{{$post->user->info->profile_img_path}}" style="max-height: 50px;max-width: 50px;" alt="">
                                                 </div>
                                                 <div class="usr-mg-info">
                                                     <h3><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a></h3>
