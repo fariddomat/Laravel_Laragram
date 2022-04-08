@@ -167,7 +167,7 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-bookmark" style="color: orange"></i>
-                                            <i class="fa fa-ban" style="color: red"></i>
+                                            <a href="{{ route('report.post', $post->id) }}"><i class="fa fa-ban" style="color: red"></i></a>
                                         </li>
                                     </ul>
                                 </div>

@@ -2,13 +2,11 @@
     <div class="display-comment  p-1 rounded">
         @auth
             @if (Auth::user()->hasRole('admin'))
-                <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger" style=" float: right;margin-top: 5x;"><i class="fa fa-trash"></i> </a>
+                <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5x;"><i class="fa fa-trash"></i> </a>
             @endif
-            {{-- @if (Auth::user()->hasRole('user'))
-        <a href="{{ route('comment.report', ['id' => $comment->id]) }}" class="btn btn-danger" style=" float: right;
-                                                    margin-top: 5px;
-                                                }"><i class="fa fa-ban" title="Report this comment"></i> </a>
-    @endif --}}
+            @if (Auth::user()->hasRole('user'))
+        <a href="{{ route('report.comment', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5px;"><i class="fa fa-ban" title="Report this comment"></i> </a>
+    @endif
         @endauth
         <div class="row">
             <div class="col-md-1 center">

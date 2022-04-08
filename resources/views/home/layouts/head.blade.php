@@ -222,9 +222,12 @@
             }
 
             .usr_quest i {
-                padding: 0 25px 0 5px !important;
+                /* padding: 0 25px 0 5px !important; */
             }
 
+            .danger1{
+                float: left !important;
+            }
             .sd-title h3 {
                 width: 100%
             }
