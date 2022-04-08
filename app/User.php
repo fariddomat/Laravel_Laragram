@@ -150,5 +150,27 @@ class User extends Authenticatable
         return $this->hasMany(Message::class);
     }
 
-
+    public function chats()
+    {
+        $users1 = Auth::user()->followers()->get();
+        $users2 = Auth::user()->following()->get();
+        $users = $users1->merge($users2);
+        return $users;
+    }
+    public function chat($user)
+    {
+        $chat1 = Message::where('user_id', Auth::id())->where('receiver_id', $user->id)->latest()->first();
+        $chat2 = Message::where('receiver_id', Auth::id())->where('user_id', $user->id)->latest()->first();
+        if(!$chat1){
+            return $chat2;
+        }
+        if(!$chat2){
+            return $chat1;
+        }
+        if ($chat1->created_at > $chat2->created_at) {
+            return $chat1;
+        } else {
+           return $chat2;
+        }
+    }
 }

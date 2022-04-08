@@ -105,7 +105,6 @@
                                 <div class="suggestions full-width">
                                     <div class="sd-title">
                                         <h3>@lang('site.suggestions')</h3>
-                                        <i class="la la-ellipsis-v"></i>
                                     </div>
                                     <!--sd-title end-->
                                     <div class="suggestions-list">

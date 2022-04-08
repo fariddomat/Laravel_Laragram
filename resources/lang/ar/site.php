@@ -170,6 +170,11 @@ return [
     'viewPost'=>'مشاهدة المنشور',
     'editPost'=>'تعديل المنشور',
     'report'=>'إبلاغ',
+    'LatestAddedLectures'=>'آخر المحاضرات المضافة',
+    'Youhave'=>'لديك',
+    'ago'=>'مضت',
+    'ViewAllNottifications'=>'مشاهدة كل الإشعارات',
+
 
     'like'=> 'إعجاب',
     'unlike'=> 'الغاء الإعجاب',

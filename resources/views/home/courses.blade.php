@@ -21,7 +21,7 @@
                                         <div class="epi-sec">
                                             <ul class="descp">
                                                 <li><img src="{{ asset('home/images/icon8.png') }}"
-                                                        alt=""><span>Lectures {{ $course->lectures->count() }}</span></li>
+                                                        alt=""><span> @lang('site.lecture') {{ $course->lectures->count() }}</span></li>
                                                 <li><img src="{{ asset('home/images/icon9.png') }}"
                                                         alt=""><span>{{ $course->college->name }}</span>
                                                 </li>
@@ -48,9 +48,9 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="widget widget-user">
-                            <h3 class="title-wd"><i class="fa fa-university"></i> {{Auth::user()->college->name }} Courses <br><span style="font-size: medium;
+                            <h3 class="title-wd"><i class="fa fa-university"></i> {{Auth::user()->college->name }}<br> <br><span style="font-size: medium;
                                 font-style: italic;
-                                padding-left: 25px;">Latest Added Lectures</span></h3>
+                                padding-left: 25px;">@lang('site.LatestAddedLectures')</span></h3>
                             <ul>
                                 @foreach ($courses as $course)
                                 @foreach ($course->lectures as $lecture)

@@ -166,6 +166,10 @@ return [
     'viewPost'=>'View Post',
     'editPost'=>'Edit Post',
     'report'=>'Report',
+    'LatestAddedLectures'=>'Latest Added Lectures',
+    'Youhave'=>'You have',
+    'ago'=>'ago',
+    'ViewAllNottifications'=>'View All Nottifications',
 
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',

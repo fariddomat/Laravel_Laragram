@@ -7,6 +7,7 @@ use App\Message;
 use App\Events\MessageSent;
 use Illuminate\Http\Request;
 use App\Events\PrivateMessageSent;
+use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
@@ -18,12 +19,17 @@ class MessageController extends Controller
      */
     public function private()
     {
+
         return view('private');
     }
 
     public function users()
     {
-        return User::all();
+        $users1=Auth::user()->followers()->get();
+        $users2=Auth::user()->following()->get();
+        $users = $users1->merge($users2) ;
+        return $users ;
+        // return User::all();
     }
 
     public function fetchMessages()

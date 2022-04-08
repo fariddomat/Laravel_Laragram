@@ -216,10 +216,15 @@
         <link rel="stylesheet" href="{{ asset('admin/assets/css/rtl.css') }}">
         {{-- <link rel="stylesheet" href="{{ asset('dist/css/rtl.css') }}"> --}}
         <style>
+            .ct-time {
+                left: 10px !important;
+                right: unset !important;
+            }
 
-            .usr_quest i{
+            .usr_quest i {
                 padding: 0 25px 0 5px !important;
             }
+
             .sd-title h3 {
                 width: 100%
             }
@@ -380,6 +385,7 @@
         h3 {
             color: #A63EC5 !important;
         }
+
         h4 {
             color: #A63EC5 !important;
         }

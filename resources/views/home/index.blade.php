@@ -320,7 +320,7 @@
                             @include('home.layouts._error')
                         </div>
                         <div class="col-lg-2">
-                            <label for="">Type</label>
+                            <label for="">@lang('site.type')</label>
                         </div>
                         <div class="col-lg-10">
                             <div class="inp-field">
@@ -400,7 +400,7 @@
                             @include('home.layouts._error')
                         </div>
                         <div class="col-lg-2">
-                            <label for="">Type</label>
+                            <label for="">@lang('site.type')</label>
                         </div>
                         <div class="col-lg-10">
                             <div class="inp-field">
@@ -490,7 +490,7 @@
                 if (type == 'lecture') {
                     element.classList.remove("hidden");
                     var c = {!! $colleges->toJson() !!};
-                    $('#subcategory').empty();
+                    // $('#subcategory').empty();
                     $.each(c, function(index, subcategory) {
                         $('#subcategory').append('<option value="' + subcategory.id + '">' +
                             subcategory
@@ -534,7 +534,7 @@
                 if (type == 'lecture') {
                     element.classList.remove("hidden");
                     var c = {!! $colleges->toJson() !!};
-                    $('#mediasubcategory').empty();
+                    // $('#mediasubcategory').empty();
                     $.each(c, function(index, subcategory) {
                         $('#mediasubcategory').append('<option value="' + subcategory.id + '">' +
                             subcategory

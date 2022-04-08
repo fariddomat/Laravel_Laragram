@@ -60,9 +60,9 @@
                         </a>
                         <div class="notification-box">
                             <div class="nt-title">
-                                <h4>You have <strong class="text-primary">{{auth()->user()->unreadNotifications->count()}}</strong> notifications.
+                                <h4>@lang('site.Youhave') <strong class="text-primary">{{auth()->user()->unreadNotifications->count()}}</strong> @lang('site.notifications').
                                     @if (auth()->user()->unreadNotifications->count())
-                                      <a class="text-primary" href="{{ route('databasenotifications.markasread') }}">Mark All as Read</a>
+                                      <a class="text-primary" href="{{ route('databasenotifications.markasread') }}">@lang('site.markAllRead')</a>
                                     @endif</h4>
                             </div>
                             <div class="nott-list">
@@ -79,14 +79,14 @@
                                               <i class="fa fa-check text-success" aria-hidden="true"></i>
                                             @endif
                                           </small>
-                                          <small>{{$notification->created_at->diffforhumans()}} ago</small>
+                                          <small>{{$notification->created_at->diffforhumans()}} @lang('site.ago')</small>
                                         </div>
                                       </div>
                                       <p class="text-sm mb-0">{{$notification->data['body']}}</p>
                                 </a>
                                 @endforeach
                                 <div class="view-all-nots">
-                                    <a href="#" title="">View All Notification</a>
+                                    <a href="#" title="">@lang('site.ViewAllNottifications')</a>
                                 </div>
                             </div>
                             <!--nott-list end-->
