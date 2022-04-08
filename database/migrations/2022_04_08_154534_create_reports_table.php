@@ -17,7 +17,7 @@ class CreateReportsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->integer('post_id');
-            $table->integer('comment_id')->nullable();
+            $table->integer('comment_id')->default(0);
             $table->string('status')->default('pending');
             $table->timestamps();
         });

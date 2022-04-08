@@ -101,6 +101,16 @@
                 text-align: right;
             }
 
+            #report-table {
+                direction: rtl;
+                text-align: right;
+            }
+
+            #report-table_filter {
+                direction: rtl !important;
+                text-align: right;
+            }
+
             h1 {
                 text-align: right
             }

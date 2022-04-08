@@ -22,5 +22,8 @@ Route::group(
     Route::resource('courses', 'CourseController');
     // Route::get('colleges', 'CollegeController@index')->name('college.index');
     Route::resource('posts', 'PostController');
+    Route::resource('reports', 'ReportController');
+    Route::post('reportCheck/{id}', 'ReportController@reportCheck')->name('reports.check');
+
     }
 );
