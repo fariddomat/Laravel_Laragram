@@ -170,7 +170,9 @@ return [
     'Youhave'=>'You have',
     'ago'=>'ago',
     'ViewAllNottifications'=>'View All Nottifications',
-
+    'TypeofthisPost'=>'Type of this Post',
+    'Userpostscount'=>'User post\'s count',
+    
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',
     'socialinfo'=> 'Social',

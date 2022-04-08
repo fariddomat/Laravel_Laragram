@@ -174,6 +174,8 @@ return [
     'Youhave'=>'لديك',
     'ago'=>'مضت',
     'ViewAllNottifications'=>'مشاهدة كل الإشعارات',
+    'TypeofthisPost'=>'نوع هذا المنشور',
+    'Userpostscount'=>'عدد منشورات المستخدم',
 
 
     'like'=> 'إعجاب',
