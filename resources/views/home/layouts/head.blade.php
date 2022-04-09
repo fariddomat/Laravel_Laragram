@@ -380,6 +380,9 @@
     @endif
 
     <style>
+        .easy-autocomplete-container ul li div{
+            display: flow-root !important;
+        }
         a {
             cursor: pointer !important;
             color: #A63EC5

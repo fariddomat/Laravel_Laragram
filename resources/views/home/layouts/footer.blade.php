@@ -166,6 +166,12 @@
         getValue: function(element) {
             return element.fname+ " "+element.lname;
         },
+        template: {
+            type: 'iconLeft',
+            fields: {
+                iconSrc: "profile_path",
+            }
+        },
         list: {
             onChooseEvent: function() {
                 var value = $('.form-control[type="search"]').getSelectedItemData();

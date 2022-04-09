@@ -166,6 +166,7 @@ return [
     'viewPost'=>'View Post',
     'editPost'=>'Edit Post',
     'report'=>'Report',
+    'reports'=>'Reports',
     'LatestAddedLectures'=>'Latest Added Lectures',
     'Youhave'=>'You have',
     'ago'=>'ago',

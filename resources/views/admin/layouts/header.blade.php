@@ -314,7 +314,7 @@
                         <li class="dropdown dropdown-user nav-item"><a
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
                                 <span class="avatar avatar-online"><img
-                                        src="{{ asset('admin/theme-assets/images/portrait/small/avatar-s-19.png') }}"
+                                        src="{{ Auth::user()->info->profile_img_path }}" style="max-width: 35px;max-height: 35px"
                                         alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right"><a class="dropdown-item" href="#"><span

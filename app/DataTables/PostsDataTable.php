@@ -60,7 +60,6 @@ class PostsDataTable extends DataTable
                     ->dom('Bfrtip')
                     ->orderBy(0, 'asc')
                     ->buttons(
-                        Button::make('create'),
                         Button::make('export'),
                         Button::make('print'),
                         Button::make('reset'),

@@ -4,7 +4,7 @@
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <br><h1>@lang('site.courses') <br /> </h1>
+            <br><h1>@lang('site.reports') <br /> </h1>
             {!! $dataTable->table() !!}
         </div>
     </div>

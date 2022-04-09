@@ -22,6 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username', 'fname', 'lname', 'email', 'password', 'college_id', 'status'
     ];
+    protected $appends=['profile_path'];
 
     protected $withCount = ['posts'];
 
@@ -172,5 +173,10 @@ class User extends Authenticatable
         } else {
            return $chat2;
         }
+    }
+
+    public function getProfilePathAttribute()
+    {
+        return $this->info->profile_img_path;
     }
 }

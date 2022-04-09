@@ -31,7 +31,9 @@
                                                 @if ($lecture->post->withFiles())
                                                     <ul class="quest-tags">
                                                         @foreach ($lecture->post->files as $file)
-                                                            <li><a href="{{ route('getDownload', [$lecture->post->id,$file->file]) }}" title="" target="_blank"><i class="fa fa-download"></i> {{ $file->file }}</a></li>
+                                                            <li><a href="{{ route('getDownload', [$lecture->post->id, $file->file]) }}"
+                                                                    title="" target="_blank"><i class="fa fa-download"></i>
+                                                                    {{ $file->file }}</a></li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
@@ -57,26 +59,31 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="widget widget-user">
-                            <h3 class="title-wd"><i class="fa fa-university"></i> {{$lectures[0]->course->name }} <br><br>
-                            <span class="mt-2" style="font-size: medium;
-                                font-style: italic;
-                                padding-left: 25px;">@lang('site.LatestAddedLectures')</span></h3>
+                            <h3 class="title-wd"><i class="fa fa-university"></i> {{ $name }}
+                                <br><br>
+                                <span class="mt-2" style="font-size: medium;
+                                    font-style: italic;
+                                    padding-left: 25px;">@lang('site.LatestAddedLectures')</span>
+                            </h3>
                             <ul>
-                                @foreach ($lectures as $lecture)
-                                <li>
-                                    <div class="usr-msg-details">
-                                        <div class="usr-ms-img">
-                                            <i class="fa fa-book"></i>
-                                        </div>
-                                        <div class="usr-mg-info">
-                                            <h3>{{$lecture->course->name}} : {{$lecture->title}}</h3>
-                                            <p>{{$lecture->post->user->username}}</p>
-                                        </div>
-                                        <!--usr-mg-info end-->
-                                    </div>
-                                    <span><img src="{{ asset('home/images/price1.png') }}" alt=""></span>
-                                </li>
-                                @endforeach
+                                @if ($lectures->count() > 0)
+                                    @foreach ($lectures as $lecture)
+                                        <li>
+                                            <div class="usr-msg-details">
+                                                <div class="usr-ms-img">
+                                                    <i class="fa fa-book"></i>
+                                                </div>
+                                                <div class="usr-mg-info">
+                                                    <h3>{{ $lecture->course->name }} : {{ $lecture->title }}</h3>
+                                                    <p>{{ $lecture->post->user->username }}</p>
+                                                </div>
+                                                <!--usr-mg-info end-->
+                                            </div>
+                                            <span><img src="{{ asset('home/images/price1.png') }}" alt=""></span>
+                                        </li>
+                                    @endforeach
+                                @endif
+
 
 
                             </ul>
@@ -91,4 +98,3 @@
     </section>
     <!--forum-page end-->
 @endsection
-

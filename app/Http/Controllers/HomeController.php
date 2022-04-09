@@ -133,7 +133,7 @@ class HomeController extends Controller
             abort(403);
         }
         $lectures=Lecture::where('course_id',$courses->id)->get();
-        return view('home.course', compact('suggestionsUsers', 'colleges', 'courses', 'lectures'));
+        return view('home.course', compact('suggestionsUsers', 'colleges', 'courses', 'lectures' ,'name'));
     }
 
     // get latest 5 news
