@@ -132,7 +132,7 @@
                     <ul class="us-links">
                         @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin'))
                         <li><a href="{{ route('admin.dashboard') }}" title=""><i class="fa fa-dashboard"></i>
-                            @lang('site.dashboard')</a></li>
+                            @lang('site.controlPanel')</a></li>
                         @endif
                         <li><a href="{{ route('profile') }}" title=""><i class="fa fa-user"></i>
                                 @lang('site.viewProfile')</a></li>

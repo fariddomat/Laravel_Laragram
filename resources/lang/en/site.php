@@ -172,7 +172,7 @@ return [
     'ViewAllNottifications'=>'View All Nottifications',
     'TypeofthisPost'=>'Type of this Post',
     'Userpostscount'=>'User post\'s count',
-    
+
     'personalinfo'=> 'Personal',
     'otherinfo'=> 'Other Info',
     'socialinfo'=> 'Social',
@@ -181,6 +181,6 @@ return [
     'title' => 'Time to share your thought',
     'about' => 'Stay connected with the world!',
 
-
+    'controlPanel'=>'Control Panel',
 
 ];

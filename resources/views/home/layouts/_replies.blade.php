@@ -1,10 +1,10 @@
 @foreach ($comments as $comment)
     <div class="display-comment  p-1 rounded">
         @auth
-            @if (Auth::user()->hasRole('admin'))
+            @if (Auth::user()->hasRole('admin') || Auth::id()==$comment->user->id)
                 <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5x;"><i class="fa fa-trash"></i> </a>
             @endif
-            @if (Auth::user()->hasRole('user'))
+            @if ((Auth::user()->hasRole('user') && Auth::id()!=$comment->user->id ) || (Auth::user()->hasRole('teacher') && Auth::id()!=$comment->user->id))
         <a href="{{ route('report.comment', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5px;"><i class="fa fa-ban" title="Report this comment"></i> </a>
     @endif
         @endauth

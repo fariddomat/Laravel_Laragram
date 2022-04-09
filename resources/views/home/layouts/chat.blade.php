@@ -10,7 +10,7 @@
                 <a href="#" title="" class="close-chat"><i class="la la-minus-square"></i></a>
             </div>
             <div class="chat-list">
-
+                @if(Auth::user()->chats()->count() > 0)
                 @foreach (Auth::user()->chats() as $item)
                    <a href="{{ route('private') }}">
                     <div class="conv-list">
@@ -21,14 +21,21 @@
                         </div>
                         <div class="usy-info">
                             <h3>{{$item->username}}</h3>
-                            <span>{{Auth::user()->chat($item)->message}}</span>
+                            @isset(Auth::user()->chat($item)->message)
+                                <span>{{Auth::user()->chat($item)->message}}</span>
+                            @endisset
+
                         </div>
                         <div class="ct-time">
-                            <span>{{Auth::user()->chat($item)->created_at->diffforhumans()}}</span>
+                            @isset (Auth::user()->chat($item)->message)
+<span>{{Auth::user()->chat($item)->created_at->diffforhumans()}}</span>
+                            @endisset
+
                         </div>
                     </div>
                    </a>
                 @endforeach
+                @endif
             </div>
             <!--chat-list end-->
         </div>
