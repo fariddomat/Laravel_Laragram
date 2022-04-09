@@ -20,7 +20,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'username', 'fname', 'lname', 'email', 'password', 'college_id', 'status'
+        'username', 'fname', 'lname', 'email', 'password', 'college_id', 'status', 'style'
     ];
     protected $appends=['profile_path'];
 

@@ -19,8 +19,15 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/line-awesome-font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/font-awesome.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/jquery.mCustomScrollbar.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/style.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/responsive.css') }}">
+    @if (Auth::check())
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/'.Auth::user()->style.'/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('home/css/'.Auth::user()->style.'/responsive.css') }}">
+    @else
+        <link rel="stylesheet" type="text/css" href="{{ asset('home/css/1/style.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('home/css/1/responsive.css') }}">
+    @endif
+
     <link rel="stylesheet" type="text/css" href="{{ asset('home/css/tailwind.min.css') }}">
     <link type="text/css" href="{{ asset('admin/theme-assets/fonts/flag-icon-css/css/flag-icon.min.css') }}"
         rel="stylesheet">

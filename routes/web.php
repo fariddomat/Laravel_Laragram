@@ -58,6 +58,9 @@ Route::group([
 
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
+
+    Route::get('style/{id}', 'ProfileController@style')->name('style');
+
     // notification
     Route::get('/notifications', 'UserController@notifications');
     Route::get('send', 'NotificationController@sendNotification');

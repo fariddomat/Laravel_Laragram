@@ -183,5 +183,6 @@ return [
     'about' => 'Stay connected with the world!',
 
     'controlPanel'=>'Control Panel',
+    'style'=>'Style',
 
 ];

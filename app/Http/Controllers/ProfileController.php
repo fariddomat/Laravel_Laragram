@@ -124,4 +124,15 @@ class ProfileController extends Controller
         Session::flash('success', 'Successfully Created !');
         return redirect()->route('editprofileinfo');
     }
+
+    public function style($id)
+    {
+        $user=User::find(Auth::id());
+        if ($user) {
+            $user->update([
+                'style'=>$id
+            ]);
+        }
+        return redirect()->back();
+    }
 }

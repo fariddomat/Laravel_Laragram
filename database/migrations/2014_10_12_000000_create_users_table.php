@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('status')->default('active');
+            $table->string('style')->default('1');
             $table->unsignedBigInteger('college_id')->nullable();
             $table->rememberToken();
             $table->timestamps();

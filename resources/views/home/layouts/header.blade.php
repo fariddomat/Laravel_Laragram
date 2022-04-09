@@ -148,6 +148,14 @@
                             @csrf
                         </form>
                     </h3>
+                    <ul class="us-links">
+                        <li><a href="{{ route('style', 1) }}" title="">
+                                @lang('site.style') 1 <i class="fa fa-desktop" style="color: #00AFC1"></i></a></li>
+                        <li><a href="{{ route('style', 2) }}" title=""> @lang('site.style') 2 <i class="fa fa-desktop" style="color: #533E85"></i></a></li>
+                        <li><a href="{{ route('style', 3) }}" title=""> @lang('site.style') 3 <i class="fa fa-desktop" style="color: #FA4EAB"></i></a></li>
+                        <li><a href="{{ route('style', 4) }}" title=""> @lang('site.style') 4 <i class="fa fa-desktop" style="color: #39AEA9"></i></a></li>
+                        <li><a href="{{ route('style', 5) }}" title=""> @lang('site.style') 5 <i class="fa fa-desktop" style="color: #FD5D5D"></i></a></li>
+                    </ul>
                 </div>
                 <!--user-account-settingss end-->
             </div>
