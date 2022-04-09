@@ -13,14 +13,27 @@
                                 <div class="forum-post-view">
                                     <div class="usr-question">
                                         <div class="usr_img">
-                                            <img src="{{$post->user->info->profile_img_path}}" style="max-width: 60px;max-height: 60px" alt="">
+                                            <img src="{{ $post->user->info->profile_img_path }}"
+                                                style="max-width: 60px;max-height: 60px" alt="">
                                         </div>
                                         <div class="usr_quest">
-                                            <a href="{{ route('user.show', $post->user->username) }}"><h3>{{ $post->user->fullName() }}</h3></a>
+                                            <a href="{{ route('user.show', $post->user->username) }}">
+                                                <h3>{{ $post->user->fullName() }}</h3>
+                                            </a>
                                             <span><i
                                                     class="fa fa-clock-o"></i>{{ $post->created_at->diffforhumans() }}</span>
 
-                                            <p dir='auto'>{!! $post->content !!}</p>
+                                            <p dir='auto'>{!! $post->content !!}
+                                                @if ($post->withFiles())
+                                                    <ul class="quest-tags">
+                                                        @foreach ($post->files as $file)
+                                                            <li><a href="{{ route('getDownload', [$post->id, $file->file]) }}"
+                                                                    title="" target="_blank"><i class="fa fa-download"></i>
+                                                                    {{ $file->file }}</a></li>
+                                                        @endforeach
+                                                    </ul>
+                                                @endif
+                                            </p>
                                             @if ($post->withImages())
                                                 @if ($post->hasMoreThanOneImage())
                                                     <div class="swiper mySwiper">
@@ -43,14 +56,15 @@
                                             @endif
                                             <div class="post-status-bar">
                                                 <ul class="like-com">
-                                                    @if ($post->isFollower($post->user->id)  || $post->type !='post')
+                                                    @if ($post->isFollower($post->user->id) || $post->type != 'post')
                                                         @if ($post->isAuthUserLikedPost())
                                                             <li>
                                                                 <a id="saveLike" data-type="dislike"
                                                                     data-post="{{ $post->id }}"
                                                                     class="active"><i class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">@lang('site.unlike')</p>
+                                                                        class="like{{ $post->id }}">@lang('site.unlike')
+                                                                    </p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
                                                                     alt="">
@@ -63,7 +77,8 @@
                                                                     data-post="{{ $post->id }}"><i
                                                                         class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">@lang('site.like')</p>
+                                                                        class="like{{ $post->id }}">@lang('site.like')
+                                                                    </p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
                                                                     alt="">
@@ -84,7 +99,8 @@
 
                                                 </ul>
                                                 <a data-id="{{ $post->id }}" data-content="{{ $post->content }}"
-                                                    class="share-post-btn"><i class="la la-share"></i>@lang('site.shares')
+                                                    class="share-post-btn"><i
+                                                        class="la la-share"></i>@lang('site.shares')
                                                     {{ $post->shares->count() }}</a>
                                             </div>
                                             <div class="comment-section">
@@ -122,14 +138,15 @@
                                     <!--usr-question end-->
                                 </div>
                                 <!--forum-post-view end-->
-                                @if ($post->isFollower($post->user->id) || $post->user_id==Auth::id()  || $post->type !='post')
+                                @if ($post->isFollower($post->user->id) || $post->user_id == Auth::id() || $post->type != 'post')
                                     <div class="post-comment-box">
                                         {{-- <h3>{{$post->comments->count()}} Comments</h3> --}}
                                         <div class="user-poster">
                                             <div class="usr-post-img">
-                                                <img src="{{Auth::user()->info->profile_img_path}}" style="max-width: 40px;max-height: 40px"" alt="">
-                                            </div>
-                                            <div class="post_comment_sec">
+                                                <img src="{{ Auth::user()->info->profile_img_path }}"
+                                                    style="max-width: 40px;max-height: 40px"" alt="">
+                                                    </div>
+                                                    <div class="  post_comment_sec">
                                                 <form method="post" action="{{ route('comment.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
@@ -149,9 +166,10 @@
                             <div class="col-lg-4">
                                 <div class="widget widget-feat">
                                     <h3 style="margin-bottom: 15px;
-                                    font-style: oblique;
-                                    font-weight: bold;
-                                    color: rebeccapurple;">@lang('site.TypeofthisPost') : @lang("site.$post->type") </h3>
+                                            font-style: oblique;
+                                            font-weight: bold;
+                                            color: rebeccapurple;">@lang('site.TypeofthisPost') : @lang("site.$post->type")
+                                    </h3>
                                     <ul>
                                         <li>
                                             <i class="fa fa-heart"></i>
@@ -167,7 +185,8 @@
                                         </li>
                                         <li>
                                             <i class="fa fa-bookmark" style="color: orange"></i>
-                                            <a href="{{ route('report.post', $post->id) }}"><i class="fa fa-ban" style="color: red"></i></a>
+                                            <a href="{{ route('report.post', $post->id) }}"><i class="fa fa-ban"
+                                                    style="color: red"></i></a>
                                         </li>
                                     </ul>
                                 </div>
@@ -178,10 +197,13 @@
                                         <li>
                                             <div class="usr-msg-details">
                                                 <div class="usr-ms-img">
-                                                    <img src="{{$post->user->info->profile_img_path}}" style="max-height: 50px;max-width: 50px;" alt="">
+                                                    <img src="{{ $post->user->info->profile_img_path }}"
+                                                        style="max-height: 50px;max-width: 50px;" alt="">
                                                 </div>
                                                 <div class="usr-mg-info">
-                                                    <h3><a href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a></h3>
+                                                    <h3><a
+                                                            href="{{ route('user.show', $post->user->username) }}">{{ $post->user->fullName() }}</a>
+                                                    </h3>
                                                 </div>
                                                 <!--usr-mg-info end-->
                                             </div>

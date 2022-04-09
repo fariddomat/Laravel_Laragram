@@ -28,15 +28,41 @@
                                             <div class="react-links">
                                                 {!! $lecture->post->content !!}
 
-                                                @if ($lecture->post->withFiles())
-                                                    <ul class="quest-tags">
-                                                        @foreach ($lecture->post->files as $file)
-                                                            <li><a href="{{ route('getDownload', [$lecture->post->id, $file->file]) }}"
-                                                                    title="" target="_blank"><i class="fa fa-download"></i>
-                                                                    {{ $file->file }}</a></li>
-                                                        @endforeach
-                                                    </ul>
+                                                @if ($lecture->post->withImages())
+                                                    @if ($lecture->post->hasMoreThanOneImage())
+                                                        <div class="swiper mySwiper">
+                                                            <div class="swiper-wrapper">
+                                                                @foreach ($lecture->post->images_path as $item)
+                                                                    <div class="swiper-slide">
+                                                                        <img class="object-cover w-full h-96 post-img"
+                                                                            src="{{ $item }}" alt="image" />
+                                                                    </div>
+                                                                @endforeach
+                                                            </div>
+                                                            <div class="swiper-button-next"></div>
+                                                            <div class="swiper-button-prev"></div>
+
+                                                            <div class="swiper-pagination"></div>
+                                                        </div>
+                                                    @else
+                                                        <img class="post-img" src="{{ $lecture->post->image_path }}"
+                                                            alt="">
+                                                    @endif
                                                 @endif
+
+                                                <div>
+
+                                                    @if ($lecture->post->withFiles())
+                                                        <ul class="quest-tags">
+                                                            @foreach ($lecture->post->files as $file)
+                                                                <li><a href="{{ route('getDownload', [$lecture->post->id, $file->file]) }}"
+                                                                        title="" target="_blank"><i
+                                                                            class="fa fa-download"></i>
+                                                                        {{ $file->file }}</a></li>
+                                                            @endforeach
+                                                        </ul>
+                                                    @endif
+                                                </div>
                                             </div>
 
                                         </div>
@@ -62,8 +88,8 @@
                             <h3 class="title-wd"><i class="fa fa-university"></i> {{ $name }}
                                 <br><br>
                                 <span class="mt-2" style="font-size: medium;
-                                    font-style: italic;
-                                    padding-left: 25px;">@lang('site.LatestAddedLectures')</span>
+                                            font-style: italic;
+                                            padding-left: 25px;">@lang('site.LatestAddedLectures')</span>
                             </h3>
                             <ul>
                                 @if ($lectures->count() > 0)

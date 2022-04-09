@@ -120,7 +120,7 @@ return [
     'post' => 'منشور',
     'postimage' => 'نشر صورة',
     'postvideo' => 'نشر مقطع مصور',
-    'postmedia' => 'نشر صور أو فيديو',
+    'postmedia' => 'نشر وسائط',
     'posts' => 'منشورات',
     'image' => 'صورة',
     'images' => 'صور',

@@ -5063,6 +5063,7 @@ a:hover {
 .quest-tags li {
 	display: inline-block;
 	margin-right: 10px;
+    margin-top: 10px;
 }
 .quest-tags li a {
 	display: inline-block;

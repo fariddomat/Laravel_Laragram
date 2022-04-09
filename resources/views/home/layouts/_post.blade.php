@@ -17,6 +17,11 @@
                 </li>
                 @if ($post->user_id == Auth::id())
                     <li><a href="#" title="">@lang('site.editPost')</a></li>
+                    <li><form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                    @csrf
+                    @method('Delete')
+                    <button type="submit">@lang('site.delete')</button>
+                    </form></li>
                 @endif
                 @if ($post->user_id != Auth::id())
                     <li><a href="#" title="">@lang('site.report')</a></li>
@@ -42,6 +47,7 @@
         <p dir='auto'>{!! $post->content !!}
             {{-- <a href="#" title="">@lang('site.viewMore')</a> --}}
         </p>
+
         @if ($post->withImages())
             @if ($post->hasMoreThanOneImage())
                 <div class="swiper mySwiper">
@@ -61,7 +67,17 @@
                 <img class="post-img" src="{{ $post->image_path }}" alt="">
             @endif
         @endif
-
+        <div>
+            @if ($post->withFiles())
+                <ul class="quest-tags mb-2">
+                    @foreach ($post->files as $file)
+                        <li><a href="{{ route('getDownload', [$post->id, $file->file]) }}" title=""
+                                target="_blank"><i class="fa fa-download"></i>
+                                {{ $file->file }}</a></li>
+                    @endforeach
+                </ul>
+            @endif
+        </div>
 
 
     </div>

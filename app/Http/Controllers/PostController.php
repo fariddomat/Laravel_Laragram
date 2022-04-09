@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File as fFile;
 use App\File;
 use App\Lecture;
 use App\Like;
@@ -77,17 +78,17 @@ class PostController extends Controller
             'user_id' => Auth::id()
         ]);
 
-        $post=Post::find($request->post_id);
+        $post = Post::find($request->post_id);
 
-        $user=User::find(Auth::id());
+        $user = User::find(Auth::id());
 
         $details = [
-            'body' =>  $request->user()->fullName(). ' has shared your post',
+            'body' =>  $request->user()->fullName() . ' has shared your post',
             'data' => "",
-            'actionURL' => url("/posts/".$post->id),
-            'user_id'=>$post->user_id,
+            'actionURL' => url("/posts/" . $post->id),
+            'user_id' => $post->user_id,
         ];
-        $user2=User::find($post->user_id);
+        $user2 = User::find($post->user_id);
         $user2->notify(new UserNotification($details));
 
         Session::flash('success', 'Successfully share !');
@@ -249,8 +250,23 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        if ($post) {
+            if ($post->withFiles()) {
+                foreach ($post->files as $file) {
+                    $path = "/files/$id/".$file->file;
+                    // unlink($path);
+                    // dd($path);
+                    fFile::delete(public_path($path));
+                }
+            }
+            $post->delete();
+            return redirect()->back();
+        }
+        if (empty($post)) {
+            abort(403);
+        }
     }
 }
