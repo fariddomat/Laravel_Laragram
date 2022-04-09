@@ -117,7 +117,7 @@
                                     <div class="user-profile">
                                         <div class="username-dt">
                                             <div class="usr-pic">
-                                                <img src="{{Auth::user()->info->profile_img_path}}" alt="">
+                                                <img src="{{Auth::user()->profile_path}}" alt="">
                                             </div>
                                         </div>
                                         <!--username-dt end-->
@@ -150,7 +150,7 @@
                                     <div class="suggestions-list">
                                         @foreach ($suggestionsUsers as $item)
                                             <div class="suggestion-usd">
-                                                <img src="{{$item->info->profile_img_path}}" style="max-width: 35px;max-height: 35px" alt="">
+                                                <img src="{{$item->profile_path}}" style="max-width: 35px;max-height: 35px" alt="">
                                                 <div class="sgt-text">
                                                     <h4>{{ $item->fname }} {{ $item->lname }}</h4>
                                                     <span>{{ $item->username }}</span>
@@ -191,7 +191,7 @@
 
                                 <div class="post-topbar">
                                     <div class="user-picy">
-                                        <img src="{{Auth::user()->info->profile_img_path}}" style="max-height: 100px;max-width: 100px" alt="">
+                                        <img src="{{Auth::user()->profile_path}}" style="max-height: 100px;max-width: 100px" alt="">
                                     </div>
                                     <div class="post-st">
                                         <ul>

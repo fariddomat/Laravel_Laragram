@@ -5,10 +5,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description"
-        content="admin dashboard">
-    <meta name="keywords"
-        content="admin , admin template, dashboard template , webapp, dashboard, analytic dashboard">
+    <meta name="description" content="admin dashboard">
+    <meta name="keywords" content="admin , admin template, dashboard template , webapp, dashboard, analytic dashboard">
     <meta name="author" content="ThemeSelect">
     <title>Dashboard - Admin </title>
     <link rel="apple-touch-icon" href="{{ asset('admin/theme-assets/images/ico/apple-icon-120.png') }}">
@@ -48,8 +46,7 @@
     <link rel="stylesheet" href="{{ asset('admin/css/buttons.dataTables.min.css') }}">
     <!-- #endregion -->
     {{-- <link type="text/css" href="https://maxcdn.icons8.com/fonts/line-awesome/1.1/css/line-awesome.min.css" --}}
-    <link type="text/css" href="{{ asset('admin/css/line-awesome.min.css') }}"
-        rel="stylesheet">
+    <link type="text/css" href="{{ asset('admin/css/line-awesome.min.css') }}" rel="stylesheet">
 
     <style>
         tr td:last-child {
@@ -82,6 +79,7 @@
                 direction: rtl !important;
                 text-align: right;
             }
+
             #coursedatatable-table {
                 direction: rtl;
                 text-align: right;
@@ -91,6 +89,7 @@
                 direction: rtl !important;
                 text-align: right;
             }
+
             #postsdatatable-table {
                 direction: rtl;
                 text-align: right;
@@ -301,33 +300,23 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav float-right">
-                        <li class="dropdown dropdown-notification nav-item"><a class="nav-link nav-link-label" href="#"
-                                data-toggle="dropdown"><i class="ficon ft-mail"> </i></a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <div class="arrow_box_right"><a class="dropdown-item" href="#"><i
-                                            class="ft-book"></i> @lang('site.readMail')</a><a
-                                        class="dropdown-item" href="#"><i class="ft-bookmark"></i>
-                                        @lang('site.readLater')</a><a class="dropdown-item" href="#"><i
-                                            class="ft-check-square"></i> @lang('site.markAllRead') </a></div>
-                            </div>
+                        <li class=" nav-item"><a class="nav-link nav-link-label"
+                                href="{{ route('homePage') }}"><i class="ficon ft-home"> </i></a>
+
                         </li>
                         <li class="dropdown dropdown-user nav-item"><a
                                 class="dropdown-toggle nav-link dropdown-user-link" href="#" data-toggle="dropdown">
-                                <span class="avatar avatar-online"><img
-                                        src="{{ Auth::user()->info->profile_img_path }}" style="max-width: 35px;max-height: 35px"
-                                        alt="avatar"><i></i></span></a>
+                                <span class="avatar avatar-online"><img src="{{ Auth::user()->profile_path }}"
+                                        style="max-width: 35px;max-height: 35px" alt="avatar"><i></i></span></a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <div class="arrow_box_right"><a class="dropdown-item" href="#"><span
-                                            class="avatar avatar-online"><img
-                                                src="{{ asset('admin/theme-assets/images/portrait/small/avatar-s-19.png') }}"
-                                                alt="avatar"><span class="user-name text-bold-700 ml-1">John
-                                                Doe</span></span></a>
-                                    <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i
-                                            class="ft-user"></i> @lang('site.editProfile')</a><a
-                                        class="dropdown-item" href="#"><i class="ft-mail"></i>
-                                        @lang('site.myInbox')</a><a class="dropdown-item" href="#"><i
-                                            class="ft-check-square"></i> @lang('site.task')</a><a class="dropdown-item"
-                                        href="#"><i class="ft-message-square"></i> @lang('site.chats')</a>
+                                            class="avatar avatar-online"><img src="{{ Auth::user()->profile_path }}"
+                                                alt="avatar"><span
+                                                class="user-name text-bold-700 ml-1">{{ Auth::user()->fullName() }}</span></span></a>
+                                    <div class="dropdown-divider"></div><a class="dropdown-item"
+                                        href="{{ route('editprofile') }}"><i class="ft-user"></i>
+                                        @lang('site.editProfile')</a><a class="dropdown-item"
+                                        href="{{ route('private') }}"><i class="ft-message-square"></i> @lang('site.chats')</a>
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

@@ -85,9 +85,9 @@
                                       <p class="text-sm mb-0">{{$notification->data['body']}}</p>
                                 </a>
                                 @endforeach
-                                <div class="view-all-nots">
+                                {{-- <div class="view-all-nots">
                                     <a href="#" title="">@lang('site.ViewAllNottifications')</a>
-                                </div>
+                                </div> --}}
                             </div>
                             <!--nott-list end-->
                         </div>
