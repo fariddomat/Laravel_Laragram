@@ -129,6 +129,17 @@ class User extends Authenticatable
     {
         return $this->hasMany(Like::class);
     }
+
+    //relations -------------------------------------------
+    public function saves()
+    {
+        return $this->hasMany(Save::class);
+    }
+
+    public function isSaved($post)
+    {
+        return $this->saves()->where('user_id',  auth()->id())->where('post_id',$post)->exists();
+    }
     //relations -------------------------------------------
     public function shares()
     {

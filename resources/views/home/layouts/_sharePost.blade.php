@@ -28,13 +28,16 @@
         <div class="ed-opts">
             <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
             <ul class="ed-options">
-                <li><a href="{{ route('posts.show', ['post' => $share->post->id]) }}" title="">View Post</a></li>
+                <li><a href="{{ route('posts.show', ['post' => $share->post->id]) }}" title="">@lang('site.viewPost')</a></li>
 
                 @if ($share->post->user_id == Auth::id())
                     <li><a href="#" title="">@lang('site.editPost')</a></li>
                 @endif
                 @if ($share->post->user_id != Auth::id())
-                    <li><a href="#" title="">@lang('site.report')</a></li>
+                    <li><a href="{{ route('report.post', $share->post->id) }}" title="">@lang('site.report')</a></li>
+                @endif
+                @if (Auth::user()->isSaved($share->post->id))
+                    <li><a href="{{ route('unsave', $post->id) }}" title="">@lang('site.unSave')</a></li>
                 @endif
             </ul>
         </div>
@@ -49,7 +52,7 @@
             </li>
         </ul>
         <ul class="bk-links">
-            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+            <li><a href="{{ route('save', $share->post->id) }}" title=""><i class="la la-bookmark"></i></a></li>
             {{-- <li><a href="#" title=""><i class="la la-envelope"></i></a></li> --}}
         </ul>
     </div>

@@ -28,6 +28,11 @@ class Post extends Model
     {
         return $this->hasMany(Like::class);
     }
+    //relations -------------------------------------------
+    public function saves()
+    {
+        return $this->hasMany(Save::class);
+    }
 
     // check if auth user has liked post
     public function isAuthUserLikedPost()

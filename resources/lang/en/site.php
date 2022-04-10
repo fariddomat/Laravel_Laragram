@@ -125,6 +125,8 @@ return [
     'feed' => 'Feed',
     'info' => 'Info',
     'savedJobs' => 'Saved Jobs',
+    'saved' => 'Saved Post',
+    'unSave' => 'Un Save',
     'mybids' => 'My Bids',
     'portfolio' => 'Portfolio',
     'payment' => 'Payment',

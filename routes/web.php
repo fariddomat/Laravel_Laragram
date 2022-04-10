@@ -59,6 +59,10 @@ Route::group([
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');
 
 
+    Route::get('save/{id}', 'SaveController@save')->name('save');
+    Route::get('unSave/{id}', 'SaveController@unSave')->name('unsave');
+    Route::get('saved', 'SaveController@index')->name('saved');
+
     Route::get('style/{id}', 'ProfileController@style')->name('style');
 
     // notification

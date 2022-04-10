@@ -24,7 +24,10 @@
                     </form></li>
                 @endif
                 @if ($post->user_id != Auth::id())
-                    <li><a href="#" title="">@lang('site.report')</a></li>
+                    <li><a href="{{ route('report.post', $post->id) }}" title="">@lang('site.report')</a></li>
+                @endif
+                @if (Auth::user()->isSaved($post->id))
+                    <li><a href="{{ route('unsave', $post->id) }}" title="">@lang('site.unSave')</a></li>
                 @endif
             </ul>
         </div>
@@ -39,7 +42,7 @@
             </li>
         </ul>
         <ul class="bk-links">
-            <li><a href="#" title=""><i class="la la-bookmark"></i></a></li>
+            <li><a href="{{ route('save', $post->id) }}" title=""><i class="la la-bookmark"></i></a></li>
             {{-- <li><a href="#" title=""><i class="la la-envelope"></i></a></li> --}}
         </ul>
     </div>

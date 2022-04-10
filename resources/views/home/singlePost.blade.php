@@ -184,7 +184,7 @@
                                             <span>{{ $post->shares->count() }}</span>
                                         </li>
                                         <li>
-                                            <i class="fa fa-bookmark" style="color: orange"></i>
+                                            <a href="{{ route('save', $post->id) }}"><i class="fa fa-bookmark" style="color: orange"></i></a>
                                             <a href="{{ route('report.post', $post->id) }}"><i class="fa fa-ban"
                                                     style="color: red"></i></a>
                                         </li>

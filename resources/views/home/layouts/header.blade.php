@@ -136,6 +136,7 @@
                         @endif
                         <li><a href="{{ route('profile') }}" title=""><i class="fa fa-user"></i>
                                 @lang('site.viewProfile')</a></li>
+                        <li><a href="{{ route('saved') }}" title=""><i class="fa fa-bookmark"></i> @lang('site.saved')</a></li>
                         <li><a href="{{ route('editprofileinfo') }}" title=""><i class="fa fa-cog"></i> @lang('site.accountSetting')</a></li>
                         <li><a href="#" title=""><i class="fa fa-book"></i> @lang('site.terms')</a></li>
                     </ul>
