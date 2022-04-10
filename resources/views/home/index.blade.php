@@ -472,6 +472,7 @@
 
     {{-- Share post --}}
     @include('home.layouts._share')
+    @include('home.layouts._edit')
 
 @endsection
 

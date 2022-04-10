@@ -239,9 +239,18 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Post $post)
+    public function update(Request $request, $id)
     {
-        //
+        // dd($request->post_id);
+        $post=Post::find($request->post_id);
+        if (empty($post)) {
+            abort(403);
+        }
+        $post->update([
+            'content'=>$request->content
+        ]);
+        return redirect()->back();
+
     }
 
     /**

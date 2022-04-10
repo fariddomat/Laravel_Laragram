@@ -16,7 +16,7 @@
                 <li><a href="{{ route('posts.show', ['post' => $post->id]) }}" title="">@lang('site.viewPost')</a>
                 </li>
                 @if ($post->user_id == Auth::id())
-                    <li><a href="#" title="">@lang('site.editPost')</a></li>
+                    <li><a  data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="edit-post-btn" title="">@lang('site.editPost')</a></li>
                     <li><form action="{{ route('posts.destroy', $post->id) }}" method="POST">
                     @csrf
                     @method('Delete')

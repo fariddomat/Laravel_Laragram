@@ -144,6 +144,30 @@
         console.log(post_id);
     });
 </script>
+
+<script>
+    // Share Post
+    $(".edit-post-btn").on("click", function() {
+        $(".post-popup.edit-post").addClass("active");
+        $(".wrapper").addClass("overlay");
+        return false;
+    });
+
+    $(".post-project > a").on("click", function() {
+        $(".post-popup.edit-post").removeClass("active");
+        $(".wrapper").removeClass("overlay");
+        return false;
+    });
+
+    $('.edit-post-btn').on('click', function(e) {
+
+        var content = $(this).data('content');
+        var post_id = $(this).data('id');
+        $(".pcontent").text(content);
+        document.getElementById("post_id2").value = post_id;
+        console.log(post_id);
+    });
+</script>
 {{-- <script src="{{ mix('js/app.js') }}"></script> --}}
 
 <link href="{{ asset('home/css/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all">
