@@ -28,7 +28,8 @@
         <div class="ed-opts">
             <a href="#" title="" class="ed-opts-open"><i class="la la-ellipsis-v"></i></a>
             <ul class="ed-options">
-                <li><a href="{{ route('posts.show', ['post' => $share->post->id]) }}" title="">@lang('site.viewPost')</a></li>
+                <li><a href="{{ route('posts.show', ['post' => $share->post->id]) }}"
+                        title="">@lang('site.viewPost')</a></li>
 
                 @if ($share->post->user_id == Auth::id())
                     <li><a href="#" title="">@lang('site.editPost')</a></li>
@@ -39,6 +40,9 @@
                 @if (Auth::user()->isSaved($share->post->id))
                     <li><a href="{{ route('unsave', $post->id) }}" title="">@lang('site.unSave')</a></li>
                 @endif
+
+                <li><a href="{{ route('posts.unshare', $share->id) }}" title="">@lang('site.unShare')</a></li>
+
             </ul>
         </div>
     </div>

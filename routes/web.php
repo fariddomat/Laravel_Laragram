@@ -54,6 +54,8 @@ Route::group([
 
 
     Route::post('share', 'PostController@share')->name('posts.share');
+    Route::get('unshare/{id}', 'PostController@unshare')->name('posts.unshare');
+    
     // Route::get('/comment/report/{id}', 'CommentController@report')->name('comment.report');
 
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');

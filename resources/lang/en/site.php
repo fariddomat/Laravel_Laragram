@@ -154,6 +154,7 @@ return [
     'save'=> 'Save',
     'cancel'=> 'Cancel',
     'share'=> 'Share',
+    'unShare'=> 'Un Share',
     'shares'=> 'Shares',
     'sharedBy'=> 'Shared By',
     'comment'=> 'Comment',

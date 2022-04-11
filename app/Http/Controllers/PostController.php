@@ -94,6 +94,20 @@ class PostController extends Controller
         Session::flash('success', 'Successfully share !');
         return redirect()->back();
     }
+
+    public function unshare($id)
+    {
+        $share = Share::find($id);
+        if (empty($share)) {
+            abort(403);
+        }
+        if ($share) {
+
+            $share->delete();
+            return redirect()->back();
+        }
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -242,15 +256,14 @@ class PostController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->post_id);
-        $post=Post::find($request->post_id);
+        $post = Post::find($request->post_id);
         if (empty($post)) {
             abort(403);
         }
         $post->update([
-            'content'=>$request->content
+            'content' => $request->content
         ]);
         return redirect()->back();
-
     }
 
     /**
@@ -262,10 +275,13 @@ class PostController extends Controller
     public function destroy($id)
     {
         $post = Post::find($id);
+        if (empty($post)) {
+            abort(403);
+        }
         if ($post) {
             if ($post->withFiles()) {
                 foreach ($post->files as $file) {
-                    $path = "/files/$id/".$file->file;
+                    $path = "/files/$id/" . $file->file;
                     // unlink($path);
                     // dd($path);
                     fFile::delete(public_path($path));
@@ -273,9 +289,6 @@ class PostController extends Controller
             }
             $post->delete();
             return redirect()->back();
-        }
-        if (empty($post)) {
-            abort(403);
         }
     }
 }
