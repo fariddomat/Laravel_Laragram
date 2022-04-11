@@ -16,12 +16,15 @@
                 <li><a href="{{ route('posts.show', ['post' => $post->id]) }}" title="">@lang('site.viewPost')</a>
                 </li>
                 @if ($post->user_id == Auth::id())
-                    <li><a  data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="edit-post-btn" title="">@lang('site.editPost')</a></li>
-                    <li><form action="{{ route('posts.destroy', $post->id) }}" method="POST">
-                    @csrf
-                    @method('Delete')
-                    <button type="submit">@lang('site.delete')</button>
-                    </form></li>
+                    <li><a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="edit-post-btn"
+                            title="">@lang('site.editPost')</a></li>
+                    <li>
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST">
+                            @csrf
+                            @method('Delete')
+                            <button type="submit">@lang('site.delete')</button>
+                        </form>
+                    </li>
                 @endif
                 @if ($post->user_id != Auth::id())
                     <li><a href="{{ route('report.post', $post->id) }}" title="">@lang('site.report')</a></li>
@@ -51,6 +54,10 @@
             {{-- <a href="#" title="">@lang('site.viewMore')</a> --}}
         </p>
 
+        @if ($post->withVideo())
+            <video style="margin-bottom: 15px;
+            border-radius: 10px;" src="/files/{{ $post->id . '/' . $post->withVideo() }}" controls></video>
+        @endif
         @if ($post->withImages())
             @if ($post->hasMoreThanOneImage())
                 <div class="swiper mySwiper">

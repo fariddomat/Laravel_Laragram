@@ -67,6 +67,25 @@ class Post extends Model
         return false;
     }
 
+    public function withVideo()
+    {
+        // ->extension()
+        if ($this->files()->exists()) {
+            foreach ($this->files as $key => $value) {
+                // $ext = pathinfo($value->file, PATHINFO_EXTENSION);
+                $lastDotPos = strrpos($value->file, '.');
+                if (!$lastDotPos) return false;
+                $extension = substr($value->file, $lastDotPos + 1);
+                $allowedfileExtension = ['mp4', 'mkv', 'avi'];
+                $check = in_array($extension, $allowedfileExtension);
+                if ($check) {
+                    return $value->file;
+                }
+            }
+        }
+        return false;
+    }
+
     public function hasMoreThanOneImage()
     {
         $count = 0;
