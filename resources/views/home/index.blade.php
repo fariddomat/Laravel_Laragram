@@ -122,7 +122,9 @@
                                         </div>
                                         <!--username-dt end-->
                                         <div class="user-specs">
-                                            <h3>{{ Auth::user()->fname }} {{ Auth::user()->lname }}</h3>
+                                            <h3>{{ Auth::user()->fullName() }}</h3>
+                                            <h3>{{ Auth::user()->role_name }}</h3>
+
                                             <span>{{ Auth::user()->info->bio }}</span>
                                         </div>
                                     </div>

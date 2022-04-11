@@ -131,6 +131,8 @@
                             <div class="main-ws-sec">
                                 <div class="user-tab-sec">
                                     <h3>{{ $user->fullName() }} </h3>
+                                    <h3>{{ $user->role_name }}</h3>
+
                                     <div class="star-descp">
                                         <span><i class="fa fa-university"></i> {{ $user->college->name }}</span>
                                         <h4 style="margin-top: 35px;

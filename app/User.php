@@ -22,7 +22,7 @@ class User extends Authenticatable
     protected $fillable = [
         'username', 'fname', 'lname', 'email', 'password', 'college_id', 'status', 'style'
     ];
-    protected $appends=['profile_path'];
+    protected $appends=['profile_path', 'role_name'];
 
     protected $withCount = ['posts'];
 
@@ -189,5 +189,20 @@ class User extends Authenticatable
     public function getProfilePathAttribute()
     {
         return $this->info->profile_img_path;
+    }
+    public function getRoleNameAttribute()
+    {
+        if ($this->roles->first()->name =='super_admin') {
+            return 'Super Admin';
+        }
+        elseif ($this->roles->first()->name =='admin') {
+            return 'Admin';
+        }
+        elseif ($this->roles->first()->name =='teacher') {
+            return 'Dr';
+        }
+        else{
+            return 'Student';
+        }
     }
 }
