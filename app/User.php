@@ -119,11 +119,8 @@ class User extends Authenticatable
     {
         return $this->whereUser_id(Auth::user()->id)->whereTarget_id($id);
     }
-    //relations -------------------------------------------
-    public function blacklists()
-    {
-        return $this->hasMany(BlackList::class);
-    }
+
+    
     //relations -------------------------------------------
     public function likes()
     {
