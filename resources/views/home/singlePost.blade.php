@@ -64,7 +64,7 @@
                                             @endif
                                             <div class="post-status-bar">
                                                 <ul class="like-com">
-                                                    @if ($post->isFollower($post->user->id) || $post->type != 'post')
+                                                    @if ($post->isFollower($post->user->id) || $post->type != 'post' || ($post->user->id == Auth::id()))
                                                         @if ($post->isAuthUserLikedPost())
                                                             <li>
                                                                 <a id="saveLike" data-type="dislike"

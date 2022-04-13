@@ -1,3 +1,4 @@
+@isset($post)
 <div class="post-popup edit-post">
     <div class="post-project">
         <h3>@lang('site.edit') @lang('site.post')</h3>
@@ -33,3 +34,4 @@
     </div>
     <!--post-project end-->
 </div>
+@endisset

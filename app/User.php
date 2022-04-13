@@ -120,7 +120,7 @@ class User extends Authenticatable
         return $this->whereUser_id(Auth::user()->id)->whereTarget_id($id);
     }
 
-    
+
     //relations -------------------------------------------
     public function likes()
     {
@@ -147,11 +147,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Comment::class);
     }
-    //relations -------------------------------------------
-    public function commentLikes()
-    {
-        return $this->hasMany(CommentLike::class);
-    }
+    
 
     // pusher message
     public function messages()

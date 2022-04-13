@@ -24,7 +24,7 @@ class ProfileController extends Controller
         $posts = Post::where('user_id', Auth::user()->id)->orderByDesc('id')->paginate(5);
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $projects=Post::where('user_id', Auth::user()->id)->where('type','project')->orderByDesc('id')->take(5)->get();
         return view('home.profile', compact('user', 'posts', 'suggestionsUsers', 'projects'));
     }

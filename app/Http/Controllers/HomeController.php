@@ -47,15 +47,12 @@ class HomeController extends Controller
     {
 
         $user=User::find(Auth::user()->id);
-        // dd($user->following()->get()->pluck('id'));
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
         $posts= \App\Post::whereIn('user_id', $userIds)->whereType('post')->latest()->paginate(5);
         $shares=Share::whereIn('user_id', $userIds)->latest()->take(3)->get();
-        // dd($shares);
 
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
-
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $news= $this->getNews();
         $projects= $this->getProjects();
 
@@ -65,9 +62,7 @@ class HomeController extends Controller
 
     public function coursesList(Request $request)
     {
-
         $parent_id = $request->cat_id;
-
         $colleges = College::where('id',$parent_id)
                               ->with('courses')
                               ->get();
@@ -85,7 +80,7 @@ class HomeController extends Controller
         $posts= Post::whereHas('user', function($q) use ($user){
             $q->where('college_id', $user->college_id);
         })->whereType('news')->latest()->paginate(5);
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
         $news= $this->getNews();
         $projects= $this->getProjects();
@@ -101,7 +96,7 @@ class HomeController extends Controller
         $posts= Post::whereHas('user', function($q) use ($user){
             $q->where('college_id', $user->college_id);
         })->whereType('project')->latest()->paginate(5);
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
         $news= $this->getNews();
         $projects= $this->getProjects();
@@ -114,7 +109,7 @@ class HomeController extends Controller
         $user=User::find(Auth::user()->id);
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
         $courses=Course::where('college_id',$user->college->id)->get();
         return view('home.courses', compact('suggestionsUsers', 'colleges', 'courses'));
@@ -126,7 +121,7 @@ class HomeController extends Controller
         $user=User::find(Auth::user()->id);
         $userIds = $user->following()->get()->pluck('id');
         $userIds[] = $user->id;
-        $suggestionsUsers= User::where('college_id',$user->id)->whereNotIn('id', $userIds)->get(6) ;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $colleges=College::all();
         $courses=Course::where('name',$name)->first();
         if (empty($courses)) {
@@ -160,9 +155,7 @@ class HomeController extends Controller
     public function search()
     {
         if (request()->ajax()) {
-
             $values = User::whenSearch(request()->search)->get();
-
             return $values;
         }
         return redirect()->back();

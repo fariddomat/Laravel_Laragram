@@ -93,7 +93,7 @@
     </div>
     <div class="post-status-bar">
         <ul class="like-com">
-            @if ($post->isFollower($post->user->id) || $post->type != 'post')
+            @if ($post->isFollower($post->user->id) || $post->type != 'post' || ($post->user->id == Auth::id()))
                 @if ($post->isAuthUserLikedPost())
                     <li>
                         <a id="saveLike" data-type="dislike" data-post="{{ $post->id }}" class="active"><i
@@ -126,7 +126,7 @@
                         src="{{ asset('home/images/com.png') }}" alt="">
                     @lang('site.comment') {{ $post->comments->count() }}</a></li>
         </ul>
-        @if ($post->isFollower($post->user->id) || $post->type != 'post')
+        @if ($post->isFollower($post->user->id) || $post->type != 'post' || ($post->user->id == Auth::id()))
             <a data-id="{{ $post->id }}" data-content="{{ $post->content }}" class="share-post-btn"><i
                     class="la la-share"></i>@lang('site.shares')
                 {{ $post->shares->count() }}</a>

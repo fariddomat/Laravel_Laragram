@@ -31,8 +31,5 @@ class Comment extends Model
           return $this->belongsTo(Post::class,'commentable_id');
       }
 
-      public function commentLikes()
-    {
-        return $this->hasMany(CommentLike::class);
-    }
+    
 }

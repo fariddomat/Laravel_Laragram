@@ -23,7 +23,7 @@ class SaveController extends Controller
             $q->where('user_id', $user->id);
         })->latest()->paginate(5);
         // dd($posts);
-        $suggestionsUsers = User::where('college_id', $user->id)->whereNotIn('id', $userIds)->get(6);
+        $suggestionsUsers = User::where('college_id', $user->college_id)->whereNotIn('id', $userIds)->get(6);
         $colleges = College::all();
         $home = new HomeController;
         $news = $home->getNews();
