@@ -27,16 +27,24 @@
                                                 @if ($post->withFiles())
                                                     <ul class="quest-tags">
                                                         @foreach ($post->files as $file)
-                                                            <li><a href="{{ route('getDownload', [$post->id, $file->file]) }}"
+                                                            <li>
+                                                                <a href="{{ route('getDownload', [$post->id, $file->file]) }}"
                                                                     title="" target="_blank"><i class="fa fa-download"></i>
-                                                                    {{ $file->file }}</a></li>
+                                                                    {{ $file->file }}</a>
+                                                            </li>
                                                         @endforeach
                                                     </ul>
                                                 @endif
                                             </p>
+
+                                            @if ($post->withVideo())
+                                                <video style="margin-bottom: 15px;
+                                border-radius: 10px;" src="/files/{{ $post->id . '/' . $post->withVideo() }}"
+                                                    controls></video>
+                                            @endif
                                             @if ($post->withImages())
                                                 @if ($post->hasMoreThanOneImage())
-                                                    <div class="swiper mySwiper">
+                                                    <div class="swiper mySwiper" style="width: 100%;">
                                                         <div class="swiper-wrapper">
                                                             @foreach ($post->images_path as $item)
                                                                 <div class="swiper-slide">
@@ -63,7 +71,8 @@
                                                                     data-post="{{ $post->id }}"
                                                                     class="active"><i class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">@lang('site.unlike')
+                                                                        class="like{{ $post->id }}">
+                                                                        @lang('site.unlike')
                                                                     </p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
@@ -77,7 +86,8 @@
                                                                     data-post="{{ $post->id }}"><i
                                                                         class="la la-heart"></i>
                                                                     <p style="float: right;"
-                                                                        class="like{{ $post->id }}">@lang('site.like')
+                                                                        class="like{{ $post->id }}">
+                                                                        @lang('site.like')
                                                                     </p>
                                                                 </a>
                                                                 <img src="{{ asset('home/images/liked-img.png') }}"
@@ -145,8 +155,8 @@
                                             <div class="usr-post-img">
                                                 <img src="{{ Auth::user()->info->profile_img_path }}"
                                                     style="max-width: 40px;max-height: 40px"" alt="">
-                                                    </div>
-                                                    <div class="  post_comment_sec">
+                                                                        </div>
+                                                                        <div class="       post_comment_sec">
                                                 <form method="post" action="{{ route('comment.add') }}">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
@@ -166,9 +176,10 @@
                             <div class="col-lg-4">
                                 <div class="widget widget-feat">
                                     <h3 style="margin-bottom: 15px;
-                                            font-style: oblique;
-                                            font-weight: bold;
-                                            color: rebeccapurple;">@lang('site.TypeofthisPost') : @lang("site.$post->type")
+                                                                font-style: oblique;
+                                                                font-weight: bold;
+                                                                color: rebeccapurple;">@lang('site.TypeofthisPost') :
+                                        @lang("site.$post->type")
                                     </h3>
                                     <ul>
                                         <li>
@@ -184,7 +195,8 @@
                                             <span>{{ $post->shares->count() }}</span>
                                         </li>
                                         <li>
-                                            <a href="{{ route('save', $post->id) }}"><i class="fa fa-bookmark" style="color: orange"></i></a>
+                                            <a href="{{ route('save', $post->id) }}"><i class="fa fa-bookmark"
+                                                    style="color: orange"></i></a>
                                             <a href="{{ route('report.post', $post->id) }}"><i class="fa fa-ban"
                                                     style="color: red"></i></a>
                                         </li>

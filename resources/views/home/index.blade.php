@@ -108,7 +108,6 @@
                         </div>
                     </div> --}}
                     {{-- End Stories section --}}
-
                     <div class="row">
 
                         <div class="col-lg-3 col-md-4 pd-left-none no-pd">

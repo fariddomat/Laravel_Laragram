@@ -8,7 +8,8 @@
             <!--logo end-->
             <div class="search-bar">
                 <form>
-                    <input class="form-control" style="text-align: center" type="search" name="search" placeholder="@lang('site.search')">
+                    <input class="form-control" style="text-align: center" type="search" name="search"
+                     placeholder="@lang('site.search')">
                     <button type="submit"><i class="la la-search"></i></button>
                 </form>
             </div>

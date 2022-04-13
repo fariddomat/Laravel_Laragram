@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
             'password'=>bcrypt('admin'),
             'college_id'=>'1',
         ]);
-        $user->attachRole('admin');
+        $user->attachRole('super_admin');
         UserInfo::create([
             'user_id'=>$user->id
         ]);

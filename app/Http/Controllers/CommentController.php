@@ -75,21 +75,5 @@ class CommentController extends Controller
         }
     }
 
-    /*
-    public function report($id)
-    {
-        $comment = Comment::find($id);
-        if($comment){
-            $report=Report::create([
-                'user_id'=>Auth::user()->id,
-                'comment_id' =>$id,
-            ]);
-            $report->save();
-            return back();
-        }else {
-            return redirect()->route('404');
-        }
-    }
-
-    */
+   
 }

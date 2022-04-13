@@ -4,14 +4,9 @@
 @include('home.layouts.head')
 
 <body>
-
-
     <div class="wrapper">
-
         @include('home.layouts.header')
-        <!-- Navbar -->
-
-
+        
         @yield('content')
 
         @include('home.layouts.chat')
