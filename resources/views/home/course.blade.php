@@ -16,8 +16,12 @@
 
                                         </div>
                                         <!--usr_quest end-->
-                                        <span class="quest-posted-time" style="bottom: unset !important;"><i
-                                                class="fa fa-clock-o"></i>{{ $lecture->created_at->diffforhumans() }}</span>
+                                        <span class="quest-posted-time" style="bottom: unset !important;"><i class="fa fa-clock-o"></i>{{ $lecture->created_at->diffforhumans() }}
+                                        @if (!Auth::user()->hasRole('user'))
+                                        <a class="btn btn-danger" href="{{ route('lecture.destroy', $lecture->post->id) }}" title=""><i class="la la-trash"></i></a>
+                                        @endif
+                                        </span>
+
                                         <div class="epi-sec">
                                             <ul class="descp">
                                                 <li><img src="{{ asset('home/images/icon8.png') }}"
@@ -88,8 +92,8 @@
                             <h3 class="title-wd"><i class="fa fa-university"></i> {{ $name }}
                                 <br><br>
                                 <span class="mt-2" style="font-size: medium;
-                                            font-style: italic;
-                                            padding-left: 25px;">@lang('site.LatestAddedLectures')</span>
+                                                    font-style: italic;
+                                                    padding-left: 25px;">@lang('site.LatestAddedLectures')</span>
                             </h3>
                             <ul>
                                 @if ($lectures->count() > 0)

@@ -32,6 +32,7 @@ Route::group([
     Route::get('/courses', 'HomeController@courses')->name('courses');
     Route::get('/course/{name}', 'HomeController@course')->name('course');
     Route::get('/lecture/{id}/{filename}', 'LectureController@getDownload')->name('getDownload');
+    Route::get('/lecture/{id}', 'LectureController@destroy')->name('lecture.destroy');
     Route::get('/profile', 'ProfileController@show')->name('profile');
     Route::get('/getFollower', 'ProfileController@getFollower')->name('getFollower');
     Route::get('/getFollowing', 'ProfileController@getFollowing')->name('getFollowing');
