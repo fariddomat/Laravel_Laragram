@@ -29,6 +29,36 @@ class ProfileController extends Controller
         return view('home.profile', compact('user', 'posts', 'suggestionsUsers', 'projects'));
     }
 
+    public function getFollower()
+    {
+        $user = User::find(Auth::user()->id);
+        if (empty($user)) {
+            abort(403);
+        }
+        $follow = $user->followers()->paginate(5);
+        $userIds = $user->following()->get()->pluck('id');
+        $userIds[] = $user->id;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
+        $projects=Post::where('user_id', Auth::user()->id)->where('type','project')->orderByDesc('id')->take(5)->get();
+        return view('home.follow', compact('user', 'follow', 'suggestionsUsers', 'projects'));
+
+    }
+
+    public function getFollowing()
+    {
+        $user = User::find(Auth::user()->id);
+        if (empty($user)) {
+            abort(403);
+        }
+        $follow = $user->following()->paginate(5);
+        $userIds = $user->following()->get()->pluck('id');
+        $userIds[] = $user->id;
+        $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
+        $projects=Post::where('user_id', Auth::user()->id)->where('type','project')->orderByDesc('id')->take(5)->get();
+        return view('home.follow', compact('user', 'follow', 'suggestionsUsers', 'projects'));
+
+    }
+
     public function lazyload(Request $request)
     {
         if ($request->ajax()) {

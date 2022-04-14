@@ -33,6 +33,9 @@ Route::group([
     Route::get('/course/{name}', 'HomeController@course')->name('course');
     Route::get('/lecture/{id}/{filename}', 'LectureController@getDownload')->name('getDownload');
     Route::get('/profile', 'ProfileController@show')->name('profile');
+    Route::get('/getFollower', 'ProfileController@getFollower')->name('getFollower');
+    Route::get('/getFollowing', 'ProfileController@getFollowing')->name('getFollowing');
+
     Route::get('/editprofileinfo', 'ProfileController@edit')->name('editprofile');
     Route::post('editprofileinfo', 'ProfileController@savePersonalInfo')->name('editprofileinfo');
     Route::post('editotherinfo', 'ProfileController@saveOtherInfo')->name('editotherinfo');
@@ -55,7 +58,7 @@ Route::group([
 
     Route::post('share', 'PostController@share')->name('posts.share');
     Route::get('unshare/{id}', 'PostController@unshare')->name('posts.unshare');
-    
+
     // Route::get('/comment/report/{id}', 'CommentController@report')->name('comment.report');
 
     Route::post('change-password', 'ChangePasswordController@store')->name('change.password');

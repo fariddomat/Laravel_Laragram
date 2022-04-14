@@ -32,11 +32,11 @@
 
                                         <ul class="flw-status">
                                             <li>
-                                                <span>@lang('site.following')</span>
+                                                <span><a href="{{ route('getFollowing') }}">@lang('site.following')</a></span>
                                                 <b>{{ $user->following->count() }}</b>
                                             </li>
                                             <li>
-                                                <span>@lang('site.followers')</span>
+                                                <span><a href="{{ route('getFollower') }}">@lang('site.followers')</a></span>
                                                 <b>{{ $user->followers->count() }}</b>
                                             </li>
 
@@ -158,7 +158,7 @@
                                             @else
                                                 <div class="post-bar">
                                                     <div class="post_topbar">
-                                                        <h3>No posts to show</h3>
+                                                        <h3>@lang('site.no_data_found')</h3>
                                                     </div>
                                                 </div>
                                             @endif

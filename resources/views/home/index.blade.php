@@ -229,7 +229,7 @@
                                         @else
                                             <div class="post-bar">
                                                 <div class="post_topbar">
-                                                    <h3>No posts to show</h3>
+                                                    <h3>@lang('site.no_data_found')</h3>
                                                 </div>
                                             </div>
                                         @endif
@@ -356,8 +356,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>
@@ -426,8 +426,8 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>
