@@ -55,7 +55,6 @@ class HomeController extends Controller
         $suggestionsUsers= User::where('college_id',$user->college_id)->whereNotIn('id', $userIds)->get(6) ;
         $news= $this->getNews();
         $projects= $this->getProjects();
-
         $colleges=College::all();
         return view('home.index', compact('posts', 'shares', 'suggestionsUsers', 'colleges', 'news', 'projects'));
     }

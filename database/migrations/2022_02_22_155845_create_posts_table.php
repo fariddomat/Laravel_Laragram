@@ -20,8 +20,6 @@ class CreatePostsTable extends Migration
             $table->text('content');
             // post || news || lectures || project
             $table->string('type')->default('post');
-            // public || folllowers || onlyme
-            $table->string('privacy')->default('followers');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
 

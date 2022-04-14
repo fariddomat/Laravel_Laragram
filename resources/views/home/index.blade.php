@@ -356,18 +356,8 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-2">
-                            <label for="">Privacy</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="inp-field">
-                                <select name="privacy">
-                                    <option selected>Public</option>
-                                    <option>Followers</option>
-                                    <option>Only me</option>
-                                </select>
-                            </div>
-                        </div> --}}
+                        
+                        
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>
@@ -436,18 +426,8 @@
                                 </div>
                             </div>
                         </div>
-                        {{-- <div class="col-lg-2">
-                            <label for="">Privacy</label>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="inp-field">
-                                <select name="privacy">
-                                    <option selected>Public</option>
-                                    <option>Followers</option>
-                                    <option>Only me</option>
-                                </select>
-                            </div>
-                        </div> --}}
+                        
+                        
                         <div class="col-lg-12">
                             <textarea class="summernote" name="content" placeholder="Add Your Post Here !"></textarea>
                         </div>

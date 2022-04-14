@@ -86,7 +86,6 @@ class PostsDataTable extends DataTable
             Column::make('user.username')->title(\Lang::get('site.user')),
             Column::make('content')->title(\Lang::get('site.content')),
             Column::make('type')->title(\Lang::get('site.type')),
-            Column::make('privacy')->title(\Lang::get('site.privacy')),
             Column::computed('action')
                 ->exportable(false)
                 ->printable(false)

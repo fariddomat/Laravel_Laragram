@@ -14,7 +14,7 @@ class Post extends Model
      * @var array
      */
     protected $fillable = [
-        'user_id', 'content', 'type', 'privacy'
+        'user_id', 'content', 'type',
     ];
 
     //relations -------------------------------------------

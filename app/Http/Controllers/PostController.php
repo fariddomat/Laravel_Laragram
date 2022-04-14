@@ -122,14 +122,12 @@ class PostController extends Controller
             $request->validate([
                 'content' => 'required',
                 'type' => 'required',
-                // 'privacy' => 'required',
                 'course' => 'required',
             ]);
         } else {
             $request->validate([
                 'content' => 'required',
                 'type' => 'required',
-                // 'privacy' => 'required',
             ]);
         }
 
@@ -137,7 +135,7 @@ class PostController extends Controller
         if ($request->type == "post" || $request->type == "news") {
             $allowedfileExtension = ['jpg', 'png', 'gif', 'mp4', 'avi', 'mkv', 'txt'];
         } elseif ($request->type == "lecture" || $request->type == "project") {
-            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx', 'txt'];
+            $allowedfileExtension = ['pdf', 'jpg', 'png', 'docx', 'txt', 'rar', 'zip'];
         }
 
         // dd($request->all());
@@ -157,7 +155,6 @@ class PostController extends Controller
                     'user_id' => Auth::user()->id,
                     'content' => $request->content,
                     'type' => $request->type,
-                    'privacy' => 'public',
 
                 ]);
                 foreach ($request->file('files') as $file) {
@@ -178,7 +175,6 @@ class PostController extends Controller
                 'user_id' => Auth::user()->id,
                 'content' => $request->content,
                 'type' => $request->type,
-                'privacy' => 'public',
 
             ]);
         }
@@ -193,9 +189,6 @@ class PostController extends Controller
 
             ]);
         }
-
-
-
         Session::flash('success', 'Successfully Created !');
         return redirect()->back();
     }
