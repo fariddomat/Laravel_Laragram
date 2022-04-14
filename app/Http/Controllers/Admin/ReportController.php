@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class ReportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:read_reports')->only(['index']);
+    }
     public function index(ReportDataTable $dataTable)
     {
         return $dataTable->render('admin.reports.index');

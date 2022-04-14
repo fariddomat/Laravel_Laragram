@@ -15,14 +15,20 @@ return [
         'super_admin' => [
             'settings' => 'c,r,u,d',
             'users' => 'c,r,u,d',
+            'colleges' => 'c,r,u,d',
+            'courses' => 'c,r,u,d',
             'posts' => 'c,r,u,d',
+            'reports' => 'c,r,u,d',
             'profile' => 'r,u',
             'roles' => 'c,r,u,d',
         ],
         'admin' => [
             'settings' => 'c,r,u,d',
-            'users' => 'c,r,u,d',
+            'users' => 'r',
+            'colleges' => 'c,r,u,d',
+            'courses' => 'c,r,u,d',
             'posts' => 'c,r,u,d',
+            'reports' => 'c,r,u,d',
             'profile' => 'r,u'
         ],
         'teacher' => [
@@ -32,7 +38,7 @@ return [
         'user' => [
             'posts' => 'c,r,u,d',
             'profile' => 'r,u',
-        ], 
+        ],
     ],
 
     'permissions_map' => [

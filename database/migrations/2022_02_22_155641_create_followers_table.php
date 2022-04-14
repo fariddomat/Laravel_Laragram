@@ -17,9 +17,10 @@ class CreateFollowersTable extends Migration
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
-            $table->integer('target_id');
+            $table->unsignedBigInteger('target_id');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('target_id')->references('id')->on('users')->onDelete('cascade');
 
         });
     }

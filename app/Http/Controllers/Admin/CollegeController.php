@@ -11,6 +11,13 @@ use PhpOffice\PhpSpreadsheet\Calculation\Category;
 
 class CollegeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:read_colleges')->only(['index']);
+        $this->middleware('permission:create_colleges')->only(['create','store']);
+        $this->middleware('permission:update_colleges')->only(['edit','update']);
+        $this->middleware('permission:delete_colleges')->only(['destroy']);
+    }
     /**
      * Display a listing of the resource.
      *

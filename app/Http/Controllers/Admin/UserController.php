@@ -9,11 +9,19 @@ use App\User;
 use App\UserInfo;
 use Illuminate\Http\Request;
 use DataTables;
+use Illuminate\Support\Facades\Auth;
 use Lang;
 use Session;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('permission:read_users')->only(['index']);
+        $this->middleware('permission:create_users')->only(['create','store']);
+        $this->middleware('permission:update_users')->only(['edit','update']);
+        $this->middleware('permission:delete_users')->only(['destroy']);
+    }
 
     /**
      * Display a listing of the resource.
@@ -25,9 +33,6 @@ class UserController extends Controller
         return $dataTable->render('admin.users.index');
     }
 
-
-
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,6 +40,7 @@ class UserController extends Controller
      */
     public function create()
     {
+
         $roles=Role::where('name', '!=','super_admin')->get();
         // dd($roles);
         return view('admin.users.create',compact('roles'));
@@ -134,15 +140,11 @@ class UserController extends Controller
 
     public function ban($id)
     {
-
-
         $user = User::find($id);
-
         if ($user) {
             $user->update([
                 'status'=>'ban'
             ]);
-// dd($user);
             return redirect()->route('admin.users.index');
         } else
             return response()->json(['message' => 'error'], 404);

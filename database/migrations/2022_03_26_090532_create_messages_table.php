@@ -14,14 +14,17 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->timestamps();
             //insert the lines below
-            $table->integer('user_id')->unsigned();
+            $table->unsignedBigInteger('user_id')->unsigned();
             $table->text('message');
-
-            $table->integer('receiver_id')->nullable();
+            $table->unsignedBigInteger('receiver_id')->nullable();
             $table->string('image')->nullable();
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('receiver_id')->references('id')->on('users')->onDelete('cascade');
+
 
         });
     }

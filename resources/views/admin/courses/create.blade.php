@@ -9,9 +9,9 @@
             @method('POST')
             @csrf
             @include('admin.layouts._error')
-            <select name="college_id" id="" class="form-control col-md-4 mt-2">
+            <select name="college_id" id="" class="form-control col-md-4 mt-2" {{!Auth::user()->hasRole('super_admin') ? 'disabled': ''}}>
                 @foreach ($colleges as $item)
-                <option value="{{$item->id}}">{{$item->name}}</option>
+                <option value="{{$item->id}}" {{Auth::user()->college->id==$item->id ? 'selected' : ''}}>{{$item->name}}</option>
                 @endforeach
             </select>
             <input type="text" name="name" id="" class="form-control col-md-4 mt-2">

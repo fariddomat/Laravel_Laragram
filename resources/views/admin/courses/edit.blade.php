@@ -11,7 +11,7 @@
             @include('admin.layouts._error')
             <select name="college_id" id="" class="form-control col-md-4 mt-2" disabled>
                 @foreach ($colleges as $item)
-                <option value="{{$courses->course_id ? $item->id:'selected' }}">{{$item->name}}</option>
+                <option value="{{$item->id}}" {{$courses->college->id==$item->id ? 'selected' : ''}}>{{$item->name}}</option>
                 @endforeach
             </select>
             <input value="{{old('name',$courses->name)}}" type="text" name="name" id="" class="form-control col-md-4 mt-2">
