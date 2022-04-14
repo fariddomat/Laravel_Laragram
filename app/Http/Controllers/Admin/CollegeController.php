@@ -27,7 +27,7 @@ class CollegeController extends Controller
     {
         return $dataTable->render('admin.college.index');
     }
-
+ 
     public function create()
     {
         return view('admin.college.create');

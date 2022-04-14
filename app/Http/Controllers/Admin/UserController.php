@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\College;
 use App\DataTables\UsersDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Role;
@@ -41,9 +42,10 @@ class UserController extends Controller
     public function create()
     {
 
+        $colleges=College::all();
         $roles=Role::where('name', '!=','super_admin')->get();
         // dd($roles);
-        return view('admin.users.create',compact('roles'));
+        return view('admin.users.create',compact('roles', 'colleges'));
 
     }
 
@@ -93,9 +95,12 @@ class UserController extends Controller
     public function edit($id)
     {
         $roles=Role::where('name', '!=','super_admin')->get();
-
+        $colleges=College::all();
         $user=User::find($id);
-        return view('admin.users.edit',compact('roles','user'));
+        if($user->hasRole('super_admin')){
+            abort(403);
+        }
+        return view('admin.users.edit',compact('roles','user', 'colleges'));
 
     }
 
@@ -132,6 +137,9 @@ class UserController extends Controller
     public function destroy($id)
     {
         $user=User::find($id);
+        if($user->hasRole('super_admin')){
+            abort(403);
+        }
         $user->delete();
 
         Session::flash('success','Successfully deleted !');
@@ -142,6 +150,9 @@ class UserController extends Controller
     {
         $user = User::find($id);
         if ($user) {
+            if($user->hasRole('super_admin')){
+                abort(403);
+            }
             $user->update([
                 'status'=>'ban'
             ]);
@@ -153,6 +164,9 @@ class UserController extends Controller
     public function unban($id)
     {
         $user = User::find($id);
+        if($user->hasRole('super_admin')){
+            abort(403);
+        }
         if ($user) {
             $user->update([
                 'status'=>'active'

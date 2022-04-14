@@ -38,7 +38,14 @@
                                 value="{{ old('email', $user->email) }}" aria-describedby="helpId" placeholder="">
                         </div>
 
-
+                        <div class="form-group">
+                            <label for="role">College</label>
+                            <select class="form-control" name="college_id" id="role_id">
+                                @foreach ($colleges as $college)
+                                    <option value="{{ $college->id }}" {{ $user->college_id==$college->id ? 'selected' : '' }}>{{ $college->name }}</option>
+                                @endforeach
+                            </select>
+                         </div>
                         {{-- Roles --}}
                         <div class="form-group">
                             <label for="role">Roles</label>

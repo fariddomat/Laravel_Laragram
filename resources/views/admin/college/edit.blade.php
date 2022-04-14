@@ -4,7 +4,7 @@
 @section('content')
     <div class="app-content content">
         <div class="content-wrapper">
-            <br><h1>@lang('site.create') @lang('site.colleges') <br /> </h1>
+            <br><h1>@lang('site.edit') @lang('site.colleges') <br /> </h1>
             <form action="{{ route('admin.colleges.update', $college->id) }}" method="post">
             @method('PUT')
             @csrf
