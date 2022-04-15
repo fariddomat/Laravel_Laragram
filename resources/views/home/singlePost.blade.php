@@ -9,6 +9,9 @@
                 <div class="container">
                     <div class="forum-questions-sec">
                         <div class="row">
+                            <div class="col-lg-12">
+                                @include('home.layouts._error')
+                            </div>
                             <div class="col-lg-8">
                                 <div class="forum-post-view">
                                     <div class="usr-question">
@@ -161,7 +164,7 @@
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
 
-                                                    <textarea placeholder="Your Answer" name="comment"></textarea>
+                                                    <textarea placeholder="Your Comment" name="comment" required></textarea>
                                                     <button type="submit">@lang('site.comment')</button>
                                                 </form>
                                             </div>
