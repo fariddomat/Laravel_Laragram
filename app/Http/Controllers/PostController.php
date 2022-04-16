@@ -120,13 +120,11 @@ class PostController extends Controller
         // dd($request->type);
         if ($request->type == 'lecture') {
             $request->validate([
-                'content' => 'required',
                 'type' => 'required',
                 'course' => 'required',
             ]);
         } else {
             $request->validate([
-                'content' => 'required',
                 'type' => 'required',
             ]);
         }
@@ -171,6 +169,9 @@ class PostController extends Controller
                 echo '<div class="alert alert-warning"><strong>Warning!</strong> Sorry Only Upload png , jpg , doc</div>';
             }
         } else {
+            $request->validate([
+                'content' => 'required',
+            ]);
             $post = Post::create([
                 'user_id' => Auth::user()->id,
                 'content' => $request->content,
@@ -203,7 +204,7 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         if (empty($post)) {
-            abort(403);
+            abort(404);
         }
         // dd($post);
         return view('home.singlePost', compact('post'));

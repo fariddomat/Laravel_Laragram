@@ -27,9 +27,22 @@ class Comment extends Model
     }
 
     public function posts()
-      {
-          return $this->belongsTo(Post::class,'commentable_id');
-      }
+    {
+        return $this->belongsTo(Post::class, 'commentable_id');
+    }
 
-    
+    //relations -------------------------------------------
+    public function commentfile()
+    {
+        return $this->hasOne(Commentfile::class);
+    }
+
+    public function withImages()
+    {
+        // ->extension()
+        if ($this->commentfile()->exists()) {
+            return true;
+        }
+        return false;
+    }
 }

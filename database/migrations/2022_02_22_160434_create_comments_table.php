@@ -18,8 +18,8 @@ class CreateCommentsTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id')->unsigned();
             $table->unsignedBigInteger('parent_id')->nullable();
-            $table->text('comment');
-            $table->integer('commentable_id')->unsigned();
+            $table->text('comment')->nullable();
+            $table->unsignedBigInteger('commentable_id');
             $table->string('commentable_type');
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

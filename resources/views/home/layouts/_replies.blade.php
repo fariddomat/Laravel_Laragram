@@ -1,22 +1,31 @@
 @foreach ($comments as $comment)
     <div class="display-comment  p-1 rounded">
         @auth
-            @if (Auth::user()->hasRole('admin') || Auth::id()==$comment->user->id)
-                <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5x;"><i class="fa fa-trash"></i> </a>
+            @if (Auth::user()->hasRole('super_admin') || Auth::user()->hasRole('admin') || Auth::id() == $comment->user->id)
+                <a href="{{ route('comment.destroy', ['id' => $comment->id]) }}" class="btn btn-danger danger1"
+                    style=" float: right;margin-top: 5x;"><i class="fa fa-trash"></i> </a>
             @endif
-            @if ((Auth::user()->hasRole('user') && Auth::id()!=$comment->user->id ) || (Auth::user()->hasRole('teacher') && Auth::id()!=$comment->user->id))
-        <a href="{{ route('report.comment', ['id' => $comment->id]) }}" class="btn btn-danger danger1" style=" float: right;margin-top: 5px;"><i class="fa fa-ban" title="Report this comment"></i> </a>
-    @endif
+            @if ((Auth::user()->hasRole('user') && Auth::id() != $comment->user->id) || (Auth::user()->hasRole('teacher') && Auth::id() != $comment->user->id))
+                <a href="{{ route('report.comment', ['id' => $comment->id]) }}" class="btn btn-danger danger1"
+                    style=" float: right;margin-top: 5px;"><i class="fa fa-ban" title="Report this comment"></i> </a>
+            @endif
         @endauth
         <div class="row">
             <div class="col-md-1 center">
 
-                <img src="{{$comment->user->info->profile_img_path}}" style="max-width: 50px;max-height: 50px; margin-right: 25px;margin-left: -10px;" alt="">
+                <img src="{{ $comment->user->info->profile_img_path }}"
+                    style="max-width: 50px;max-height: 50px; margin-right: 25px;margin-left: -10px;" alt="">
             </div>
             <div class="col-md-11">
                 <strong class="upper">{{ $comment->user->fullName() }}</strong>
                 {{ $comment->created_at->diffForHumans() }}
                 <p>{{ $comment->comment }}</p>
+                
+                @if ($comment->withImages())
+                    <img style="width: 70%;margin-top: 15px;
+                    margin-bottom: 15px;
+                    margin-left: 10px;" class="post-img" src="{{ asset('files/comments/'.$comment->id.'/'.$comment->commentfile->file) }}" alt="">
+                @endif
             </div>
 
         </div>
@@ -35,7 +44,7 @@
                         <form method="post" action="{{ route('comment.reply') }}">
                             @csrf
                             <div class="form-group">
-                                <input type="text" name="comment" class="form-control" required/>
+                                <input type="text" name="comment" class="form-control" required />
                                 <input type="hidden" name="post_id" value="{{ $post_id }}" />
                                 <input type="hidden" name="comment_id" value="{{ $comment->id }}" />
                             </div>

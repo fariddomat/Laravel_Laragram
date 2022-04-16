@@ -119,24 +119,7 @@
                                             <div class="comment-section">
                                                 <h3>{{ $post->comments->count() }} @lang('site.comments')</h3>
                                                 <div class="comment-sec">
-                                                    {{-- <ul>
-                                                @foreach ($post->comments as $comment)
-                                                <li>
-                                                    <div class="comment-list">
-                                                        <div class="bg-img">
-                                                            <img src="http://via.placeholder.com/40x40" alt="">
-                                                        </div>
-                                                        <div class="comment">
-                                                            <h3>{{$comment->user->fullName()}}</h3>
-                                                            <span><img src="images/clock.png" alt="">{{ $comment->created_at->diffforhumans() }}</span>
-                                                            <p>{{ $comment->comment }}</p>
-                                                        </div>
-                                                    </div>
-                                                    <!--comment-list end-->
-                                                </li>
-                                                @endforeach
 
-                                            </ul> --}}
                                                     @include('home.layouts._replies', [
                                                         'comments' => $post->comments,
                                                         'post_id' => $post->id,
@@ -160,11 +143,12 @@
                                                     style="max-width: 40px;max-height: 40px"" alt="">
                                                                         </div>
                                                                         <div class="       post_comment_sec">
-                                                <form method="post" action="{{ route('comment.add') }}">
+                                                <form method="post" action="{{ route('comment.add') }}" enctype="multipart/form-data">
                                                     @csrf
                                                     <input type="hidden" name="post_id" value="{{ $post->id }}" />
 
-                                                    <textarea placeholder="Your Comment" name="comment" required></textarea>
+                                                    <textarea placeholder="Your Comment" name="comment"></textarea>
+                                                    <input type="file" name="file" id="">
                                                     <button type="submit">@lang('site.comment')</button>
                                                 </form>
                                             </div>
